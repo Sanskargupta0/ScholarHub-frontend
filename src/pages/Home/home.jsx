@@ -1,12 +1,12 @@
 import React from 'react'
-
+import { images } from '../../assets';
 function Home() {
   return (
     <main>
     <article>
 
       <section className="section hero has-bg-image" id="home" aria-label="home"
-        style={{backgroundImage: "url('./assets/images/hero-bg.svg')"}}>
+        style={{backgroundImage: `url(${images.hero_bg})`}}>
         <div className="container">
 
           <div className="hero-content">
@@ -30,16 +30,16 @@ function Home() {
           <figure className="hero-banner">
 
             <div className="img-holder one" style={{width: "270", height: "300"}}>
-              <img src="./assets/images/hero-banner-1.jpg" width="270" height="300" alt="hero banner" className="img-cover"/>
+              <img src={images.hero_banner_1} width="270" height="300" alt="hero banner" className="img-cover"/>
             </div>
 
             <div className="img-holder two" style={{width: "240", height: "370"}}>
-              <img src="./assets/images/hero-banner-2.jpg" width="240" height="370" alt="hero banner" className="img-cover"/>
+              <img src={images.hero_banner_2} width="240" height="370" alt="hero banner" className="img-cover"/>
             </div>
 
-            <img src="./assets/images/hero-shape-1.svg" width="380" height="190" alt="" className="shape hero-shape-1"/>
+            <img src={images.hero_shape_1} width="380" height="190" alt="" className="shape hero-shape-1"/>
 
-            <img src="./assets/images/hero-shape-2.png" width="622" height="551" alt="" className="shape hero-shape-2"/>
+            <img src={images.hero_shape_2} width="622" height="551" alt="" className="shape hero-shape-2"/>
 
           </figure>
 
@@ -70,7 +70,7 @@ function Home() {
               <div className="category-card" style={{color: "170, 75%, 41%"}}>
 
                 <div className="card-icon">
-                  <img src="./assets/images/category-1.svg" width="40" height="40" loading="lazy"
+                  <img src={images.category_1}width="40" height="40" loading="lazy"
                     alt="Online Degree Programs" className="img"/>
                 </div>
 
@@ -91,7 +91,7 @@ function Home() {
               <div className="category-card" style={{color: "351, 83%, 61%"}}>
 
                 <div className="card-icon">
-                  <img src="./assets/images/category-2.svg" width="40" height="40" loading="lazy"
+                  <img src={images.category_2} width="40" height="40" loading="lazy"
                     alt="Non-Degree Programs" className="img"/>
                 </div>
 
@@ -112,7 +112,7 @@ function Home() {
               <div className="category-card" style={{color: "229, 75%, 58%"}}>
 
                 <div className="card-icon">
-                  <img src="./assets/images/category-3.svg" width="40" height="40" loading="lazy"
+                  <img src={images.category_3} width="40" height="40" loading="lazy"
                     alt="Off-Campus Programs" className="img"/>
                 </div>
 
@@ -133,7 +133,7 @@ function Home() {
               <div className="category-card" style={{color: "42, 94%, 55%"}}>
 
                 <div className="card-icon">
-                  <img src="./assets/images/category-4.svg" width="40" height="40" loading="lazy"
+                  <img src={images.category_4} width="40" height="40" loading="lazy"
                     alt="Hybrid Distance Programs" className="img"/>
                 </div>
 
@@ -167,17 +167,17 @@ function Home() {
           <figure className="about-banner">
 
             <div className="img-holder" style={{width: "520", height: "370"}}>
-              <img src="./assets/images/about-banner.jpg" width="520" height="370" loading="lazy" alt="about banner"
+              <img src={images.about_banner} width="520" height="370" loading="lazy" alt="about banner"
                 className="img-cover"/>
             </div>
 
-            <img src="./assets/images/about-shape-1.svg" width="360" height="420" loading="lazy" alt=""
+            <img src={images.about_shape_1} width="360" height="420" loading="lazy" alt=""
               className="shape about-shape-1"/>
 
-            <img src="./assets/images/about-shape-2.svg" width="371" height="220" loading="lazy" alt=""
+            <img src={images.about_shape_2} width="371" height="220" loading="lazy" alt=""
               className="shape about-shape-2"/>
 
-            <img src="./assets/images/about-shape-3.png" width="722" height="528" loading="lazy" alt=""
+            <img src={images.about_shape_3} width="722" height="528" loading="lazy" alt=""
               className="shape about-shape-3"/>
 
           </figure>
@@ -218,7 +218,7 @@ function Home() {
 
             </ul>
 
-            <img src="./assets/images/about-shape-4.svg" width="100" height="100" loading="lazy" alt=""
+            <img src={images.about_shape_4} width="100" height="100" loading="lazy" alt=""
               className="shape about-shape-4"/>
 
           </div>
@@ -245,7 +245,7 @@ function Home() {
               <div className="course-card">
 
                 <figure className="card-banner img-holder" style={{width: "370", height: "220"}}>
-                  <img src="./assets/images/course-1.jpg" width="370" height="220" loading="lazy"
+                  <img src={images.course_1} width="370" height="220" loading="lazy"
                     alt="Build Responsive Real- World Websites with HTML and CSS" className="img-cover"/>
                 </figure>
 
@@ -304,7 +304,7 @@ function Home() {
               <div className="course-card">
 
                 <figure className="card-banner img-holder" style={{width: "370", height: "220"}}>
-                  <img src="./assets/images/course-2.jpg" width="370" height="220" loading="lazy"
+                  <img src={images.course_2} width="370" height="220" loading="lazy"
                     alt="Java Programming Masterclass for Software Developers" className="img-cover"/>
                 </figure>
 
@@ -363,7 +363,7 @@ function Home() {
               <div className="course-card">
 
                 <figure className="card-banner img-holder" style={{width: "370", height: "220"}}>
-                  <img src="./assets/images/course-3.jpg" width="370" height="220" loading="lazy"
+                  <img src={images.course_3} width="370" height="220" loading="lazy"
                     alt="The Complete Camtasia Course for Content Creators" className="img-cover"/>
                 </figure>
 
@@ -436,13 +436,13 @@ function Home() {
       
 
       <section className="video has-bg-image" aria-label="video"
-        style={{backgroundImage: "url('./assets/images/video-bg.png')"}}>
+        style={{backgroundImage: `url(${images.video_bg})`}}>
         <div className="container">
 
           <div className="video-card">
 
             <div className="video-banner img-holder has-after">
-              <img src="./assets/images/video-banner.jpg" width="970" height="550" loading="lazy" alt="video banner"
+              <img src={images.video_banner} width="970" height="550" loading="lazy" alt="video banner"
                 className="img-cover"/>
 
               <button className="play-btn" aria-label="play video">
@@ -450,10 +450,10 @@ function Home() {
               </button>
             </div>
 
-            <img src="./assets/images/video-shape-1.png" width="1089" height="605" loading="lazy" alt=""
+            <img src={images.video_shape_1} width="1089" height="605" loading="lazy" alt=""
               className="shape video-shape-1"/>
 
-            <img src="./assets/images/video-shape-2.png" width="158" height="174" loading="lazy" alt=""
+            <img src={images.video_shape_2} width="158" height="174" loading="lazy" alt=""
               className="shape video-shape-2"/>
 
           </div>
@@ -509,7 +509,7 @@ function Home() {
 
 
       <section className="section blog has-bg-image" id="blog" aria-label="blog"
-        style={{backgroundImage: "url('./assets/images/blog-bg.svg')"}}>
+        style={{backgroundImage: `url(${images.blog_bg})`}}>
         <div className="container">
 
           <p className="section-subtitle">Latest Articles</p>
@@ -522,7 +522,7 @@ function Home() {
               <div className="blog-card">
 
                 <figure className="card-banner img-holder has-after" style={{width: "370", height: "370"}}>
-                  <img src="./assets/images/blog-1.jpg" width="370" height="370" loading="lazy"
+                  <img src={images.blog_1} width="370" height="370" loading="lazy"
                     alt="Become A Better Blogger: Content Planning" className="img-cover"/>
                 </figure>
 
@@ -567,7 +567,7 @@ function Home() {
               <div className="blog-card">
 
                 <figure className="card-banner img-holder has-after" style={{width: "370", height: "370"}}>
-                  <img src="./assets/images/blog-2.jpg" width="370" height="370" loading="lazy"
+                  <img src={images.blog_2} width="370" height="370" loading="lazy"
                     alt="Become A Better Blogger: Content Planning" className="img-cover"/>
                 </figure>
 
@@ -612,7 +612,7 @@ function Home() {
               <div className="blog-card">
 
                 <figure className="card-banner img-holder has-after" style={{width: "370", height: "370"}}>
-                  <img src="./assets/images/blog-3.jpg" width="370" height="370" loading="lazy"
+                  <img src={images.blog_3} width="370" height="370" loading="lazy"
                     alt="Become A Better Blogger: Content Planning" className="img-cover"/>
                 </figure>
 
@@ -655,7 +655,7 @@ function Home() {
 
           </ul>
 
-          <img src="./assets/images/blog-shape.png" width="186" height="186" loading="lazy" alt=""
+          <img src={images.blog_shape} width="186" height="186" loading="lazy" alt=""
             className="shape blog-shape"/>
 
         </div>
