@@ -31,7 +31,8 @@ function Navbar() {
 }, []);
 
   return (
-    <nav>
+    <div className="navbarStyles" style={{backgroundColor:"#171C24"}}>
+    <nav className="container">
       <div className="menu-icon">
         <span className="fas fa-bars"></span>
       </div>
@@ -69,6 +70,7 @@ function Navbar() {
         <button type="submit" className="fas fa-search"></button>
       </form>
     </nav>
+    </div>
   );
 }
 
