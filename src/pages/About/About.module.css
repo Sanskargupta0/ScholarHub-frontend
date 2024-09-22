@@ -1,0 +1,163 @@
+
+.about {
+
+  scroll-behavior: smooth;
+
+main > nav {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+}
+
+/* 3. ScrollSpy active styles (see JS tab for activation) */
+.sectionNav li.active > a {
+  color: #1AB79D;
+  font-weight: 500;
+}
+
+/* Sidebar Navigation */
+.sectionNav {
+  padding-left: 0;
+  border-left: 1px solid black;
+  margin-top: 10rem;
+  margin-bottom: 2rem;
+  width: max-content;
+}
+
+.sectionNav a {
+  text-decoration: none;
+  display: block;
+  padding: 0.125rem 0;
+  color: #ccc;
+  transition: all 50ms ease-in-out; /* 💡 This small transition makes setting of the active state smooth */
+}
+
+.sectionNav a:hover,
+.sectionNav a:focus {
+  color: black;
+}
+
+/** Poor man's reset **/
+* {
+  box-sizing: border-box;
+}
+
+main {
+  color: black;
+  line-height: 2;
+  text-align: justify;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  color: black;
+  margin-left: 1rem;
+}
+
+/** page layout **/
+main {
+  display: grid;
+  grid-template-columns: 1fr 14rem;
+  max-width: 100em;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/** enlarge the sections for this demo, so that we have a long scrollable page **/
+section {
+  padding: 1rem;
+}
+
+
+@media screen and (max-width: 700px) {
+  .sectionNav {
+    display: none;
+  }
+  main {
+    display: flex;
+    max-width: 100rem;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .stickybtn {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .stickybtn {
+    display: none;
+  }
+}
+
+.button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: 0.3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.button:hover {
+  width: 140px;
+  border-radius: 50px;
+  transition-duration: 0.3s;
+  background-color: rgb(181, 160, 255);
+  align-items: center;
+}
+
+.button:hover .svgIcon {
+  /* width: 20px; */
+  transition-duration: 0.3s;
+  transform: translateY(-200%);
+}
+
+.button::before {
+  position: absolute;
+  bottom: -20px;
+  content: "Back to Top";
+  color: black;
+  /* transition-duration: .3s; */
+  font-size: 0px;
+}
+
+.button:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  bottom: unset;
+  /* transform: translateY(-30px); */
+  transition-duration: 0.3s;
+}
+
+.backToTopBtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+}

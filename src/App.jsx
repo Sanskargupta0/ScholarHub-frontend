@@ -9,6 +9,7 @@ function App() {
     <components.Navbar/>
     <Routes>
     < Route path="/" element={<pages.Home/>} />
+    < Route path="/about" element={<pages.About/>} />
     </Routes>
     <components.Footer />
     </BrowserRouter>
