@@ -184,16 +184,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="footer-bottom">
-        <div className="container">
-          <p className="copyright">
-            Copyright 2022 All Rights Reserved by{" "}
-            <a href="#" className="copyright-link">
-              codewithsadee
-            </a>
-          </p>
-        </div>
-      </div>
+      
     </footer>
   );
 }
