@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./navbar.css";
+import images from "../../assets/images";
 
 function Navbar() {
 
@@ -35,8 +36,10 @@ function Navbar() {
     <nav className="container">
       <div className="menu-icon">
         <span className="fas fa-bars"></span>
+        
       </div>
-      <div className="logo">CodingNepal</div>
+      <img src={images.logo} alt="logo" style={{height: "50px"}}/> &nbsp;&nbsp;
+      <div className="logo">ScholarHub</div>
       <div className="nav-items">
         <li>
           <a href="#">Home</a>

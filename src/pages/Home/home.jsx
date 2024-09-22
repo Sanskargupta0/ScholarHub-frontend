@@ -14,17 +14,16 @@ function Home() {
           <div className="container">
             <div className="hero-content">
               <h1 className="h1 section-title">
-                The Best Program to <span className="span">Enroll</span> for
-                Exchange
+              Borrow and Reserve Books <span className="span">Enroll</span> for
+                Advance AI
               </h1>
 
               <p className="hero-text">
-                Excepteur sint occaecat cupidatat non proident sunt in culpa qui
-                officia deserunt mollit.
+              Access textbooks, research papers, previous year papers, and study guides covering all subjects and academic levels.
               </p>
 
               <a href="#" className="btn has-before">
-                <span className="span">Find courses</span>
+                <span className="span">Find Books</span>
 
                 <ion-icon
                   name="arrow-forward-outline"
@@ -84,11 +83,11 @@ function Home() {
             <p className="section-subtitle">Categories</p>
 
             <h2 className="h2 section-title">
-              Online <span className="span">Classes</span> For Remote Learning.
+              Online <span className="span">Books</span> For Remote Learning.
             </h2>
 
             <p className="section-text">
-              Consectetur adipiscing elit sed do eiusmod tempor.
+            Library Events and Updates
             </p>
 
             <ul className="grid-list">
@@ -110,15 +109,14 @@ function Home() {
 
                   <h3 className="h3">
                     <a href="#" className="card-title">
-                      Online Degree Programs
+                    Academic Resources
                     </a>
                   </h3>
 
                   <p className="card-text">
-                    Lorem ipsum dolor consec tur elit adicing sed umod tempor.
+                  Access textbooks, research papers, previous year papers, and study guides covering all subjects and academic levels.
                   </p>
 
-                  <span className="card-badge">7 Courses</span>
                 </div>
               </li>
 
@@ -140,15 +138,15 @@ function Home() {
 
                   <h3 className="h3">
                     <a href="#" className="card-title">
-                      Non-Degree Programs
+                    Easy Digital Downloads
                     </a>
                   </h3>
 
                   <p className="card-text">
-                    Lorem ipsum dolor consec tur elit adicing sed umod tempor.
+                  Download PDFs of previous year question papers, academic textbooks, and more for all semesters and trades.
                   </p>
 
-                  <span className="card-badge">4 Courses</span>
+                
                 </div>
               </li>
 
@@ -170,15 +168,15 @@ function Home() {
 
                   <h3 className="h3">
                     <a href="#" className="card-title">
-                      Off-Campus Programs
+                    Interactive User Experience
                     </a>
                   </h3>
 
                   <p className="card-text">
-                    Lorem ipsum dolor consec tur elit adicing sed umod tempor.
+                  Leave reviews, share reading lists, and track your progress for a seamless and engaging library experience.
                   </p>
 
-                  <span className="card-badge">8 Courses</span>
+                 
                 </div>
               </li>
 
@@ -200,15 +198,15 @@ function Home() {
 
                   <h3 className="h3">
                     <a href="#" className="card-title">
-                      Hybrid Distance Programs
+                    Simple Book Reservations
                     </a>
                   </h3>
 
                   <p className="card-text">
-                    Lorem ipsum dolor consec tur elit adicing sed umod tempor.
+                  Reserve books currently on loan and receive notifications when they become available.
                   </p>
 
-                  <span className="card-badge">8 Courses</span>
+                 
                 </div>
               </li>
             </ul>
@@ -264,13 +262,12 @@ function Home() {
               <p className="section-subtitle">About Us</p>
 
               <h2 className="h2 section-title">
-                Over 10 Years in <span className="span">Distant learning</span>{" "}
+                Over 100+ Books<span className="span">of Great learning</span>{" "}
                 for Skill Development
               </h2>
 
               <p className="section-text">
-                Lorem ipsum dolor sit amet consectur adipiscing elit sed eiusmod
-                ex tempor incididunt labore dolore magna aliquaenim ad minim.
+              Be a part of our growing community of learners and readers. Sign up for a free account to start exploring our AI collection of academic resources.
               </p>
 
               <ul className="about-list">
@@ -280,7 +277,7 @@ function Home() {
                     aria-hidden="true"
                   ></ion-icon>
 
-                  <span className="span">Expert Trainers</span>
+                  <span className="span">Stay Updated</span>
                 </li>
 
                 <li className="about-item">
@@ -316,9 +313,9 @@ function Home() {
 
         <section className="section course" id="courses" aria-label="course">
           <div className="container">
-            <p className="section-subtitle">Popular Courses</p>
+            <p className="section-subtitle">Popular Books</p>
 
-            <h2 className="h2 section-title">Pick A Course To Get Started</h2>
+            <h2 className="h2 section-title">Pick A Book To Get Started</h2>
 
             <ul className="grid-list">
               <li>
@@ -337,11 +334,7 @@ function Home() {
                     />
                   </figure>
 
-                  <div className="abs-badge">
-                    <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                    <span className="span">3 Weeks</span>
-                  </div>
+                  
 
                   <div className="card-content">
                     <span className="badge">Beginner</span>
@@ -364,9 +357,7 @@ function Home() {
                       <p className="rating-text">(5.0/7 Rating)</p>
                     </div>
 
-                    <data className="price" value="29">
-                      $29.00
-                    </data>
+                    
 
                     <ul className="card-meta-list">
                       <li className="card-meta-item">
@@ -407,11 +398,7 @@ function Home() {
                     />
                   </figure>
 
-                  <div className="abs-badge">
-                    <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                    <span className="span">8 Weeks</span>
-                  </div>
+                  
 
                   <div className="card-content">
                     <span className="badge">Advanced</span>
@@ -434,9 +421,7 @@ function Home() {
                       <p className="rating-text">(4.5 /9 Rating)</p>
                     </div>
 
-                    <data className="price" value="49">
-                      $49.00
-                    </data>
+                    
 
                     <ul className="card-meta-list">
                       <li className="card-meta-item">
@@ -477,11 +462,7 @@ function Home() {
                     />
                   </figure>
 
-                  <div className="abs-badge">
-                    <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                    <span className="span">3 Weeks</span>
-                  </div>
+                  
 
                   <div className="card-content">
                     <span className="badge">Intermediate</span>
@@ -504,9 +485,7 @@ function Home() {
                       <p className="rating-text">(4.9 /7 Rating)</p>
                     </div>
 
-                    <data className="price" value="35">
-                      $35.00
-                    </data>
+                    
 
                     <ul className="card-meta-list">
                       <li className="card-meta-item">
@@ -533,7 +512,7 @@ function Home() {
             </ul>
 
             <a href="#" className="btn has-before">
-              <span className="span">Browse more courses</span>
+              <span className="span">Browse more books</span>
 
               <ion-icon
                 name="arrow-forward-outline"
@@ -591,17 +570,17 @@ function Home() {
             <ul className="grid-list">
               <li>
                 <div className="stats-card" style={{ color: "170, 75%, 41%" }}>
-                  <h3 className="card-title">29.3k</h3>
+                  <h3 className="card-title">1500+</h3>
 
-                  <p className="card-text">Student Enrolled</p>
+                  <p className="card-text">Overall Book Collections</p>
                 </div>
               </li>
 
               <li>
                 <div className="stats-card" style={{ color: "351, 83%, 61%" }}>
-                  <h3 className="card-title">32.4K</h3>
+                  <h3 className="card-title">1000+</h3>
 
-                  <p className="card-text">Class Completed</p>
+                  <p className="card-text">Previous Year Question Papers</p>
                 </div>
               </li>
 
@@ -609,7 +588,7 @@ function Home() {
                 <div className="stats-card" style={{ color: "260, 100%, 67%" }}>
                   <h3 className="card-title">100%</h3>
 
-                  <p className="card-text">Satisfaction Rate</p>
+                  <p className="card-text">User Satisfaction Rate</p>
                 </div>
               </li>
 
@@ -617,7 +596,7 @@ function Home() {
                 <div className="stats-card" style={{ color: "42, 94%, 55%" }}>
                   <h3 className="card-title">354+</h3>
 
-                  <p className="card-text">Top Instructors</p>
+                  <p className="card-text">Academic Resources Uploaded</p>
                 </div>
               </li>
             </ul>
@@ -631,9 +610,9 @@ function Home() {
           style={{ backgroundImage: `url(${images.blog_bg})` }}
         >
           <div className="container">
-            <p className="section-subtitle">Latest Articles</p>
+            <p className="section-subtitle">Latest</p>
 
-            <h2 className="h2 section-title">Get News With Eduweb</h2>
+            <h2 className="h2 section-title">Features in ScholarHub</h2>
 
             <ul className="grid-list">
               <li>
@@ -660,38 +639,18 @@ function Home() {
                       ></ion-icon>
                     </a>
 
-                    <a href="#" className="card-subtitle">
-                      Online
-                    </a>
+                    
 
                     <h3 className="h3">
                       <a href="#" className="card-title">
-                        Become A Better Blogger: Content Planning
+                      Upload and Download Books with Ease
                       </a>
                     </h3>
 
-                    <ul className="card-meta-list">
-                      <li className="card-meta-item">
-                        <ion-icon
-                          name="calendar-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span className="span">Oct 10, 2021</span>
-                      </li>
-
-                      <li className="card-meta-item">
-                        <ion-icon
-                          name="chatbubbles-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span className="span">Com 09</span>
-                      </li>
-                    </ul>
+                    
 
                     <p className="card-text">
-                      Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
+                    Our platform allows you to upload and share educational resources, research papers, and books. 
                     </p>
                   </div>
                 </div>
@@ -721,38 +680,17 @@ function Home() {
                       ></ion-icon>
                     </a>
 
-                    <a href="#" className="card-subtitle">
-                      Online
-                    </a>
+                   
 
                     <h3 className="h3">
                       <a href="#" className="card-title">
-                        Become A Better Blogger: Content Planning
+                      AI-Driven Question Paper Prediction
                       </a>
                     </h3>
 
-                    <ul className="card-meta-list">
-                      <li className="card-meta-item">
-                        <ion-icon
-                          name="calendar-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span className="span">Oct 10, 2021</span>
-                      </li>
-
-                      <li className="card-meta-item">
-                        <ion-icon
-                          name="chatbubbles-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span className="span">Com 09</span>
-                      </li>
-                    </ul>
-
+                    
                     <p className="card-text">
-                      Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
+                    One of the most innovative features of our library is our AI-powered question paper prediction tool.
                     </p>
                   </div>
                 </div>
@@ -782,38 +720,18 @@ function Home() {
                       ></ion-icon>
                     </a>
 
-                    <a href="#" className="card-subtitle">
-                      Online
-                    </a>
+                   
 
                     <h3 className="h3">
                       <a href="#" className="card-title">
-                        Become A Better Blogger: Content Planning
+                      Reserve and Borrow Books Online
                       </a>
                     </h3>
 
-                    <ul className="card-meta-list">
-                      <li className="card-meta-item">
-                        <ion-icon
-                          name="calendar-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span className="span">Oct 10, 2021</span>
-                      </li>
-
-                      <li className="card-meta-item">
-                        <ion-icon
-                          name="chatbubbles-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span className="span">Com 09</span>
-                      </li>
-                    </ul>
+                    
 
                     <p className="card-text">
-                      Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
+                    Our platform enables users to reserve books online, ensuring you can borrow them as soon as they become available.
                     </p>
                   </div>
                 </div>
