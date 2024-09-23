@@ -1,10 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 function Footer() {
   return (
-    <footer
-      className="footer"
-      
-    >
+    <footer className="footer">
       <div className="footer-top section">
         <div className="container grid-list">
           <div className="footer-brand">
@@ -44,39 +42,19 @@ function Footer() {
             </li>
 
             <li>
+              <Link to="/About">
               <a href="#" className="footer-link">
                 About
               </a>
+              </Link>
             </li>
 
             <li>
-              <a href="#" className="footer-link">
-                Courses
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="footer-link">
-                Instructor
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="footer-link">
-                Events
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="footer-link">
-                Instructor Profile
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="footer-link">
-                Purchase Guide
-              </a>
+              <Link to="/Contact">
+                <a href="#" className="footer-link">
+                  Contact Us
+                </a>
+              </Link>
             </li>
           </ul>
 
@@ -85,40 +63,22 @@ function Footer() {
               <p className="footer-list-title">Links</p>
             </li>
 
+            
+
             <li>
-              <a href="#" className="footer-link">
-                Contact Us
-              </a>
+              <Link to="/SignIn">
+                <a href="#" className="footer-link">
+                  Sign In/Registration
+                </a>
+              </Link>
             </li>
 
             <li>
-              <a href="#" className="footer-link">
-                Gallery
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="footer-link">
-                News & Articles
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="footer-link">
-                FAQ's
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="footer-link">
-                Sign In/Registration
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="footer-link">
-                Coming Soon
-              </a>
+              <Link to="/ComingSoon">
+                <a href="#" className="footer-link">
+                  Coming Soon
+                </a>
+              </Link>
             </li>
           </ul>
 
@@ -183,8 +143,6 @@ function Footer() {
           </div>
         </div>
       </div>
-
-      
     </footer>
   );
 }
