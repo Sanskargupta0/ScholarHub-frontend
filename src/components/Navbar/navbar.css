@@ -1,14 +1,11 @@
-*{
-  
-    font-family: 'League Spartan','Poppins', sans-serif;
-  
+* {
+  font-family: "League Spartan", "Poppins", sans-serif;
 }
 .navbarStyles {
   margin: 0;
   padding: 0;
   outline: none;
   box-sizing: border-box;
- 
 
   background: #f2f2f2;
 
@@ -42,7 +39,7 @@
     text-decoration: none;
   }
   nav .nav-items li a:hover {
-    color: #1DB398;
+    color: #1db398;
   }
   nav form {
     display: flex;
@@ -67,7 +64,7 @@
     padding: 0 15px;
     color: #fff;
     font-size: 17px;
-    background: #1DB398;
+    background: #1db398;
     border: none;
     border-radius: 2px;
     cursor: pointer;
@@ -238,3 +235,5 @@
     margin: 10px 0;
   }
 }
+
+

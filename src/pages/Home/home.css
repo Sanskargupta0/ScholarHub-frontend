@@ -907,8 +907,11 @@
     display: flex;
     gap: 25px;
     }
+    .social-link:hover {
+    color: white;
+    }
     
-    .social-link { font-size: 20px; }
+    .social-link { font-size: 25px; }
     
     .footer-bottom {
     border-block-start: 1px solid var(--eerie-black-1);
