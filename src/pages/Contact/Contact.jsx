@@ -176,7 +176,7 @@ const Contact = () => {
   //   }
   // }
   return (
-    <div>
+    <div className="container">
       <div className={constactStyles.formscontainer}>
         <div className={constactStyles.forms}>
           <span className={constactStyles.heading}>Get in touch</span>
