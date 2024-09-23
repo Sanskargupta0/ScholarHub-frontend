@@ -57,9 +57,9 @@ const About = () => {
               justifyContent: "center",
               display: "flex",
               gap: "5rem",
-              marginBottom: "2rem",
-              marginTop: "2rem",
-              fontSize: "3rem",
+              marginBottom: "1rem",
+              marginTop: "1rem",
+              fontSize: "2rem",
               fontWeight: "bold",
             }}
           >

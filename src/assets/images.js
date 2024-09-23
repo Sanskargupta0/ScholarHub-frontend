@@ -25,6 +25,9 @@ import blog_2 from './images/blog-2.jpg';
 import blog_3 from './images/blog-3.jpg';
 import blog_shape from "./images/blog-shape.png";
 import logo from './images/logo.png';
+import Sanskar from './Images/Contributor/Sanskar.jpg'
+import Aman from './images/Contributor/Aman.jpg'
+import Akash from './images/Contributor/Akash.jpg'
 
 export default {
     hero_bg,
@@ -54,5 +57,8 @@ export default {
     blog_3,
     blog_shape,
     logo,
+    Sanskar,
+    Aman,
+    Akash
 
 }

@@ -16,6 +16,8 @@
 
 :root {
 
+ 
+
     /**
      * colors
      */
@@ -145,17 +147,15 @@
     
     address { font-style: normal; }
     
-    html {
+  html {
     font-family: var(--ff-poppins);
-    font-size: 10px;
     scroll-behavior: smooth;
-    }
+  }
     
     body {
     background-color: var(--white);
     color: var(--gray-web);
-    font-size: 1.6rem;
-    line-height: 1.75;
+    
     }
     
     :focus-visible { outline-offset: 4px; }
@@ -352,6 +352,7 @@
     
     .navbar {
     position: fixed;
+    font-size: 10px;
     top: 0;
     left: -320px;
     background-color: var(--white);
@@ -857,7 +858,7 @@
     background-repeat: no-repeat;
     background-color: var(--eerie-black-2);
     color: var(--gray-x-11);
-    font-size: var(--fs-5);
+    font-size: "10px"
     }
     
     .footer-top {

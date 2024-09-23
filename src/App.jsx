@@ -11,8 +11,8 @@ function App() {
     <Routes>
     < Route path="/" element={<pages.Home/>} />
     < Route path="/about" element={<pages.About/>} />
-    <Route path="*" element={<pages.Error />} />
-    
+    <Route path="*" element={<pages.Error />}
+    < Route path="/contact" element={<pages.Contact/>} />
     </Routes>
     <components.Footer />
     </BrowserRouter>

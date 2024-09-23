@@ -1,0 +1,143 @@
+.orange {
+  color: #47f252;
+}
+
+
+.formscontainer {
+  max-width: 700px;
+  margin: 30px;
+  background-color: #001925;
+  padding: 30px;
+  border-left: 5px solid #47f252;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 20px),
+    calc(100% - 20px) 100%,
+    0 100%
+  );
+}
+
+.heading {
+  display: block;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.formscontainer .forms .input {
+  color: #87a4b6;
+  width: 100%;
+  background-color: #002733;
+  border: none;
+  outline: none;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  border-left: 1px solid transparent;
+}
+
+.formscontainer .forms .input:focus {
+  border-left: 5px solid #47f252;
+}
+
+.formscontainer .forms .textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: #013747;
+  color: #47f252;
+  font-weight: bold;
+  resize: none;
+  max-height: 150px;
+  margin-bottom: 20px;
+  border-left: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.formscontainer .forms .textarea:focus {
+  border-left: 5px solid #47f252;
+}
+
+.formscontainer .forms .buttoncontainer {
+  display: flex;
+  gap: 10px;
+}
+
+.formscontainer .forms .buttoncontainer .sendbutton {
+  flex-basis: 70%;
+  background: #47f252;
+  padding: 10px;
+  color: #001925;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.formscontainer .forms .buttoncontainer .sendbutton:hover {
+  background: transparent;
+  border: 1px solid #47f252;
+  color: #47f252;
+}
+
+.formscontainer .forms .buttoncontainer .resetbuttoncontainer {
+  filter: drop-shadow(1px 1px 0px #47f252);
+  flex-basis: 30%;
+}
+
+.formscontainer .forms .buttoncontainer .resetbuttoncontainer .resetbutton {
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  color: #47f252;
+  font-weight: bold;
+  background: #001925;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    0 100%
+  );
+  transition: all 0.2s ease-in-out;
+}
+
+.formscontainer
+  .forms
+  .buttoncontainer
+  .resetbuttoncontainer
+  .resetbutton:hover {
+  background: #47f252;
+  color: #001925;
+}
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@media screen and (min-width: 700px) {
+  .formscontainer {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .Contributor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+}
