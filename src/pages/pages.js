@@ -8,6 +8,5 @@ export default {
     Home,
     About,
     Error,
-    Contact,
-  
+    Contact
 };

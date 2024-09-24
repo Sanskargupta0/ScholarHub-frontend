@@ -42,19 +42,11 @@ function Footer() {
             </li>
 
             <li>
-              <Link to="/About">
-              <a href="#" className="footer-link">
-                About
-              </a>
-              </Link>
+              <Link to="/About">About</Link>
             </li>
 
             <li>
-              <Link to="/Contact">
-                <a href="#" className="footer-link">
-                  Contact Us
-                </a>
-              </Link>
+              <Link to="/Contact">Contact Us</Link>
             </li>
           </ul>
 
@@ -63,22 +55,12 @@ function Footer() {
               <p className="footer-list-title">Links</p>
             </li>
 
-            
-
             <li>
-              <Link to="/SignIn">
-                <a href="#" className="footer-link">
-                  Sign In/Registration
-                </a>
-              </Link>
+              <Link to="/SignIn">Sign In/Registration</Link>
             </li>
 
             <li>
-              <Link to="/ComingSoon">
-                <a href="#" className="footer-link">
-                  Coming Soon
-                </a>
-              </Link>
+              <Link to="/ComingSoon">Coming Soon</Link>
             </li>
           </ul>
 

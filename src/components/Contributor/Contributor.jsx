@@ -8,7 +8,7 @@ const Contributor = (props) => {
     >
       <div
         className="rounded-xl overflow-hidden relative text-center p-4 group items-center flex flex-col max-w-sm hover:shadow-2xl transition-all duration-500 shadow-xl"
-        style={{ minWidth: "10rem", cursor: "pointer" }}
+        style={{ minWidth: "10rem", cursor: "pointer", backgroundColor: "white" }}
       >
         <div className="text-gray-500 group-hover:scale-105 transition-all">
           <img src={props.images} alt={props.dev} className="w-16 h-16" style={{borderRadius:"50%"}} />

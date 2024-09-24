@@ -25,6 +25,14 @@ function Navbar() {
       form.classList.remove("active");
       cancelBtn.style.color = "#ff3d00";
     };
+    items.onclick = () => {
+      items.classList.remove("active");
+      menuBtn.classList.remove("hide");
+      searchBtn.classList.remove("hide");
+      cancelBtn.classList.remove("show");
+      form.classList.remove("active");
+      cancelBtn.style.color = "#ff3d00";
+    };
     searchBtn.onclick = () => {
       form.classList.add("active");
       searchBtn.classList.add("hide");
@@ -43,7 +51,7 @@ function Navbar() {
         &nbsp;&nbsp;
         <div className="logo">ScholarHub</div>
         <div className="nav-items">
-          <li>
+          <li >
             <Link to="/">
               Home
             </Link>
