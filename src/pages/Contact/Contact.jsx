@@ -200,7 +200,7 @@ const Contact = () => {
           />
           <input
             name="phone"
-            placeholder="Phone  ( Not Compulsory )"
+            placeholder="Phone  ( Optional )"
             id="phone"
             type="number"
             className={constactStyles.input}
