@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    background-color: white;
-    color: #171C24;
-}
+
 
 body[data-theme="dark"]{
    background-color:#171C24;
     color: white;
+    .darkmode{
+        color: white;
+    }
 }

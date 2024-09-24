@@ -105,7 +105,7 @@ const About = () => {
               </a>
             </div>
             <main>
-              <div className={styleAbout.aboutUs}>
+              <div className="darkmode">
                 <section id="aboutKMCesports">
                   <h1
                     className="text-4xl"
@@ -333,7 +333,7 @@ const About = () => {
               </a>
             </div>
             <main>
-              <div className={styleAbout.aboutUs}>
+              <div className="darkmode">
                 <section id="intro">
                   <h1
                     className="text-4xl"
