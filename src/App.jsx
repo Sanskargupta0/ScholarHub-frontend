@@ -11,6 +11,7 @@ function App() {
           <Route path="/" element={<pages.Home />} />
           <Route path="/about" element={<pages.About />} />
           <Route path="/contact" element={<pages.Contact />} />
+          <Route path="/login" element={<pages.Login />} />
           <Route path="*" element={<pages.Error />} />
         </Routes>
         <components.Footer />
