@@ -65,6 +65,12 @@ function Login() {
             </form>
             <form action="#" className="signup">
               <div className="field">
+                <input type="text" placeholder="First Name" required />
+              </div>
+              <div className="field">
+                <input type="text" placeholder="Last Name" required />
+              </div>
+              <div className="field">
                 <input type="text" placeholder="Email Address" required />
               </div>
               <div className="field">

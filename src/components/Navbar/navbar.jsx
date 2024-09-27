@@ -47,8 +47,8 @@ function Navbar() {
         <div className="menu-icon">
           <span className="fas fa-bars"></span>
         </div>
-        <img src={images.logo} alt="logo" style={{ height: "50px" }} />{" "}
-        &nbsp;&nbsp;
+        <img src={images.logo} alt="logo" style={{ height: "40px" }}/>
+        
         <div className="logo">ScholarHub</div>
         <div className="nav-items">
           <li >
@@ -78,16 +78,17 @@ function Navbar() {
           </li>
           
         </div>
+        <div className="justincreasingsizeformobile"></div>
         <div className="darkMode">
           <DarkMode />
-        </div>&nbsp;&nbsp;&nbsp;
+        </div>
         <div className="search-icon">
           <span className="fas fa-search"></span>
         </div>
         <div className="cancel-icon">
           <span className="fas fa-times"></span>
         </div>
-        <form action="#">
+        <form action="#" style={{"marginLeft":"1rem"}}>
           <input
             type="search"
             className="search-data"

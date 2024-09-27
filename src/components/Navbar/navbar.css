@@ -1,6 +1,4 @@
-* {
-  font-family: "League Spartan", "Poppins", sans-serif;
-}
+
 .navbarStyles {
   margin: 0;
   padding: 0;
@@ -8,6 +6,7 @@
   box-sizing: border-box;
 
   background: #f2f2f2;
+
 
   nav {
     background: #171c24;
@@ -93,7 +92,7 @@
       padding: 0 50px;
     }
   }
-  @media (max-width: 1140px) {
+  @media (max-width: 1280px) {
     nav {
       padding: 0px;
     }
@@ -234,6 +233,16 @@
   .content .space {
     margin: 10px 0;
   }
+
+  @media (max-width: 500px) {
+    .logo {
+      display: none;
+    }
+    .justincreasingsizeformobile {
+      width: 30%
+    }
+}
+  
 }
 
 

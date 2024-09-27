@@ -53,13 +53,13 @@
     --ff-league_spartan: 'League Spartan', sans-serif;
     --ff-poppins: 'Poppins', sans-serif; 
     
-    --fs-1: 4.2rem;
-    --fs-2: 3.2rem;
-    --fs-3: 2.3rem;
-    --fs-4: 1.8rem;
-    --fs-5: 1.5rem;
-    --fs-6: 1.4rem;
-    --fs-7: 1.3rem;
+    --fs-1: 2.5rem;
+    --fs-2: 2rem;
+    --fs-3: 1.8rem;
+    --fs-4: 1.4rem;
+    --fs-5: 1rem;
+    --fs-6: 0.8rem;
+    --fs-7: 0.9rem;
     
     --fw-500: 500;
     --fw-600: 600;
@@ -1057,8 +1057,8 @@
        * typography
        */
     
-      --fs-1: 4.6rem;
-      --fs-2: 3.8rem;
+      --fs-1: 3.6rem;
+      --fs-2: 2.8rem;
     
     }
     
@@ -1175,8 +1175,8 @@
        * typography
        */
     
-      --fs-1: 5.5rem;
-      --fs-2: 4.5rem;
+      --fs-1: 4.5rem;
+      --fs-2: 3.5rem;
     
     }
     
