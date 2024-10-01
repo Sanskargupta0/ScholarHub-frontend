@@ -10,4 +10,7 @@ body[data-theme="dark"]{
     .darkmode{
         color: white;
     }
+    .section-title{
+        color: white;
+    }
 }

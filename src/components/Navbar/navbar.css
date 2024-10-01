@@ -1,13 +1,13 @@
-
 .navbarStyles {
   margin: 0;
   padding: 0;
   outline: none;
   box-sizing: border-box;
-
   background: #f2f2f2;
 
-
+  .imagemobile {
+    height: 40px;
+  }
   nav {
     background: #171c24;
     display: flex;
@@ -234,15 +234,29 @@
     margin: 10px 0;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 640px) {
+    nav .nav-items {
+      top: 90px;
+    }
     .logo {
       display: none;
     }
-    .justincreasingsizeformobile {
-      width: 30%
+    .mobileresponsive {
+      width: -webkit-fill-available;
+      justify-content: space-between;
     }
-}
-  
-}
+    .imagemobile {
+      height: 30px;
+      margin-right: 1.5rem;
+    }
 
-
+    .mobileresponsive2 {
+      width: -webkit-fill-available;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+    .container {
+      height: 90px;
+    }
+  }
+}
