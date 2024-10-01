@@ -75,7 +75,9 @@ function Navbar() {
         </div>
         <div className="flex items-center mobileresponsive2">
           <div className="mx-4">
+          <Link to="/login">
             <components.Button />
+          </Link>
           </div>
           <div className="darkMode">
             <DarkMode />
