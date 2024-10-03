@@ -14,7 +14,6 @@ export const Authprovider = ({ children }) => {
     phone: "",
     avatarURL: "",
     bookmarks: [],
-  
   });
 
   const [rerun , setRerun ]=useState(true);
@@ -33,6 +32,9 @@ export const Authprovider = ({ children }) => {
       bookmarks: null,
       facebook: null,
       instagram: null,
+      twitter: null,
+      github: null,
+      rollNumber: null,
     });
     localStorage.removeItem("Token");
   };
@@ -59,6 +61,9 @@ export const Authprovider = ({ children }) => {
           bookmarks: data.bookmarks,
           facebook: data.facebook,
           instagram: data.instagram,
+          twitter: data.twitter,
+          github: data.github,
+          rollNumber: data.rollNumber
         });
       }
     } catch (error) {

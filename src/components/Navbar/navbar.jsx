@@ -196,7 +196,7 @@ function Navbar() {
                     </li>
 
                     <li>
-                      <a href="#">Account</a>
+                      <Link to="/userProfile">Account</Link>
                     </li>
                     <li>
                       <a href="#">Notification</a>

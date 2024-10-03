@@ -7,6 +7,7 @@ import OtpVerication from "./OtpVerfication/OtpVerfication";
 import Logout from "./Logout/Logout";
 import Protected from "./Protected/Protected";
 import Dashboard from "./Protected Pages/Dashboard/Dashboard";
+import UserProfile from "./Protected Pages/UserProfile/UserProfile";
 
 
 export default {
@@ -18,5 +19,6 @@ export default {
     OtpVerication,
     Logout,
     Protected,
-    Dashboard
+    Dashboard,
+    UserProfile
 };
