@@ -42,6 +42,23 @@ function Navbar() {
     };
   }, []);
 
+
+  function closeOpenDropdowns(e) {
+    let openDropdownEls = document.querySelectorAll("details.dropdown[open]");
+  
+    if (openDropdownEls.length > 0) {
+      // If we're clicking anywhere but the summary element, close dropdowns
+      if (e.target.parentElement.nodeName.toUpperCase() !== "SUMMARY") {
+        openDropdownEls.forEach((dropdown) => {
+          dropdown.removeAttribute("open");
+        });
+      }
+    }
+  }
+  
+  document.addEventListener("click", closeOpenDropdowns);
+  
+
   const { islogedIn } = useAuth();
 
   return (
@@ -85,7 +102,10 @@ function Navbar() {
                     <img src="https://gravatar.com/avatar/00000000000000000000000000000000?d=mp" />
                   </summary>
                   <ul>
-                    <li>
+                    <li style={{
+                      "color": "balck",
+                      "fontWeight": "bold",
+                    }}>
                       <p>
                         <span className="block bold">Jane Doe</span>
                         <span className="block italic">jane@example.com</span>
