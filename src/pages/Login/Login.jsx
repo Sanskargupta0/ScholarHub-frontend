@@ -88,6 +88,44 @@ function Login() {
     }
   };
 
+  const handleSocialLogin = async (e, provider) => {
+    e.preventDefault();
+    setLoader(true);
+    try {
+      const userData = await signInWithPopup(auth, provider);
+      const response = await fetch(
+        `${config.backendUrl}/loginWithSocialMedia`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({"token":userData._tokenResponse.idToken}),
+        }
+      );
+      const responseData = await response.json();
+      if (response.status === 200 || response.status === 201) {
+        setLoader(false);
+        storeTokenInLs(responseData.token);
+        toast.success(`${responseData.msg}`, {
+          position: "top-center",
+        });
+        navigate("/dashboard");
+      } else {
+        setLoader(false);
+        toast.error(`${responseData.msg}`, {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      setLoader(false);
+      console.log(error);
+      toast.error("Login failed", {
+        position: "top-center",
+      });
+    }
+  };
+
   const [isSignup, setIsSignup] = useState(false);
 
   const nevigate = useNavigate();
@@ -284,10 +322,28 @@ function Login() {
               <div className="form-inner">
                 <form action="#" className="login">
                   <div className="field">
-                    <input type="text" placeholder="Email Address" required />
+                    <input
+                      type="email"
+                      id="loginEmail"
+                      maxLength="254"
+                      name="email"
+                      value={login.email}
+                      onChange={handleLogin}
+                      placeholder="Email Address"
+                      required
+                    />
                   </div>
                   <div className="field">
-                    <input type="password" placeholder="Password" required />
+                    <input
+                      type="password"
+                      id="loginPassword"
+                      name="password"
+                      value={login.password}
+                      onChange={handleLogin}
+                      autoComplete="off"
+                      placeholder="Password"
+                      required
+                    />
                   </div>
                   <div className="flex mt-4">
                     <label
@@ -299,7 +355,10 @@ function Login() {
                         name="rememberMe"
                         onClick={handleRememberMe}
                       />
-                      <div className="checkmark" style={{"marginLeft":"12px"}}></div>
+                      <div
+                        className="checkmark"
+                        style={{ marginLeft: "12px" }}
+                      ></div>
                     </label>
                     <label style={{ fontSize: "1em" }}>Remember me</label>
                     <Link
@@ -315,7 +374,12 @@ function Login() {
                   </div>
                   <div className="field btnn">
                     <div className="btnn-layer"></div>
-                    <input type="button" value="Login" />
+                    <input
+                      type="button"
+                      value="Login"
+                      id="login"
+                      onClick={handleLoginSubmit}
+                    />
                   </div>
                   <div className="signup-link">
                     Not a member?{" "}
@@ -324,7 +388,13 @@ function Login() {
                     </a>
                   </div>
                   <div className="continueWithGoogle">
-                    <button className="button">
+                    <button
+                      className="button"
+                      type="button"
+                      onClick={(e) => {
+                        handleSocialLogin(e, googleProvider);
+                      }}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         preserveAspectRatio="xMidYMid"
@@ -358,7 +428,12 @@ function Login() {
                   <div className="loginContainer">
                     <div className="parent">
                       <div className="child child-1">
-                        <button className="button btn-1">
+                        <button
+                          className="button btn-1"
+                          onClick={(e) => {
+                            handleSocialLogin(e, twitterProvide);
+                          }}
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             height="1em"
@@ -370,7 +445,12 @@ function Login() {
                         </button>
                       </div>
                       <div className="child child-3">
-                        <button className="button btn-3">
+                        <button
+                          className="button btn-3"
+                          onClick={(e) => {
+                            handleSocialLogin(e, githubProvider);
+                          }}
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             height="1em"
@@ -381,7 +461,12 @@ function Login() {
                         </button>
                       </div>
                       <div className="child child-4">
-                        <button className="button btn-4">
+                        <button
+                          className="button btn-4"
+                          onClick={(e) => {
+                            handleSocialLogin(e, facebookProvider);
+                          }}
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             height="1em"
