@@ -14,6 +14,7 @@ function App() {
           <Route path="/contact" element={<pages.Contact />} />
           <Route path="/login" element={<pages.Login />} />
           <Route path="/OtpVerfication" element={<pages.OtpVerication />} />
+          <Route path="/logout" element={<pages.Logout />} />
           <Route path="*" element={<pages.Error />} />
         </Routes>
         <components.Footer />

@@ -5,6 +5,205 @@
   box-sizing: border-box;
   background: #f2f2f2;
 
+  .dropdown-container {
+    display: inline-block;
+    padding: 10px;
+
+    .dropdown {
+      position: relative;
+
+      &[open] .with-down-arrow::after {
+        content: "\e5c7";
+      }
+
+      &[open] summary {
+        background: #ffffff10;
+      }
+
+      summary {
+        list-style: none;
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 6px;
+
+        &.avatar {
+          border-radius: 50px;
+
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 0;
+          }
+        }
+
+        .with-down-arrow {
+          display: inline-flex;
+          padding: 5px;
+          align-items: center;
+          color: #fff;
+          line-height: 1;
+
+          &::after {
+            content: "\e5c5";
+            font-family: "Material Symbols Outlined";
+            font-weight: normal;
+            font-style: normal;
+            font-size: 1.5rem;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+          }
+        }
+      }
+
+      &.left ul {
+        left: 0;
+      }
+
+      &.right ul {
+        right: 0;
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+        box-shadow: 0 0 10px #00000030;
+        min-width: max-content;
+        position: absolute;
+        top: 120%;
+        left: 1%;
+        border-radius: 10px;
+        background-color: #fff;
+        z-index: 2;
+
+        li {
+          list-style-type: none;
+          display: block;
+          /* If you use divider & borders, it's best to use top borders */
+          /*border-top: 1px solid #ccc;*/
+
+          &:first-of-type {
+            border: none;
+            background-color: #f2f2f2;
+          }
+
+          p {
+            padding: 10px 15px;
+            margin: 0;
+          }
+
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            text-decoration: none;
+            line-height: 1;
+            color: #333;
+
+            &:hover {
+              color: #1ab79d;
+            }
+          }
+
+          &:first-of-type {
+            border-radius: 10px 10px 0 0;
+          }
+
+          &:last-of-type {
+            border-radius: 0 0 10px 10px;
+          }
+
+          &.divider {
+            border: none;
+            border-bottom: 1px solid #333;
+
+            /* 
+             * removes border from Li after the divider element
+             * best used in combination with top borders on other LIs 
+             */
+            & ~ li {
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .Btnlogout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: 0.3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+  }
+
+  /* plus sign */
+  .sign {
+    width: 100%;
+    transition-duration: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sign svg {
+    width: 17px;
+  }
+
+  .sign svg path {
+    fill: white;
+  }
+  /* text */
+  .text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: 0.3s;
+  }
+  /* hover effect on button width */
+  .Btnlogout:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: 0.3s;
+  }
+
+  .Btnlogout:hover .sign {
+    width: 30%;
+    transition-duration: 0.3s;
+    padding-left: 20px;
+  }
+  /* hover effect button's text */
+  .Btnlogout:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: 0.3s;
+    padding-right: 10px;
+  }
+  /* button click effect*/
+  .Btnlogout:active {
+    transform: translate(2px, 2px);
+  }
+
   .imagemobile {
     height: 40px;
   }

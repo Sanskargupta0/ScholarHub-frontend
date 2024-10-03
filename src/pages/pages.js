@@ -4,6 +4,7 @@ import Error from "./Error/Error";
 import Contact from "./Contact/Contact";
 import Login from "./Login/Login";
 import OtpVerication from "./OtpVerfication/OtpVerfication";
+import Logout from "./Logout/Logout";
 
 
 export default {
@@ -12,5 +13,6 @@ export default {
     Error,
     Contact,
     Login,
-    OtpVerication
+    OtpVerication,
+    Logout
 };
