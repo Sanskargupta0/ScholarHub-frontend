@@ -51,7 +51,6 @@ export const Authprovider = ({ children }) => {
       } else {
         setUserData({
           id: data._id,
-          userName: data.userName,
           firstName: data.firstName,
           lastName: data.lastName,
           email: data.email,
@@ -60,10 +59,6 @@ export const Authprovider = ({ children }) => {
           bookmarks: data.bookmarks,
           facebook: data.facebook,
           instagram: data.instagram,
-          tournaments: {
-            participated: data.tournaments.participated,
-            won: data.tournaments.won,
-          },
         });
       }
     } catch (error) {

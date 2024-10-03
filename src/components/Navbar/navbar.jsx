@@ -57,7 +57,7 @@ function Navbar() {
 
   document.addEventListener("click", closeOpenDropdowns);
 
-  const { islogedIn } = useAuth();
+  const { islogedIn, userdata } = useAuth();
 
   return (
     <div className="navbarStyles" style={{ backgroundColor: "#171C24" }}>
@@ -114,7 +114,7 @@ function Navbar() {
               <div className="dropdown-container">
                 <details className="dropdown right">
                   <summary className="avatar">
-                    <img src="https://gravatar.com/avatar/00000000000000000000000000000000?d=mp" />
+                    <img src={userdata.avatarURL==null?"https://gravatar.com/avatar/00000000000000000000000000000000?d=mp":userdata.avatarURL.length < 10 ? images[userdata.avatarURL] : userdata.avatarURL} />
                   </summary>
                   <ul>
                     <li
@@ -124,8 +124,8 @@ function Navbar() {
                       }}
                     >
                       <p>
-                        <span className="block bold">Jane Doe</span>
-                        <span className="block italic">jane@example.com</span>
+                        <span className="block bold">{userdata.firstName}&nbsp;{userdata.lastName?userdata.lastName:""}</span>
+                        <span className="block italic">{userdata.email}</span>
                       </p>
                     </li>
 

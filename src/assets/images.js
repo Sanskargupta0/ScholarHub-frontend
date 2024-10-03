@@ -28,6 +28,12 @@ import logo from './images/logo.png';
 import Sanskar from './Images/Contributor/Sanskar.jpg'
 import Aman from './images/Contributor/Aman.jpg'
 import Akash from './images/Contributor/Akash.jpg'
+import Avatar1 from './images/Avatar1.jpg'
+import Avatar2 from './images/Avatar2.jpg'
+import Avatar3 from './images/Avatar3.jpg'
+import Avatar4 from './images/Avatar4.jpg'
+import Avatar5 from './images/Avatar5.jpg'
+import Avatar6 from './images/Avatar6.jpg'
 
 export default {
     hero_bg,
@@ -59,6 +65,12 @@ export default {
     logo,
     Sanskar,
     Aman,
-    Akash
+    Akash,
+    Avatar1,
+    Avatar2,
+    Avatar3,
+    Avatar4,
+    Avatar5,
+    Avatar6
 
 }
