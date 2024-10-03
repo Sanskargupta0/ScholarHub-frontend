@@ -13,4 +13,28 @@ body[data-theme="dark"]{
     .section-title{
         color: white;
     }
+
+    .h3 , .card-text, .span{
+        color: white;
+    }
+
+    #main-title{
+        color: black;
+    }
+    #main-title > .span{
+        color: #EE4962;
+    }
+    #section-title > .span{
+        color: #EE4962;
+    }
+    .section-subtitle, .SectionSubtitle{
+        color: black;
+    }
+    #SectionSubtitle{
+        color: black;
+    }
+   .CardTitle, .CardText{
+    color: black;
+   }
+  
 }

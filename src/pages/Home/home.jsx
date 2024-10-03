@@ -6,14 +6,17 @@ function Home() {
     <main>
       <article>
         <section
-          className="section hero has-bg-image"
+          className="section hero has-bg-image main-image"
           id="home"
           aria-label="home"
-          style={{ backgroundImage: `url(${images.hero_bg})` }}
+          style={{ backgroundImage: `url(${images.hero_bg})` 
+          
+          }}
+          
         >
           <div className="container">
             <div className="hero-content">
-              <h1 className="h1 section-title">
+              <h1 className="h1 section-title" id="main-title">
               Borrow and Reserve Books <span className="span">Enroll</span> for
                 Advance AI
               </h1>
@@ -261,8 +264,8 @@ function Home() {
             <div className="about-content">
               <p className="section-subtitle">About Us</p>
 
-              <h2 className="h2 section-title">
-                Over 100+ Books<span className="span">of Great learning</span>{" "}
+              <h2 className="h2 section-title" id="section">
+                Over 100+ Books <span className="span"> of Great learning</span>{" "}
                 for Skill Development
               </h2>
 
@@ -315,7 +318,7 @@ function Home() {
           <div className="container">
             <p className="section-subtitle">Popular Books</p>
 
-            <h2 className="h2 section-title">Pick A Book To Get Started</h2>
+            <h2 className="h2 section-title SectionSubtitle">Pick A Book To Get Started</h2>
 
             <ul className="grid-list">
               <li>
@@ -612,7 +615,7 @@ function Home() {
           <div className="container">
             <p className="section-subtitle">Latest</p>
 
-            <h2 className="h2 section-title">Features in ScholarHub</h2>
+            <h2 className="h2 section-title" id="SectionSubtitle">Features in ScholarHub</h2>
 
             <ul className="grid-list">
               <li>
@@ -642,14 +645,14 @@ function Home() {
                     
 
                     <h3 className="h3">
-                      <a href="#" className="card-title">
+                      <a href="#" className="card-title CardTitle">
                       Upload and Download Books with Ease
                       </a>
                     </h3>
 
                     
 
-                    <p className="card-text">
+                    <p className="card-text CardText">
                     Our platform allows you to upload and share educational resources, research papers, and books. 
                     </p>
                   </div>
@@ -683,13 +686,13 @@ function Home() {
                    
 
                     <h3 className="h3">
-                      <a href="#" className="card-title">
+                      <a href="#" className="card-title CardTitle">
                       AI-Driven Question Paper Prediction
                       </a>
                     </h3>
 
                     
-                    <p className="card-text">
+                    <p className="card-text CardText">
                     One of the most innovative features of our library is our AI-powered question paper prediction tool.
                     </p>
                   </div>
@@ -723,14 +726,14 @@ function Home() {
                    
 
                     <h3 className="h3">
-                      <a href="#" className="card-title">
+                      <a href="#" className="card-title CardTitle">
                       Reserve and Borrow Books Online
                       </a>
                     </h3>
 
                     
 
-                    <p className="card-text">
+                    <p className="card-text CardText">
                     Our platform enables users to reserve books online, ensuring you can borrow them as soon as they become available.
                     </p>
                   </div>
