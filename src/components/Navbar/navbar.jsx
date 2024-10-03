@@ -7,6 +7,55 @@ import { useAuth } from "../../store/auth";
 import "./navbar.css";
 
 function Navbar() {
+
+  var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+
+  function preventDefault(e) {
+    e.preventDefault();
+  }
+
+  function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+      preventDefault(e);
+      return false;
+    }
+  }
+
+  // modern Chrome requires { passive: false } when adding event
+  var supportsPassive = false;
+  try {
+    window.addEventListener(
+      "test",
+      null,
+      Object.defineProperty({}, "passive", {
+        get: function () {
+          supportsPassive = true;
+        },
+      })
+    );
+  } catch (e) {}
+
+  var wheelOpt = supportsPassive ? { passive: false } : false;
+  var wheelEvent =
+    "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
+
+  // call this to Disable
+  function disableScroll() {
+    window.addEventListener("DOMMouseScroll", preventDefault, false); // older FF
+    window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+    window.addEventListener("touchmove", preventDefault, wheelOpt); // mobile
+    window.addEventListener("keydown", preventDefaultForScrollKeys, false);
+  }
+
+  // call this to Enable
+  function enableScroll() {
+    window.removeEventListener("DOMMouseScroll", preventDefault, false);
+    window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+    window.removeEventListener("touchmove", preventDefault, wheelOpt);
+    window.removeEventListener("keydown", preventDefaultForScrollKeys, false);
+  }
+
+
   useEffect(() => {
     const menuBtn = document.querySelector(".menu-icon span");
     const searchBtn = document.querySelector(".search-icon");
@@ -18,12 +67,14 @@ function Navbar() {
       menuBtn.classList.add("hide");
       searchBtn.classList.add("hide");
       cancelBtn.classList.add("show");
+      disableScroll();
     };
     cancelBtn.onclick = () => {
       items.classList.remove("active");
       menuBtn.classList.remove("hide");
       searchBtn.classList.remove("hide");
       cancelBtn.classList.remove("show");
+      enableScroll();
       form.classList.remove("active");
       cancelBtn.style.color = "#ff3d00";
     };
@@ -32,6 +83,7 @@ function Navbar() {
       menuBtn.classList.remove("hide");
       searchBtn.classList.remove("hide");
       cancelBtn.classList.remove("show");
+      enableScroll();
       form.classList.remove("active");
       cancelBtn.style.color = "#ff3d00";
     };
@@ -62,7 +114,10 @@ function Navbar() {
   return (
     <div className="navbarStyles" style={{ backgroundColor: "#171C24" }}>
       <nav className="container">
-        <div className="flex items-center mobileresponsive">
+        <div
+          className="flex items-center mobileresponsive"
+          style={{ marginTop: "7px" }}
+        >
           <div className="menu-icon">
             <span className="fas fa-bars"></span>
           </div>
@@ -114,7 +169,15 @@ function Navbar() {
               <div className="dropdown-container">
                 <details className="dropdown right">
                   <summary className="avatar">
-                    <img src={userdata.avatarURL==null?"https://gravatar.com/avatar/00000000000000000000000000000000?d=mp":userdata.avatarURL.length < 10 ? images[userdata.avatarURL] : userdata.avatarURL} />
+                    <img
+                      src={
+                        userdata.avatarURL == null
+                          ? "https://gravatar.com/avatar/00000000000000000000000000000000?d=mp"
+                          : userdata.avatarURL.length < 10
+                          ? images[userdata.avatarURL]
+                          : userdata.avatarURL
+                      }
+                    />
                   </summary>
                   <ul>
                     <li
@@ -124,7 +187,10 @@ function Navbar() {
                       }}
                     >
                       <p>
-                        <span className="block bold">{userdata.firstName}&nbsp;{userdata.lastName?userdata.lastName:""}</span>
+                        <span className="block bold">
+                          {userdata.firstName}&nbsp;
+                          {userdata.lastName ? userdata.lastName : ""}
+                        </span>
                         <span className="block italic">{userdata.email}</span>
                       </p>
                     </li>
