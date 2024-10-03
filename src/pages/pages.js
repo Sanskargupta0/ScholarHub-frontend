@@ -5,6 +5,8 @@ import Contact from "./Contact/Contact";
 import Login from "./Login/Login";
 import OtpVerication from "./OtpVerfication/OtpVerfication";
 import Logout from "./Logout/Logout";
+import Protected from "./Protected/Protected";
+import Dashboard from "./Protected Pages/Dashboard/Dashboard";
 
 
 export default {
@@ -14,5 +16,7 @@ export default {
     Contact,
     Login,
     OtpVerication,
-    Logout
+    Logout,
+    Protected,
+    Dashboard
 };

@@ -42,10 +42,9 @@ function Navbar() {
     };
   }, []);
 
-
   function closeOpenDropdowns(e) {
     let openDropdownEls = document.querySelectorAll("details.dropdown[open]");
-  
+
     if (openDropdownEls.length > 0) {
       // If we're clicking anywhere but the summary element, close dropdowns
       if (e.target.parentElement.nodeName.toUpperCase() !== "SUMMARY") {
@@ -55,9 +54,8 @@ function Navbar() {
       }
     }
   }
-  
+
   document.addEventListener("click", closeOpenDropdowns);
-  
 
   const { islogedIn } = useAuth();
 
@@ -71,23 +69,40 @@ function Navbar() {
           <img src={images.logo} alt="logo" className="imagemobile" />
 
           <div className="logo mx-1.5">ScholarHub</div>
-          <div className="nav-items">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/About">About</Link>
-            </li>
-            <li>
-              <Link to="/Contact">Contact</Link>
-            </li>
-            <li>
-              <Link to="/Library">Library</Link>
-            </li>
-            <li>
-              <Link to="/ExamPaper">Exam Paper</Link>
-            </li>
-          </div>
+          {!islogedIn ? (
+            <div className="nav-items">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/About">About</Link>
+              </li>
+              <li>
+                <Link to="/Contact">Contact</Link>
+              </li>
+              <li>
+                <Link to="/Library">Library</Link>
+              </li>
+              <li>
+                <Link to="/ExamPaper">Exam Paper</Link>
+              </li>
+            </div>
+          ) : (
+            <div className="nav-items">
+              <li>
+                <Link to="/Dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <Link to="/Library">Library</Link>
+              </li>
+              <li>
+                <Link to="/ExamPaper">Exam Paper</Link>
+              </li>
+              <li>
+                <Link to="/Contact">Contact</Link>
+              </li>
+            </div>
+          )}
         </div>
         <div className="flex items-center mobileresponsive2">
           <div className="mx-4">
@@ -102,10 +117,12 @@ function Navbar() {
                     <img src="https://gravatar.com/avatar/00000000000000000000000000000000?d=mp" />
                   </summary>
                   <ul>
-                    <li style={{
-                      "color": "balck",
-                      "fontWeight": "bold",
-                    }}>
+                    <li
+                      style={{
+                        color: "balck",
+                        fontWeight: "bold",
+                      }}
+                    >
                       <p>
                         <span className="block bold">Jane Doe</span>
                         <span className="block italic">jane@example.com</span>

@@ -15,6 +15,9 @@ function App() {
           <Route path="/login" element={<pages.Login />} />
           <Route path="/OtpVerfication" element={<pages.OtpVerication />} />
           <Route path="/logout" element={<pages.Logout />} />
+          <Route path="/dashboard" element={
+            <pages.Protected Component={pages.Dashboard} />
+          } />
           <Route path="*" element={<pages.Error />} />
         </Routes>
         <components.Footer />
