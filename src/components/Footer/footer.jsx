@@ -1,6 +1,77 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import config from "../../config";
+import { useAuth } from "../../store/auth";
 function Footer() {
+  const { userdata , islogedIn} = useAuth();
+
+  function reset() {
+    document.getElementById("subEmail").value = "";
+  }
+
+  const [email, setEmail] = useState("");
+
+  const handelEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  function checkEmail() {
+    var mail = document.getElementById("subEmail").value;
+    if (!mail.includes("@") || !mail.includes(".")) {
+      toast.warn("Please enter a valid email", {
+        position: "top-center",
+      });
+    } else {
+      return true;
+    }
+  }
+  const handelEmailSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const pass = checkEmail();
+      if (pass) {
+        const emailResponse = await fetch(
+          `${config.backendUrl}/subscribeEmail`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: email,
+            }),
+          }
+        );
+        const emailData = await emailResponse.json();
+
+        if (!(emailResponse.status === 422)) {
+          reset();
+          toast.success(`${emailData.message}`, {
+            position: "top-center",
+          });
+        } else {
+          if (emailData.extrD) {
+            toast.error(`${emailData.msg + emailData.extrD}`, {
+              position: "top-center",
+            });
+          } else {
+            toast.error(`${emailData.message}`, {
+              position: "top-center",
+            });
+          }
+        }
+      }
+    } catch (error) {
+      console.log({ err: error });
+    }
+  };
+ useEffect(() => {
+  if (userdata.email !== null || userdata.email !== "") {
+    setEmail(userdata.email);
+  }
+}, [userdata.email, islogedIn]);
+
   return (
     <footer className="footer">
       <div className="footer-top section">
@@ -72,16 +143,23 @@ function Footer() {
               subscription
             </p>
 
-            <form action="" className="newsletter-form">
+            <form className="newsletter-form">
               <input
                 type="email"
-                name="email_address"
                 placeholder="Your email"
-                required
+                name="email"
+                id="subEmail"
+                value={email}
+                onChange={handelEmail}
                 className="input-field"
+                style={{"color": "black"}}
               />
 
-              <button type="submit" className="btn has-before">
+              <button
+                type="button"
+                className="btn has-before"
+                onClick={handelEmailSubmit}
+              >
                 <span className="span">Subscribe</span>
 
                 <ion-icon

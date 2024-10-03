@@ -4,177 +4,178 @@ import { components } from "../../components";
 import constactStyles from "./Contact.module.css";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-// import config from "../../config";
-// import { useAuth } from "../../store/auth";
+import config from "../../config";
+import { useAuth } from "../../store/auth";
 
 const Contact = () => {
-  // const { userdata } = useAuth();
-  // const [contactData, setContactData] = useState(true);
+  const { userdata } = useAuth();
+  const [contactData, setContactData] = useState(true);
 
-  // function reset() {
-  //   document.getElementById("name").value = "";
-  //   document.getElementById("mail").value = "";
-  //   document.getElementById("message").value = "";
-  //   document.getElementById("phone").value = "";
-  //   document.getElementById("subEmail").value = "";
-  // }
+  function reset() {
+    document.getElementById("name").value = "";
+    document.getElementById("mail").value = "";
+    document.getElementById("message").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("subEmail").value = "";
+  }
 
-  // function check() {
-  //   var name = document.getElementById("name").value;
-  //   var mail = document.getElementById("mail").value;
-  //   var message = document.getElementById("message").value;
-  //   var phone = document.getElementById("phone").value;
+  function check() {
+    var name = document.getElementById("name").value;
+    var mail = document.getElementById("mail").value;
+    var message = document.getElementById("message").value;
+    var phone = document.getElementById("phone").value;
 
-  //   if (name === "" || mail === "" || message === "") {
-  //     toast.warn("Please fill all the fields", {
-  //       position: "top-center",
-  //     });
-  //   } else if (phone.length > 0 && phone.length != 10) {
-  //     toast.warn("Please enter a valid phone number", {
-  //       position: "top-center",
-  //     });
-  //   } else if (!mail.includes("@") || !mail.includes(".")) {
-  //     toast.warn("Please enter a valid email", {
-  //       position: "top-center",
-  //     });
-  //   } else if (message.length < 10) {
-  //     toast.warn("Please enter a valid message", {
-  //       position: "top-center",
-  //     });
-  //   } else if (name.length < 3) {
-  //     toast.warn("Please enter a valid name", {
-  //       position: "top-center",
-  //     });
-  //   } else {
-  //     try {
-  //       return true;
-  //     } catch (error) {
-  //       confirm.log(error);
-  //       toast.warn("Something went wrong", {
-  //         position: "top-center",
-  //       });
-  //     }
-  //   }
-  // }
+    if (name === "" || mail === "" || message === "") {
+      toast.warn("Please fill all the fields", {
+        position: "top-center",
+      });
+    } else if (phone.length > 0 && phone.length != 10) {
+      toast.warn("Please enter a valid phone number", {
+        position: "top-center",
+      });
+    } else if (!mail.includes("@") || !mail.includes(".")) {
+      toast.warn("Please enter a valid email", {
+        position: "top-center",
+      });
+    } else if (message.length < 10) {
+      toast.warn("Please enter a valid message", {
+        position: "top-center",
+      });
+    } else if (name.length < 3) {
+      toast.warn("Please enter a valid name", {
+        position: "top-center",
+      });
+    } else {
+      try {
+        return true;
+      } catch (error) {
+        confirm.log(error);
+        toast.warn("Something went wrong", {
+          position: "top-center",
+        });
+      }
+    }
+  }
 
-  // const [contact, setContact] = useState({
-  //   name: "",
-  //   email: "",
-  //   phone: "",
-  //   message: "",
-  // });
+  const [contact, setContact] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
-  // const handleConatct = (e) => {
-  //   let name = e.target.name;
-  //   let value = e.target.value;
+  const handleConatct = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
 
-  //   setContact({
-  //     ...contact,
-  //     [name]: value,
-  //   });
-  // };
+    setContact({
+      ...contact,
+      [name]: value,
+    });
+  };
 
-  // const [email, setEmail] = useState("");
-  // const handelEmail = (e) => {
-  //   setEmail(e.target.value);
-  // };
-  // function checkEmail() {
-  //   var mail = document.getElementById("subEmail").value;
-  //   if (!mail.includes("@") || !mail.includes(".")) {
-  //     toast.warn("Please enter a valid email", {
-  //       position: "top-center",
-  //     });
-  //   } else {
-  //     return true;
-  //   }
-  // }
-  // const handelEmailSubmit = async (e) => {
-  //   try {
-  //     e.preventDefault();
-  //     const pass = checkEmail();
-  //     if (pass) {
-  //       const emailResponse = await fetch(
-  //         `${config.backendUrl}/subscribeEmail`,
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({
-  //             email: email,
-  //           }),
-  //         }
-  //       );
-  //       const emailData = await emailResponse.json();
+  const [email, setEmail] = useState("");
+  const handelEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  function checkEmail() {
+    var mail = document.getElementById("subEmail").value;
+    if (!mail.includes("@") || !mail.includes(".")) {
+      toast.warn("Please enter a valid email", {
+        position: "top-center",
+      });
+    } else {
+      return true;
+    }
+  }
+  const handelEmailSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const pass = checkEmail();
+      if (pass) {
+        const emailResponse = await fetch(
+          `${config.backendUrl}/subscribeEmail`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: email,
+            }),
+          }
+        );
+        const emailData = await emailResponse.json();
 
-  //       if (!(emailResponse.status === 422)) {
-  //         reset();
-  //         toast.success(`${emailData.message}`, {
-  //           position: "top-center",
-  //         });
-  //       } else {
-  //         if (contactData.extrD) {
-  //           toast.error(`${contactData.msg + contactData.extrD}`, {
-  //             position: "top-center",
-  //           });
-  //         } else {
-  //           toast.error(`${contactData.msg}`, {
-  //             position: "top-center",
-  //           });
-  //         }
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.log({ err: error });
-  //   }
-  // };
+        if (!(emailResponse.status === 422)) {
+          reset();
+          toast.success(`${emailData.message}`, {
+            position: "top-center",
+          });
+        } else {
+          if (emailData.extrD) {
+            toast.error(`${emailData.msg + emailData.extrD}`, {
+              position: "top-center",
+            });
+          } else {
+            toast.error(`${emailData.message}`, {
+              position: "top-center",
+            });
+          }
+        }
+      }
+    } catch (error) {
+      console.log({ err: error });
+    }
+  };
 
-  // const handelConatct = async (e) => {
-  //   try {
-  //     e.preventDefault();
-  //     const pass = check();
-  //     if (pass) {
-  //       const contactResponse = await fetch(`${config.backendUrl}/contact`, {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(contact),
-  //       });
-  //       const contactData = await contactResponse.json();
-  //       if (!(contactResponse.status === 422)) {
-  //         reset();
-  //         toast.success(`${contactData.message}`, {
-  //           position: "top-center",
-  //         });
-  //       } else {
-  //         if (contactData.extrD) {
-  //           toast.error(`${contactData.msg + contactData.extrD}`, {
-  //             position: "top-center",
-  //           });
-  //         } else {
-  //           toast.error(`${contactData.msg}`, {
-  //             position: "top-center",
-  //           });
-  //         }
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.log({ err: error });
-  //   }
-  // };
+  const handelConatct = async (e) => {
+    try {
+      e.preventDefault();
+      const pass = check();
+      if (pass) {
+        const contactResponse = await fetch(`${config.backendUrl}/contact`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(contact),
+        });
+        const contactData = await contactResponse.json();
+        if (!(contactResponse.status === 422)) {
+          reset();
+          toast.success(`${contactData.message}`, {
+            position: "top-center",
+          });
+        } else {
+          if (contactData.extrD) {
+            toast.error(`${contactData.msg + contactData.extrD}`, {
+              position: "top-center",
+            });
+          } else {
+            toast.error(`${contactData.msg}`, {
+              position: "top-center",
+            });
+          }
+        }
+      }
+    } catch (error) {
+      console.log({ err: error });
+    }
+  };
 
-  // if (contactData && userdata) {
-  //   setContactData(false);
-  //   if (userdata.firstName !== null && userdata.email !== null) {
-  //     setEmail(userdata.email);
-  //     setContact({
-  //       ...contact,
-  //       name: userdata.firstName,
-  //       email: userdata.email,
-  //     });
-  //   }
-  // }
+  if (contactData && userdata) {
+    setContactData(false);
+    if (userdata.firstName !== null && userdata.email !== null) {
+      setEmail(userdata.email);
+      setContact({
+        ...contact,
+        name: userdata.firstName,
+        email: userdata.email,
+        phone: userdata.phone,
+      });
+    }
+  }
   return (
     <div className="container">
       <div className={constactStyles.formscontainer}>
@@ -186,8 +187,8 @@ const Contact = () => {
             id="name"
             type="text"
             className={constactStyles.input}
-            //value={contact.name}
-            //onChange={handleConatct}
+            value={contact.name}
+            onChange={handleConatct}
           />
           <input
             name="email"
@@ -195,8 +196,8 @@ const Contact = () => {
             id="mail"
             type="email"
             className={constactStyles.input}
-            //value={contact.email}
-            //onChange={handleConatct}
+            value={contact.email}
+            onChange={handleConatct}
           />
           <input
             name="phone"
@@ -204,8 +205,8 @@ const Contact = () => {
             id="phone"
             type="number"
             className={constactStyles.input}
-            //value={contact.phone}
-            //onChange={handleConatct}
+            value={contact.phone}
+            onChange={handleConatct}
           />
           <textarea
             placeholder="Say Hello"
@@ -214,18 +215,18 @@ const Contact = () => {
             id="message"
             name="message"
             className={constactStyles.textarea}
-            //value={contact.message}
-            //onChange={handleConatct}
+            value={contact.message}
+            onChange={handleConatct}
           ></textarea>
           <div className={constactStyles.buttoncontainer}>
-            <div className={constactStyles.sendbutton}>
+            <div className={constactStyles.sendbutton} onClick={handelConatct}>
               Send
             </div>
             <div className={constactStyles.resetbuttoncontainer}>
               <div
                 id="reset-btn"
                 className={constactStyles.resetbutton}
-                //onClick={reset}
+                onClick={reset}
               >
                 Reset
               </div>
@@ -277,14 +278,14 @@ const Contact = () => {
               type="email"
               name="email"
               id="subEmail"
-              //value={email}
-              //onChange={handelEmail}
+              value={email}
+              onChange={handelEmail}
             />
 
             <button
               className="bg-gradient-to-r from-green-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-green-600 hover:to-blue-600 transition ease-in-out duration-150"
               type="submit"
-              //onClick={handelEmailSubmit}
+              onClick={handelEmailSubmit}
             >
               Subscribe
             </button>
