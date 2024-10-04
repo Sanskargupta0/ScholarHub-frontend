@@ -1,0 +1,172 @@
+.bell-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    margin: 10px;
+    svg {
+      margin: auto;
+      position: relative;
+      right: 2%;
+      width: 80%;
+      height: 80%;
+      stroke: rgba(0, 0, 0, 0.75);
+    }
+    .bell-icon__group {
+      transform-origin: 50% 2px;
+      transform: rotate(-8deg);
+      animation-fill-mode: both;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-in-out;
+    }
+    .bell-icon__ball {
+      transform-origin: 50% 2px;
+      transform: translateX(-6.5%);
+      animation-fill-mode: both;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-in-out;
+    }
+    &:focus,
+    &:hover {
+      outline: none;
+      box-shadow: 0 0 12px -8px rgba(0, 0, 0, 0.6);
+      .bell-icon__group {
+        animation: animateGroup 2.3s;
+      }
+      .bell-icon__ball {
+        animation: animateBall 2.3s;
+      }
+      .notification-amount {
+        opacity: 1;
+        visibility: visible;
+        &::before {
+          animation-name: bounce;
+          animation-delay: 450ms;
+        }
+      }
+    }
+  }
+  
+  .notification-amount {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 24%;
+    right: 30%;
+    width: 8px;
+    height: 8px;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Copse", serif;
+    font-size: 14px;
+    span {
+      position: relative;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #f72918;
+      border-radius: 50%;
+      z-index: 0;
+      transform: scale(0);
+      animation-duration: 800ms;
+      animation-fill-mode: both;
+    }
+  }
+  
+  $frameLength: 0.8771;
+  
+  @keyframes animateGroup {
+    0%,
+    100% {
+      transform: rotate(-8deg);
+    }
+    #{$frameLength * 20%} {
+      transform: rotate(0deg);
+    }
+    #{$frameLength * 40%} {
+      transform: rotate(-20deg);
+    }
+    #{$frameLength * 55%} {
+      transform: rotate(20deg);
+    }
+    #{$frameLength * 65%} {
+      transform: rotate(-20deg);
+    }
+    #{$frameLength * 74%} {
+      transform: rotate(8deg);
+    }
+    #{$frameLength * 85%} {
+      transform: rotate(-15deg);
+    }
+    #{$frameLength * 90%} {
+      transform: rotate(-7deg);
+    }
+  }
+  
+  @keyframes animateBall {
+    0%,
+    100% {
+      transform: translateX(-6.5%);
+    }
+    #{$frameLength * 20%} {
+      transform: translateX(0%);
+    }
+    #{$frameLength * 25%} {
+      transform: translateX(-1%);
+    }
+    #{$frameLength * 40%} {
+      transform: translateX(11%);
+    }
+    #{$frameLength * 55%} {
+      transform: translateX(-11%);
+    }
+    #{$frameLength * 60%} {
+      transform: translateX(0%);
+    }
+    #{$frameLength * 68%} {
+      transform: translateX(10%);
+    }
+    #{$frameLength * 78%} {
+      transform: translateX(-11%);
+    }
+    #{$frameLength * 90%} {
+      transform: translateX(11%);
+    }
+    #{$frameLength * 98%} {
+      transform: translateX(-11%);
+    }
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: scale(0);
+    }
+  
+    14% {
+      transform: scale(1.15);
+    }
+  
+    28% {
+      transform: scale(1);
+    }
+  
+    42% {
+      transform: scale(1.15);
+    }
+  
+    70% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  

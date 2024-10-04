@@ -5,9 +5,9 @@ import DarkMode from "../DarkMode/DarkMode";
 import { components } from "../";
 import { useAuth } from "../../store/auth";
 import "./navbar.css";
+import "./navbar.scss";
 
 function Navbar() {
-
   var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 
   function preventDefault(e) {
@@ -54,7 +54,6 @@ function Navbar() {
     window.removeEventListener("touchmove", preventDefault, wheelOpt);
     window.removeEventListener("keydown", preventDefaultForScrollKeys, false);
   }
-
 
   useEffect(() => {
     const menuBtn = document.querySelector(".menu-icon span");
@@ -166,60 +165,105 @@ function Navbar() {
                 <components.Button />
               </Link>
             ) : (
-              <div className="dropdown-container">
-                <details className="dropdown right">
-                  <summary className="avatar">
-                    <img
-                      src={
-                        userdata.avatarURL == null
-                          ? "https://gravatar.com/avatar/00000000000000000000000000000000?d=mp"
-                          : userdata.avatarURL.length < 10
-                          ? images[userdata.avatarURL]
-                          : userdata.avatarURL
-                      }
-                    />
-                  </summary>
-                  <ul>
-                    <li
-                      style={{
-                        color: "balck",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      <p>
-                        <span className="block bold">
-                          {userdata.firstName}&nbsp;
-                          {userdata.lastName ? userdata.lastName : ""}
-                        </span>
-                        <span className="block italic">{userdata.email}</span>
-                      </p>
-                    </li>
+              <div className="flex">
+                <div class="bell-icon" tabindex="0">
+                  <svg
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    width="50px"
+                    height="30px"
+                    viewBox="0 0 50 30"
+                    enable-background="new 0 0 50 30"
+                    xml:space="preserve"
+                  >
+                    <g class="bell-icon__group">
+                      <path
+                        class="bell-icon__ball"
+                        id="ball"
+                        fill-rule="evenodd"
+                        stroke-width="1.5"
+                        clip-rule="evenodd"
+                        fill="none"
+                        stroke="#currentColor"
+                        stroke-miterlimit="10"
+                        d="M28.7,25 c0,1.9-1.7,3.5-3.7,3.5s-3.7-1.6-3.7-3.5s1.7-3.5,3.7-3.5S28.7,23,28.7,25z"
+                      />
+                      <path
+                        class="bell-icon__shell"
+                        id="shell"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        fill="#FFFFFF"
+                        stroke="#currentColor"
+                        stroke-width="2"
+                        stroke-miterlimit="10"
+                        d="M35.9,21.8c-1.2-0.7-4.1-3-3.4-8.7c0.1-1,0.1-2.1,0-3.1h0c-0.3-4.1-3.9-7.2-8.1-6.9c-3.7,0.3-6.6,3.2-6.9,6.9h0 c-0.1,1-0.1,2.1,0,3.1c0.6,5.7-2.2,8-3.4,8.7c-0.4,0.2-0.6,0.6-0.6,1v1.8c0,0.2,0.2,0.4,0.4,0.4h22.2c0.2,0,0.4-0.2,0.4-0.4v-1.8 C36.5,22.4,36.3,22,35.9,21.8L35.9,21.8z"
+                      />
+                    </g>
+                  </svg>
+                  <div class="notification-amount">
+                    <span></span>
+                  </div>
+                </div>
 
-                    <li>
-                      <Link to="/userProfile">Account</Link>
-                    </li>
-                    <li>
-                      <a href="#">Notification</a>
-                    </li>
-                    <li>
-                      <a href="#">Help</a>
-                    </li>
-                    <li className="divider"></li>
-                    <li>
-                      <Link to="/logout">
-                        <button className="Btnlogout">
-                          <div className="sign">
-                            <svg viewBox="0 0 512 512">
-                              <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path>
-                            </svg>
-                          </div>
+                <div className="dropdown-container">
+                  <details className="dropdown right">
+                    <summary className="avatar">
+                      <img
+                        src={
+                          userdata.avatarURL == null
+                            ? "https://gravatar.com/avatar/00000000000000000000000000000000?d=mp"
+                            : userdata.avatarURL.length < 10
+                            ? images[userdata.avatarURL]
+                            : userdata.avatarURL
+                        }
+                      />
+                    </summary>
+                    <ul>
+                      <li
+                        style={{
+                          color: "balck",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        <p>
+                          <span className="block bold">
+                            {userdata.firstName}&nbsp;
+                            {userdata.lastName ? userdata.lastName : ""}
+                          </span>
+                          <span className="block italic">{userdata.email}</span>
+                        </p>
+                      </li>
 
-                          <div className="text">Logout</div>
-                        </button>
-                      </Link>
-                    </li>
-                  </ul>
-                </details>
+                      <li>
+                        <Link to="/userProfile">Account</Link>
+                      </li>
+                      <li>
+                        <a href="#">Notification</a>
+                      </li>
+                      <li>
+                        <a href="#">Help</a>
+                      </li>
+                      <li className="divider"></li>
+                      <li>
+                        <Link to="/logout">
+                          <button className="Btnlogout">
+                            <div className="sign">
+                              <svg viewBox="0 0 512 512">
+                                <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path>
+                              </svg>
+                            </div>
+
+                            <div className="text">Logout</div>
+                          </button>
+                        </Link>
+                      </li>
+                    </ul>
+                  </details>
+                </div>
               </div>
             )}
           </div>
