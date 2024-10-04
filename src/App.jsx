@@ -21,6 +21,9 @@ function App() {
           <Route path="/userProfile" element={
             <pages.Protected Component={pages.UserProfile} />
           } />
+          <Route path="/notification" element={
+            <pages.Protected Component={pages.Notification} />
+          } />
           <Route path="*" element={<pages.Error />} />
         </Routes>
         <components.Footer />
