@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
+import { closeSocket } from "./socketService";
 import config from "../config";
 
 export const Authprovider = ({ children }) => {
@@ -14,9 +15,18 @@ export const Authprovider = ({ children }) => {
     phone: "",
     avatarURL: "",
     bookmarks: [],
+    facebook: "",
+    instagram: "",
+    twitter: "",
+    github: "",
+    rollNumber: "",
+    notifications: [],
   });
 
-  const [rerun , setRerun ]=useState(true);
+  const [newNotification, setNewNotification] = useState({});
+  const [globalNotification, setGlobalNotification] = useState([]);
+
+  const [rerun, setRerun] = useState(true);
   // checking if user is logged in or not
   const islogedIn = !!token.token;
   // logout user
@@ -35,8 +45,10 @@ export const Authprovider = ({ children }) => {
       twitter: null,
       github: null,
       rollNumber: null,
+      notifications: null,
     });
     localStorage.removeItem("Token");
+    closeSocket();
   };
   // Get user data from backend using token
   const getUserData = async (token) => {
@@ -63,14 +75,33 @@ export const Authprovider = ({ children }) => {
           instagram: data.instagram,
           twitter: data.twitter,
           github: data.github,
-          rollNumber: data.rollNumber
+          rollNumber: data.rollNumber,
+          notifications: data.notifications,
         });
       }
     } catch (error) {
       console.log(error);
     }
   };
-
+  // get Global Notification
+  const getGlobalNotification = async (token) => {
+    try {
+      const res = await fetch(`${config.backendUrl}/getGobalNotification`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data);
+      } else {
+        setGlobalNotification(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // store token in local storage
   const storeTokenInLs = (token) => {
@@ -82,14 +113,25 @@ export const Authprovider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (token.token != null)
+    if (token.token != null) {
       getUserData(token.token);
-  }, [token.token , rerun ]);
-
+      getGlobalNotification(token.token);
+    }
+  }, [token.token, rerun]);
 
   return (
     <AuthContext.Provider
-      value={{ storeTokenInLs, logoutUser, islogedIn, userdata, setRerunData }}
+      value={{
+        storeTokenInLs,
+        logoutUser,
+        islogedIn,
+        userdata,
+        setRerunData,
+        newNotification,
+        setNewNotification,
+        globalNotification,
+        setGlobalNotification,
+      }}
     >
       {children}
     </AuthContext.Provider>

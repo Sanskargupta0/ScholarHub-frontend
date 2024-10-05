@@ -1,41 +1,70 @@
-import React from 'react'
-import { components } from '../../../components'
+import React, { useEffect, useState } from "react";
+import { components } from "../../../components";
+import { useAuth } from "../../../store/auth";
 
 function Notification() {
-  const data = [
-    {
-      title: "New Order",
-      description: "You have received a new order.",
-      date: new Date().toString(),
-    },
-    {
-      title: "New User",
-      description: "A new user has registered.",
-      date: new Date().toString(),
-    },
-    {
-      title: "New Message",
-      description: "You have received a new message.",
-      date: new Date().toString(),
-    },
-    {
-      title: "New Comment",
-      description: "You have a new comment.",
-      date: new Date().toString(),
-    },
-  ];
+  const {
+    newNotification,
+    setNewNotification,
+    userdata,
+    globalNotification,
+    setGlobalNotification,
+  } = useAuth();
+
+  const [notification, setNotification] = useState([]);
+
+  const sortNotification = (userNotification, globalNotification) => {
+    const notification = [...userNotification, ...globalNotification];
+    notification.sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateB - dateA;
+    });
+    return notification;
+  };
+
+  useEffect(() => {
+    if (newNotification.title) {
+      if (newNotification.date != globalNotification[0].date) {
+        setNotification([newNotification, ...notification]);
+        setGlobalNotification([newNotification, ...globalNotification]);
+        setNewNotification({});
+      }
+    } else {
+      if (userdata.notifications.length === 0) {
+        setTimeout(() => {
+            setNotification(
+              sortNotification(userdata.notifications, globalNotification)
+            );
+        }, 1000);
+      } else {
+        setNotification(
+          sortNotification(userdata.notifications, globalNotification)
+        );
+      }
+    }
+  }, [newNotification]);
+
   return (
     <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-800 mb-6" style={{"color":"#1DB398"}}>Notifications</h1>
-        <div className="space-y-4">
-          {
-            data.map((item, index) => (
-              <components.NotificationCard key={index} title={item.title} description={item.description} date={item.date} />
-            ))
-          }
-        </div>
+      <h1
+        className="text-4xl font-bold text-800 mb-6"
+        style={{ color: "#1DB398" }}
+      >
+        Notifications
+      </h1>
+      <div className="space-y-4">
+        {notification.map((item, index) => (
+          <components.NotificationCard
+            key={index}
+            title={item.title}
+            description={item.description}
+            date={item.date}
+          />
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
-export default Notification
+export default Notification;
