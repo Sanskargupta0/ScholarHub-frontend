@@ -70,6 +70,9 @@ function Footer() {
   if (userdata.email !== null || userdata.email !== "") {
     setEmail(userdata.email);
   }
+  if (!islogedIn) {
+    setEmail("");
+  }
 }, [userdata.email, islogedIn]);
 
   return (

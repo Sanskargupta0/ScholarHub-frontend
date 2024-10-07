@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
-import { closeSocket } from "./socketService";
 import config from "../config";
 
 export const Authprovider = ({ children }) => {
@@ -48,7 +47,6 @@ export const Authprovider = ({ children }) => {
       notifications: null,
     });
     localStorage.removeItem("Token");
-    closeSocket();
   };
   // Get user data from backend using token
   const getUserData = async (token) => {

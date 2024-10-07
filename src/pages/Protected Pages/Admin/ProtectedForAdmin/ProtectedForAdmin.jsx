@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAuth } from "../../store/auth";
-import config from "../../config";
-const Protected = (props) => {
+import { useAuth } from "../../../../store/auth";
+import config from "../../../../config";
+const ProtectedForAdmin = (props) => {
   const navigate = useNavigate();
-  const { logoutUser } =useAuth();
+  const { logoutUser } = useAuth();
   const { Component } = props;
   let token = localStorage.getItem("Token");
   const verifyToken = async () => {
@@ -15,7 +15,7 @@ const Protected = (props) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    await response.json();
+    const data = await response.json();
     if (response.status !== 200) {
       navigate("/login");
       logoutUser();
@@ -23,6 +23,13 @@ const Protected = (props) => {
       toast.error(`Your Access token is not valid`, {
         position: "top-center",
       });
+    } else if (response.status === 200) {
+      if (data.isAdmin !== true) {
+        navigate("/dashboard");
+        toast.error(`You are not Admin`, {
+          position: "top-center",
+        });
+      }
     }
   };
   useEffect(() => {
@@ -36,7 +43,7 @@ const Protected = (props) => {
       verifyToken();
     }
   }, []);
-  return <Component/>;
+  return <Component />;
 };
 
-export default Protected;
+export default ProtectedForAdmin;

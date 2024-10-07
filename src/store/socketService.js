@@ -4,11 +4,17 @@ import config from "../config";
 let socket;
 
 export const initializeSocket = () => {
-  socket = io(config.backendUrl);
+  if (!socket) {
+    socket = io(config.backendUrl);
+  }
 
-  socket.on("connect");
+  socket.on("connect", () => {
+    console.log("Socket connected");
+  });
 
-  socket.on("disconnect");
+  socket.on("disconnect", () => {
+    console.log("Socket disconnected");
+  });
 
   return socket;
 };

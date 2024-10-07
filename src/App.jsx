@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { pages } from "./pages";
+import { adminPages } from "./pages/Protected Pages/Admin";
 import { components } from "./components";
 import { initializeSocket, getSocket } from "./store/socketService";
 import { useAuth } from "./store/auth";
@@ -24,13 +25,12 @@ function App() {
       socket.on("newNotification", (notification) => {
         setNewNotification(notification);
       });
-
     }
 
     return () => {
-      // Cleanup listeners on unmount
       socket.off("userCount");
       socket.off("newGlobalNotification");
+      socket.off("newNotification");
     };
   }, [islogedIn, userdata.id]);
 
@@ -56,6 +56,12 @@ function App() {
           <Route
             path="/notification"
             element={<pages.Protected Component={pages.Notification} />}
+          />
+          <Route
+            path="/adminPanel"
+            element={
+              <adminPages.ProtectedForAdmin Component={adminPages.AdminPanel} />
+            }
           />
           <Route path="*" element={<pages.Error />} />
         </Routes>
