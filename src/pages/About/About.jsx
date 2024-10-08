@@ -116,30 +116,22 @@ const About = () => {
                       fontWeight: "400",
                     }}
                   >
-                    About KMCesports
+                    About ScholarHub
                   </h1>
                   <p>
-                    We are KMCesports, a passionate community dedicated to
-                    fostering a fair, competitive, and thrilling esports
-                    experience for players of all skill levels. Founded by a
-                    team of experienced gamers and esports enthusiasts, we
-                    understand the excitement, dedication, and sportsmanship
-                    that fuels the competitive gaming world.
+                  Welcome to the University Library, your gateway to an extensive world of knowledge, research, and academic support. We are dedicated to fostering a rich learning environment that helps students, faculty, and researchers access the information they need quickly and easily. Our library is designed to serve as an academic hub that combines both traditional resources and innovative digital solutions, ensuring that users can leverage the best tools for their educational journey.
                   </p>
                 </section>
                 <section id="ourMission">
-                  <h2>Our Mission:</h2>
+                  <h2>Key Features of Our Library Website:</h2>
                   <section id="ourMission1">
-                    <h3>At KMCesports, our mission is to:</h3>
+                    <h3>Book Issuing & Returning</h3>
                     <p>
-                      Provide a platform for gamers to compete in a safe and
-                      respectful environment. Promote fair play and integrity in
-                      all our tournaments and events. Offer a variety of
-                      tournaments and formats to cater to diverse interests and
-                      skill levels. Create a thriving community where gamers can
-                      connect, share their passion, and learn from each other.
-                      Support the growth and development of the esports
-                      industry.
+                    Our website offers seamless book issuing and returning services for all registered users. Whether you prefer to browse our physical collection or search our online catalog, you can easily:
+- Search for available books in various subjects.
+- Reserve books online for pick-up at your convenience.
+- Check the status of your borrowed books, due dates, and overdue alerts.
+- Return books with a simple online return process, making it easier to manage your loans.
                     </p>
                   </section>
                   <section id="ourMission2">
@@ -161,7 +153,7 @@ const About = () => {
                   <h2>What We Offer:</h2>
                   <section id="whatWeOffer1">
                     <h3>
-                      KMCesports offers a wide range of features and services,
+                      ScholarHub offers a wide range of features and services,
                       including:
                     </h3>
                     <p>
@@ -175,13 +167,13 @@ const About = () => {
                       strategies, and find teammates in our forums, chat rooms,
                       and social media channels. Streaming: Watch top players
                       compete live and learn from their skills and strategies.
-                      Join the KMCesports Community!
+                      Join the ScholarHub Community!
                     </p>
                   </section>
                   <section id="whatWeOffer2">
-                    <h3>KMCesports: Elevate Your Game, Claim Your Glory</h3>
+                    <h3>ScholarHub: Elevate Your Game, Claim Your Glory</h3>
                     <p>
-                      At KMCesports, victory isn't just about bragging rights -
+                      At ScholarHub, victory isn't just about bragging rights -
                       it's about reaping the rewards! Every tournament holds the
                       potential for a thriving prize pool and a system of
                       earning points you can use to grab epic loot across our
@@ -239,12 +231,12 @@ const About = () => {
                     gaming preferences.
                   </p>
                 </section>
-                <section id="KMCesports">
+                <section id="ScholarHub">
                   <h2 className="text-2xl" style={{ marginBottom: "1rem" }}>
-                    KMCesports - Where Skill Meets Reward:
+                    ScholarHub - Where Skill Meets Reward:
                   </h2>
                   <p style={{ marginBottom: "2rem" }}>
-                    At KMCesports, we believe every victory deserves to be
+                    At ScholarHub, we believe every victory deserves to be
                     celebrated. Join our passionate community, push your limits,
                     and reap the rewards of your dedication. With a robust prize
                     pool system and a point-based redemption paradise, your
@@ -252,12 +244,12 @@ const About = () => {
                     and propelling you further on your esports journey. So, step
                     onto the virtual arena, unleash your skills, and claim your
                     glory! The more you win, the more you earn, and the more
-                    epic your KMCesports experience becomes. Remember, this is
+                    epic your ScholarHub experience becomes. Remember, this is
                     just a template, feel free to customize it with specific
                     prize pool figures, point values, and reward examples
                     relevant to your website and target audience. Whether you're
                     a seasoned veteran or a curious newcomer, we welcome you to
-                    join the KMCesports community. Sign up today and start your
+                    join the ScholarHub community. Sign up today and start your
                     esports journey with us!
                   </p>
                 </section>
@@ -265,7 +257,7 @@ const About = () => {
               <nav className={styleAbout.sectionNav}>
                 <ol>
                   <li>
-                    <a href="#aboutKMCesports">About KMCesports</a>
+                    <a href="#aboutKMCesports">About ScholarHub</a>
                   </li>
                   <li>
                     <a href="#ourMission">Our Mission</a>
@@ -307,7 +299,7 @@ const About = () => {
                     <a href="#pointsSystem">Points System</a>
                   </li>
                   <li>
-                    <a href="#KMCesports">KMCesports</a>
+                    <a href="#ScholarHub">ScholarHub</a>
                   </li>
                 </ol>
                 <div className={styleAbout.backToTopBtn}>
@@ -344,22 +336,22 @@ const About = () => {
                       fontWeight: "400",
                     }}
                   >
-                    How to join KMCesports
+                    How to join ScholarHub
                   </h1>
                   <p>
-                    KMC Esports provides an exciting platform for gamers to
+                    ScholarHub provides an exciting platform for gamers to
                     showcase their skills and compete in various online gaming
                     tournaments. If you're eager to join the action, follow this
-                    step-by-step guide to participate in KMC Esports games and
+                    step-by-step guide to participate in ScholarHub games and
                     elevate your gaming experience.
                   </p>
                 </section>
                 <section id="getStarted">
                   <h2>How to get started:</h2>
                   <section id="getStarted1">
-                    <h3>Visit the KMC Esports Website:</h3>
+                    <h3>Visit the ScholarHub Website:</h3>
                     <p>
-                      Start by visiting the official KMC Esports website.
+                      Start by visiting the official ScholarHub website.
                       Navigate to the registration or sign-up section to create
                       a user account. Fill in the required information
                       accurately and confirm your account through the
@@ -370,7 +362,7 @@ const About = () => {
                     <h3>Explore Available Tournaments:</h3>
                     <p>
                       Once your account is set up, browse through the website to
-                      discover the ongoing and upcoming tournaments. KMC Esports
+                      discover the ongoing and upcoming tournaments. ScholarHub
                       hosts a variety of games, so choose the one that aligns
                       with your interests and expertise.
                     </p>
@@ -423,7 +415,7 @@ const About = () => {
                   <section id="prep4tour3">
                     <h2>Join the Tournament Lobby:</h2>
                     <p>
-                      On the day of the tournament, log in to your KMC Esports
+                      On the day of the tournament, log in to your ScholarHub
                       account and navigate to the tournament lobby. Follow the
                       provided instructions to join the lobby or wait for an
                       invitation from the tournament organizers.
@@ -450,11 +442,11 @@ const About = () => {
                     Keep an eye on the tournament updates and results. Stay
                     informed about future tournaments, events, and community
                     activities. Connect with fellow gamers, share experiences,
-                    and embrace the sense of camaraderie within the KMC Esports
+                    and embrace the sense of camaraderie within the ScholarHub
                     community.
                   </p>
                   <p>
-                    Participating in KMC Esports games is a thrilling adventure
+                    Participating in ScholarHub games is a thrilling adventure
                     for gaming enthusiasts. By following these steps, you'll be
                     well-prepared to dive into the world of competitive gaming
                     and enjoy the challenges and camaraderie that come with it.
@@ -472,7 +464,7 @@ const About = () => {
                     <a href="#getStarted">How to get started</a>
                     <ul>
                       <li>
-                        <a href="#getStarted1">Visit KMCesports</a>
+                        <a href="#getStarted1">Visit ScholarHub</a>
                       </li>
                       <li>
                         <a href="#getStarted2">Browse Tournaments</a>
