@@ -123,66 +123,47 @@ const About = () => {
                   </p>
                 </section>
                 <section id="ourMission">
-                  <h2>Key Features of Our Library Website:</h2>
+                  <h2><b>Key Features of Our Library Website:</b></h2>
                   <section id="ourMission1">
-                    <h3>Book Issuing & Returning</h3>
+                    <h3><b>Book Issuing & Returning</b></h3>
                     <p>
-                    Our website offers seamless book issuing and returning services for all registered users. Whether you prefer to browse our physical collection or search our online catalog, you can easily:
-- Search for available books in various subjects.
-- Reserve books online for pick-up at your convenience.
-- Check the status of your borrowed books, due dates, and overdue alerts.
-- Return books with a simple online return process, making it easier to manage your loans.
+                    Our website offers seamless book issuing and returning services for all registered users. Whether you prefer to browse our physical collection or search our online catalog, you can easily:<br/>
+                    - Search for available books in various subjects. <br/>
+                    - Reserve books online for pick-up at your convenience.<br/>
+                    - Check the status of your borrowed books, due dates, and overdue alerts.<br/>
+                    - Return books with a simple online return process, making it easier to manage your loans.<br/>
                     </p>
                   </section>
                   <section id="ourMission2">
-                    <h3>We believe in the following core values:</h3>
+                    <h3><b>Access to Previous Year Question Papers (PYQs)</b></h3>
                     <p>
-                      Fairness: We are committed to providing a level playing
-                      field for all participants. Integrity: We uphold the
-                      highest standards of ethical conduct in all our
-                      operations. Community: We foster a welcoming and inclusive
-                      environment for all gamers. Passion: We share our passion
-                      for esports with our community and strive to create a
-                      positive and engaging experience. Innovation: We are
-                      constantly looking for new ways to improve and expand our
-                      platform and services.
+                    We understand the importance of exam preparation, which is why we provide access to a comprehensive database of <b>previous year question papers</b>. Students can search and download past exam papers from various courses and departments to aid in their studies. This archive is regularly updated, helping students review patterns and better understand the types of questions asked in past exams.
                     </p>
                   </section>
                 </section>
                 <section id="whatWeOffer">
-                  <h2>What We Offer:</h2>
+                  <h2><b>AI features</b></h2>
                   <section id="whatWeOffer1">
                     <h3>
-                      ScholarHub offers a wide range of features and services,
-                      including:
+                    <b>AI-Powered Solutions for PYQs</b>
                     </h3>
                     <p>
-                      Tournaments: We host a variety of tournaments for popular
-                      esports titles, with different formats to cater to casual
-                      and competitive players alike. Leagues: Join a league and
-                      compete against other players for a chance to win prizes
-                      and climb the ranks. Ladders: Challenge yourself and climb
-                      the ladder to prove your skills in individual competition.
-                      Community Features: Connect with other gamers, discuss
-                      strategies, and find teammates in our forums, chat rooms,
-                      and social media channels. Streaming: Watch top players
-                      compete live and learn from their skills and strategies.
-                      Join the ScholarHub Community!
+                    To make studying even more efficient, our website integrates advanced <b>AI features</b> for logged-in users. By utilizing these tools, you can: <br/>
+                    - Get instant solutions and explanations for previous year question papers.<br/>
+                    - Receive personalized recommendations for study materials based on the PYQs.<br/>
+                    - Explore possible questions that may appear in future exams, based on AI analysis of past trends.<br/>
+                    This cutting-edge technology enables students to prepare strategically and gain deeper insights into their coursework.<br/>
                     </p>
                   </section>
                   <section id="whatWeOffer2">
-                    <h3>ScholarHub: Elevate Your Game, Claim Your Glory</h3>
+                    <h3><b>Why Choose Our Library?</b></h3>
                     <p>
-                      At ScholarHub, victory isn't just about bragging rights -
-                      it's about reaping the rewards! Every tournament holds the
-                      potential for a thriving prize pool and a system of
-                      earning points you can use to grab epic loot across our
-                      platform. Gear up, sharpen your skills, and get ready to
-                      dominate!
+                    Our mission is to support the academic success of our university community by providing easy access to valuable resources. We continuously update our services to meet the evolving needs of students and faculty, blending traditional library services with innovative digital tools for an unparalleled learning experience.
+
                     </p>
                   </section>
                 </section>
-                <section id="powerhouse">
+                {/* <section id="powerhouse">
                   <h2>Prize Pool Powerhouse:</h2>
                   <section id="powerhouse1">
                     <h2>Exciting Escalation:</h2>
@@ -212,7 +193,7 @@ const About = () => {
                     </p>
                   </section>
                 </section>
-                <section id="pointsSystem">
+                {/* <section id="pointsSystem">
                   <h2 className="text-2xl " style={{ marginBottom: "1rem" }}>
                     Points System:
                   </h2>
@@ -252,7 +233,7 @@ const About = () => {
                     join the ScholarHub community. Sign up today and start your
                     esports journey with us!
                   </p>
-                </section>
+                </section> */} 
               </div>
               <nav className={styleAbout.sectionNav}>
                 <ol>
@@ -281,7 +262,7 @@ const About = () => {
                       </li>
                     </ul>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="#powerhouse">Prize Pool</a>
                     <ul>
                       <li>
@@ -295,12 +276,12 @@ const About = () => {
                       </li>
                     </ul>
                   </li>
-                  <li>
-                    <a href="#pointsSystem">Points System</a>
+                  {/* <li> */}
+                    {/* <a href="#pointsSystem">Points System</a>
                   </li>
                   <li>
                     <a href="#ScholarHub">ScholarHub</a>
-                  </li>
+                  </li> */} 
                 </ol>
                 <div className={styleAbout.backToTopBtn}>
                   <a href="#about-Us">
