@@ -106,7 +106,7 @@ const About = () => {
             </div>
             <main>
               <div className="darkmode">
-                <section id="aboutKMCesports">
+                <section id="aboutScholarHub">
                   <h1
                     className="text-4xl"
                     style={{
@@ -138,6 +138,8 @@ const About = () => {
                     <h3><b>Access to Previous Year Question Papers (PYQs)</b></h3>
                     <p>
                     We understand the importance of exam preparation, which is why we provide access to a comprehensive database of <b>previous year question papers</b>. Students can search and download past exam papers from various courses and departments to aid in their studies. This archive is regularly updated, helping students review patterns and better understand the types of questions asked in past exams.
+                    <br/>
+                    By reviewing PYQs, students can identify recurring question patterns, better understand examination formats, and gain insight into what areas of the syllabus are frequently tested.
                     </p>
                   </section>
                 </section>
@@ -156,132 +158,64 @@ const About = () => {
                     </p>
                   </section>
                   <section id="whatWeOffer2">
-                    <h3><b>Why Choose Our Library?</b></h3>
+                    <h3><b>Online Assistance and Support</b></h3>
                     <p>
-                    Our mission is to support the academic success of our university community by providing easy access to valuable resources. We continuously update our services to meet the evolving needs of students and faculty, blending traditional library services with innovative digital tools for an unparalleled learning experience.
+                    We know that navigating academic resources can sometimes be challenging. That's why we offer <b>real-time support</b> through: <br/>
+                    - <b>Live Chat with Librarians:</b> Get quick answers to your questions or guidance on finding resources via our live chat feature.<br/>
+                    - <b>Research Consultations:</b> Schedule one-on-one consultations with our librarians to receive in-depth assistance on research projects, paper citations, or utilizing our digital resources effectively.
+                    - <b>FAQs and Tutorials:</b> Browse through a curated list of frequently asked questions or access video tutorials that guide you on how to make the most out of the library’s online tools.
 
                     </p>
                   </section>
                 </section>
-                {/* <section id="powerhouse">
-                  <h2>Prize Pool Powerhouse:</h2>
+                <section id="whyus">
+                  <h2><b>Why Choose Our Library?</b></h2>
                   <section id="powerhouse1">
-                    <h2>Exciting Escalation:</h2>
+                    <h2><b>University Library</b></h2>
                     <p>
-                      he more players join a tournament, the higher the prize
-                      pool climbs! Watch the anticipation surge as the pot
-                      swells, promising lucrative rewards for the top
-                      performers.
+                     
+                    Our mission is to support the academic success of our university community by providing easy access to valuable resources. We continuously update our services to meet the evolving needs of students and faculty, blending traditional library services with innovative digital tools for an unparalleled learning experience.
                     </p>
                   </section>
-                  <section id="powerhouse2">
-                    <h2>Tiered Triumphs:</h2>
-                    <p>
-                      Whether you're a seasoned champion or a rising star,
-                      there's a place for you in the winning circle. Every
-                      tournament features multiple prize tiers, ensuring top
-                      contenders and promising newcomers alike walk away with a
-                      satisfying haul.
-                    </p>
-                  </section>
-                  <section id="powerhouse3">
-                    <h2>Cash & More:</h2>
-                    <p>
-                      From cold, hard cash to sponsor-provided gaming gear and
-                      peripherals, our prize pools offer a mix of rewards that
-                      fuel your competitive spirit and level up your gameplay.
-                    </p>
-                  </section>
-                </section>
-                {/* <section id="pointsSystem">
-                  <h2 className="text-2xl " style={{ marginBottom: "1rem" }}>
-                    Points System:
-                  </h2>
-                  <p>
-                    Level Up Your Loot Every Match Matters: Earn points not just
-                    for tournament victories, but for every competitive match
-                    you play! Consistent performance builds your point total,
-                    opening doors to even more rewards. Redemption Paradise: Our
-                    website boasts a curated store bursting with awesome
-                    goodies. Use your earned points to snag exclusive in-game
-                    items, cosmetics, merchandise, and even tournament entries,
-                    keeping the value and excitement flowing. Exclusive Perks:
-                    As your point level climbs, you unlock exclusive benefits
-                    like priority tournament registration, access to special
-                    events, and even personalized rewards tailored to your
-                    gaming preferences.
-                  </p>
-                </section>
-                <section id="ScholarHub">
-                  <h2 className="text-2xl" style={{ marginBottom: "1rem" }}>
-                    ScholarHub - Where Skill Meets Reward:
-                  </h2>
-                  <p style={{ marginBottom: "2rem" }}>
-                    At ScholarHub, we believe every victory deserves to be
-                    celebrated. Join our passionate community, push your limits,
-                    and reap the rewards of your dedication. With a robust prize
-                    pool system and a point-based redemption paradise, your
-                    triumphs translate into tangible gains, fueling your passion
-                    and propelling you further on your esports journey. So, step
-                    onto the virtual arena, unleash your skills, and claim your
-                    glory! The more you win, the more you earn, and the more
-                    epic your ScholarHub experience becomes. Remember, this is
-                    just a template, feel free to customize it with specific
-                    prize pool figures, point values, and reward examples
-                    relevant to your website and target audience. Whether you're
-                    a seasoned veteran or a curious newcomer, we welcome you to
-                    join the ScholarHub community. Sign up today and start your
-                    esports journey with us!
-                  </p>
-                </section> */} 
+        
+
+                </section>  
               </div>
               <nav className={styleAbout.sectionNav}>
                 <ol>
                   <li>
-                    <a href="#aboutKMCesports">About ScholarHub</a>
+                    <a href="#aboutScholarHub">About ScholarHub</a>
                   </li>
-                  <li>
-                    <a href="#ourMission">Our Mission</a>
+                <li>
+                    <a href="#ourMission">Feature's offered</a>
                     <ul>
                       <li>
-                        <a href="#ourMission1">Platform for gamers</a>
+                        <a href="#ourMission1">Issue & Return</a>
                       </li>
                       <li>
-                        <a href="#ourMission2">Values</a>
+                        <a href="#ourMission2">Previous year Question's</a>
+                      </li>
+                    </ul>
+                  </li>
+                <li>
+                    <a href="#whatWeOffer">AI-Features</a>
+                    <ul>
+                      <li>
+                        <a href="#whatWeOffer1">AI powered Answers</a>
+                      </li>
+                      <li>
+                        <a href="#whatWeOffer2">Assistance & Support</a>
                       </li>
                     </ul>
                   </li>
                   <li>
-                    <a href="#whatWeOffer">What We Offer</a>
+                    <a href="#whyus">Conclusion</a>
                     <ul>
                       <li>
-                        <a href="#whatWeOffer1">Tournaments</a>
-                      </li>
-                      <li>
-                        <a href="#whatWeOffer2">Claim Your Glory</a>
+                        <a href="#powerhouse1"></a>
                       </li>
                     </ul>
-                  </li>
-                  {/* <li>
-                    <a href="#powerhouse">Prize Pool</a>
-                    <ul>
-                      <li>
-                        <a href="#powerhouse1">Exciting Escalation</a>
-                      </li>
-                      <li>
-                        <a href="#powerhouse2">Multiple prize tiers</a>
-                      </li>
-                      <li>
-                        <a href="#powerhouse3">Rewards</a>
-                      </li>
-                    </ul>
-                  </li>
-                  {/* <li> */}
-                    {/* <a href="#pointsSystem">Points System</a>
-                  </li>
-                  <li>
-                    <a href="#ScholarHub">ScholarHub</a>
-                  </li> */} 
+                  </li> 
                 </ol>
                 <div className={styleAbout.backToTopBtn}>
                   <a href="#about-Us">
