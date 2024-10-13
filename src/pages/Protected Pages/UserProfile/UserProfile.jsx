@@ -58,15 +58,11 @@ const UserProfile = () => {
       toast.warn("Enter a Valid Facebook Profile Link", {
         position: "top-center",
       });
-    } else if (
-      user.twitter.length != 0 && user.twitter.length < 4
-      ) {
+    } else if (user.twitter.length != 0 && user.twitter.length < 4) {
       toast.warn("Enter a Valid Twitter Id", {
         position: "top-center",
       });
-    } else if (
-      user.github.length != 0 && user.github.length < 4
-      ) {
+    } else if (user.github.length != 0 && user.github.length < 4) {
       toast.warn("Enter a Valid Github Id", {
         position: "top-center",
       });
@@ -210,7 +206,24 @@ const UserProfile = () => {
           {" "}
           <form className="form">
             <div className="imageUpload">
-              <h2>User Profile</h2>
+              <div>
+                <h2>User Profile</h2>
+                <select
+                  className="border rounded px-2 py-1 w-full"
+                  value={user.avatarURL}
+                  onChange={(e) =>
+                    setUser({ ...user, avatarURL: e.target.value })
+                  }
+                >
+                  <option value={userdata.avatarURL}>Default</option>
+                  <option value="Avatar1">Avatar1</option>
+                  <option value="Avatar2">Avatar2</option>
+                  <option value="Avatar3">Avatar3</option>
+                  <option value="Avatar4">Avatar4</option>
+                  <option value="Avatar5">Avatar5</option>
+                  <option value="Avatar6">Avatar6</option>
+                </select>
+              </div>
               <img
                 style={{
                   position: "relative",
@@ -465,7 +478,11 @@ const UserProfile = () => {
                             {user.firstName} {user.lastName}
                           </h6>
                           <p style={{ fontSize: "1.5rem" }}>
-                          <i className="fa fa-id-card-o" aria-hidden="true"></i>&nbsp;
+                            <i
+                              className="fa fa-id-card-o"
+                              aria-hidden="true"
+                            ></i>
+                            &nbsp;
                             {user.rollNumber}
                           </p>
                           <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
@@ -503,7 +520,10 @@ const UserProfile = () => {
                             </div>
                             <div className="col-sm-6">
                               <p className="m-b-10 f-w-600">FaceBook</p>
-                              <h6 className="text-muted f-w-400" style={{"wordBreak":"break-all"}}>
+                              <h6
+                                className="text-muted f-w-400"
+                                style={{ wordBreak: "break-all" }}
+                              >
                                 URL({user.facebook})
                               </h6>
                             </div>

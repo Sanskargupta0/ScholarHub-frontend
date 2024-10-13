@@ -4,6 +4,7 @@ import Contributor from "./Contributor/Contributor";
 import Button from "./Button/Button";
 import Loader from "./Loader/Loader";
 import NotificationCard from './NotificationCard/NotificationCard';
+import Pagination from './Pagination/Pagination';
 
 export default {
     Navbar,
@@ -11,5 +12,6 @@ export default {
     Contributor,
     Button,
     Loader,
-    NotificationCard
+    NotificationCard,
+    Pagination
 };   
