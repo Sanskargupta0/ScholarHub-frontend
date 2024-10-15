@@ -1,61 +1,63 @@
-/* From Uiverse.io by vinodjangid07 */ 
-.dltbutton {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: rgb(20, 20, 20);
-  border: none;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
-  cursor: pointer;
-  transition-duration: .3s;
-  overflow: hidden;
-  position: relative;
-}
+/* From Uiverse.io by vinodjangid07 */
 
-.svgIcon {
-  width: 12px;
-  transition-duration: .3s;
-}
+.adminpanel {
+  .dltbutton {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: relative;
+  }
 
-.svgIcon path {
-  fill: white;
-}
+  .svgIcon {
+    width: 12px;
+    transition-duration: 0.3s;
+  }
 
-.dltbutton:hover {
-  width: 140px;
-  border-radius: 50px;
-  transition-duration: .3s;
-  background-color: rgb(255, 69, 69);
-  align-items: center;
-}
+  .svgIcon path {
+    fill: white;
+  }
 
-.dltbutton:hover .svgIcon {
-  width: 40px;
-  transition-duration: .3s;
-  transform: translateY(60%);
-}
+  .dltbutton:hover {
+    width: 140px;
+    border-radius: 50px;
+    transition-duration: 0.3s;
+    background-color: rgb(255, 69, 69);
+    align-items: center;
+  }
 
-.dltbutton::before {
-  position: absolute;
-  top: -20px;
-  content: "Delete";
-  color: white;
-  transition-duration: .3s;
-  font-size: 2px;
-}
+  .dltbutton:hover .svgIcon {
+    width: 40px;
+    transition-duration: 0.3s;
+    transform: translateY(60%);
+  }
 
-.dltbutton:hover::before {
-  font-size: 13px;
-  opacity: 1;
-  transform: translateY(20px);
-  transition-duration: .3s;
-}
+  .dltbutton::before {
+    position: absolute;
+    top: -20px;
+    content: "Delete";
+    color: white;
+    transition-duration: 0.3s;
+    font-size: 2px;
+  }
 
-.edit-button {
+  .dltbutton:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    transform: translateY(20px);
+    transition-duration: 0.3s;
+  }
+
+  .edit-button {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -72,12 +74,12 @@
     position: relative;
     text-decoration: none !important;
   }
-  
+
   .edit-svgIcon {
     width: 12px;
     transition-duration: 0.3s;
   }
-  
+
   .edit-svgIcon path {
     fill: white;
   }
@@ -89,7 +91,7 @@
     background-color: rgb(255, 69, 69);
     align-items: center;
   }
-  
+
   .edit-button:hover .edit-svgIcon {
     width: 20px;
     transition-duration: 0.3s;
@@ -100,7 +102,7 @@
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-  
+
   .edit-button::before {
     display: none;
     content: "Edit";
@@ -108,7 +110,7 @@
     transition-duration: 0.3s;
     font-size: 2px;
   }
-  
+
   .edit-button:hover::before {
     display: block;
     padding-right: 10px;
@@ -118,15 +120,15 @@
     transition-duration: 0.3s;
   }
 
-  /* From Uiverse.io by Galahhad */ 
-.switch {
+  /* From Uiverse.io by Galahhad */
+  .switch {
     /* switch */
     --switch-width: 46px;
     --switch-height: 24px;
     --switch-bg: rgb(131, 131, 131);
     --switch-checked-bg: rgb(0, 218, 80);
     --switch-offset: calc((var(--switch-height) - var(--circle-diameter)) / 2);
-    --switch-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
+    --switch-transition: all 0.2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
     /* circle */
     --circle-diameter: 18px;
     --circle-bg: #fff;
@@ -134,7 +136,7 @@
     --circle-checked-shadow: -1px 1px 2px rgba(163, 163, 163, 0.45);
     --circle-transition: var(--switch-transition);
     /* icon */
-    --icon-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
+    --icon-transition: all 0.2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
     --icon-cross-color: var(--switch-bg);
     --icon-cross-size: 6px;
     --icon-checkmark-color: var(--switch-checked-bg);
@@ -144,17 +146,17 @@
     --effect-height: calc(var(--effect-width) / 2 - 1px);
     --effect-bg: var(--circle-bg);
     --effect-border-radius: 1px;
-    --effect-transition: all .2s ease-in-out;
+    --effect-transition: all 0.2s ease-in-out;
   }
-  
+
   .switch input {
     display: none;
   }
-  
+
   .switch {
     display: inline-block;
   }
-  
+
   .switch svg {
     -webkit-transition: var(--icon-transition);
     -o-transition: var(--icon-transition);
@@ -162,7 +164,7 @@
     position: absolute;
     height: auto;
   }
-  
+
   .switch .checkmark {
     width: var(--icon-checkmark-size);
     color: var(--icon-checkmark-color);
@@ -170,12 +172,12 @@
     -ms-transform: scale(0);
     transform: scale(0);
   }
-  
+
   .switch .cross {
     width: var(--icon-cross-size);
     color: var(--icon-cross-color);
   }
-  
+
   .slider {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -195,7 +197,7 @@
     transition: var(--switch-transition);
     cursor: pointer;
   }
-  
+
   .circle {
     width: var(--circle-diameter);
     height: var(--circle-diameter);
@@ -219,7 +221,7 @@
     position: absolute;
     left: var(--switch-offset);
   }
-  
+
   .slider::before {
     content: "";
     position: absolute;
@@ -232,31 +234,75 @@
     -o-transition: var(--effect-transition);
     transition: var(--effect-transition);
   }
-  
+
   /* actions */
-  
-  .switch input:checked+.slider {
+
+  .switch input:checked + .slider {
     background: var(--switch-checked-bg);
   }
-  
-  .switch input:checked+.slider .checkmark {
+
+  .switch input:checked + .slider .checkmark {
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
   }
-  
-  .switch input:checked+.slider .cross {
+
+  .switch input:checked + .slider .cross {
     -webkit-transform: scale(0);
     -ms-transform: scale(0);
     transform: scale(0);
   }
-  
-  .switch input:checked+.slider::before {
-    left: calc(100% - var(--effect-width) - (var(--effect-width) / 2) - var(--switch-offset));
+
+  .switch input:checked + .slider::before {
+    left: calc(
+      100% - var(--effect-width) - (var(--effect-width) / 2) -
+        var(--switch-offset)
+    );
   }
-  
-  .switch input:checked+.slider .circle {
+
+  .switch input:checked + .slider .circle {
     left: calc(100% - var(--circle-diameter) - var(--switch-offset));
     -webkit-box-shadow: var(--circle-checked-shadow);
     box-shadow: var(--circle-checked-shadow);
   }
+
+  /* From Uiverse.io by andrew-demchenk0 */
+  .buttonrpt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 12px;
+    gap: 8px;
+    height: 34px;
+    width: 112px;
+    border: none;
+    background: #ff362b34;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .lable {
+    line-height: 20px;
+    font-size: 17px;
+    color: #ff342b;
+    letter-spacing: 1px;
+  }
+
+  .buttonrpt:hover {
+    background: #ff362b52;
+  }
+
+  .buttonrpt:hover .svg-icon {
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+}

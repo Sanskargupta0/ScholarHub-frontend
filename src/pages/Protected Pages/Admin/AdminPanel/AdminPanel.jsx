@@ -153,13 +153,15 @@ const AdminPanel = () => {
   };
 
   const handleReset = () => {
-    setFilters({ name: "",
+    setFilters({
+      name: "",
       lastName: "",
       email: "",
       rollNumber: "",
       role: "",
       phone: "",
-      returnBook: "", });
+      returnBook: "",
+    });
     setShowReset(false);
     fetchUsersData();
   };
@@ -215,6 +217,37 @@ const AdminPanel = () => {
       } catch (error) {
         console.log(error);
       }
+    }
+  };
+
+  const handleStatusChange = (id) => async (e) => {
+    try {
+      const res = await axios.put(
+        `${config.backendUrl}/admin/updateUser`,
+        { id, updateData: { status: e.target.checked } },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("Token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (res.status === 200) {
+        toast.success(res.data.msg, {
+          position: "top-center",
+        });
+        setUsersData(
+          usersData.map((user) =>
+            user._id === id ? { ...user, status: !e.target.checked } : user
+          )
+        );
+      } else {
+        toast.error(res.data.msg, {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.error("Error updating user status:", error);
     }
   };
 
@@ -308,7 +341,7 @@ const AdminPanel = () => {
   const totalPages = Math.ceil(totalUsers / rowsPerPage);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 adminpanel">
       <h1 className="text-3xl font-semibold mb-6">Admin Panel</h1>
 
       <div className="mb-6 flex justify-between items-center">
@@ -467,11 +500,26 @@ const AdminPanel = () => {
                   <td className="py-3 px-6">
                     <div className="flex items-center space-x-2">
                       {showReset && (
-                        <button
-                          onClick={handleReset}
-                          className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs"
-                        >
-                          <RotateCcw size={16} />
+                        /* From Uiverse.io by andrew-demchenk0 */
+                        <button className="buttonrpt" onClick={handleReset}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            viewBox="0 0 20 20"
+                            height="20"
+                            fill="none"
+                            className="svg-icon"
+                          >
+                            <g
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              stroke="#ff342b"
+                            >
+                              <path d="m3.33337 10.8333c0 3.6819 2.98477 6.6667 6.66663 6.6667 3.682 0 6.6667-2.9848 6.6667-6.6667 0-3.68188-2.9847-6.66664-6.6667-6.66664-1.29938 0-2.51191.37174-3.5371 1.01468"></path>
+                              <path d="m7.69867 1.58163-1.44987 3.28435c-.18587.42104.00478.91303.42582 1.0989l3.28438 1.44986"></path>
+                            </g>
+                          </svg>
+                          <span className="lable">Reset</span>
                         </button>
                       )}
                     </div>
@@ -525,7 +573,10 @@ const AdminPanel = () => {
                         </button>
 
                         <label className="switch">
-                          <input type="checkbox" 
+                          <input
+                            type="checkbox"
+                            checked={user.status}
+                            onChange={handleStatusChange(user._id)}
                           />
                           <div className="slider">
                             <div className="circle">
