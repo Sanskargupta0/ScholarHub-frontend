@@ -106,7 +106,7 @@ const About = () => {
             </div>
             <main>
               <div className="darkmode">
-                <section id="aboutKMCesports">
+                <section id="aboutScholarHub">
                   <h1
                     className="text-4xl"
                     style={{
@@ -116,199 +116,106 @@ const About = () => {
                       fontWeight: "400",
                     }}
                   >
-                    About KMCesports
+                    About ScholarHub
                   </h1>
                   <p>
-                    We are KMCesports, a passionate community dedicated to
-                    fostering a fair, competitive, and thrilling esports
-                    experience for players of all skill levels. Founded by a
-                    team of experienced gamers and esports enthusiasts, we
-                    understand the excitement, dedication, and sportsmanship
-                    that fuels the competitive gaming world.
+                  Welcome to the University Library, your gateway to an extensive world of knowledge, research, and academic support. We are dedicated to fostering a rich learning environment that helps students, faculty, and researchers access the information they need quickly and easily. Our library is designed to serve as an academic hub that combines both traditional resources and innovative digital solutions, ensuring that users can leverage the best tools for their educational journey.
                   </p>
                 </section>
                 <section id="ourMission">
-                  <h2>Our Mission:</h2>
+                  <h2><b>Key Features of Our Library Website:</b></h2>
                   <section id="ourMission1">
-                    <h3>At KMCesports, our mission is to:</h3>
+                    <h3><b>Book Issuing & Returning</b></h3>
                     <p>
-                      Provide a platform for gamers to compete in a safe and
-                      respectful environment. Promote fair play and integrity in
-                      all our tournaments and events. Offer a variety of
-                      tournaments and formats to cater to diverse interests and
-                      skill levels. Create a thriving community where gamers can
-                      connect, share their passion, and learn from each other.
-                      Support the growth and development of the esports
-                      industry.
+                    Our website offers seamless book issuing and returning services for all registered users. Whether you prefer to browse our physical collection or search our online catalog, you can easily:<br/>
+                    - Search for available books in various subjects. <br/>
+                    - Reserve books online for pick-up at your convenience.<br/>
+                    - Check the status of your borrowed books, due dates, and overdue alerts.<br/>
+                    - Return books with a simple online return process, making it easier to manage your loans.<br/>
                     </p>
                   </section>
                   <section id="ourMission2">
-                    <h3>We believe in the following core values:</h3>
+                    <h3><b>Access to Previous Year Question Papers (PYQs)</b></h3>
                     <p>
-                      Fairness: We are committed to providing a level playing
-                      field for all participants. Integrity: We uphold the
-                      highest standards of ethical conduct in all our
-                      operations. Community: We foster a welcoming and inclusive
-                      environment for all gamers. Passion: We share our passion
-                      for esports with our community and strive to create a
-                      positive and engaging experience. Innovation: We are
-                      constantly looking for new ways to improve and expand our
-                      platform and services.
+                    We understand the importance of exam preparation, which is why we provide access to a comprehensive database of <b>previous year question papers</b>. Students can search and download past exam papers from various courses and departments to aid in their studies. This archive is regularly updated, helping students review patterns and better understand the types of questions asked in past exams.
+                    <br/>
+                    By reviewing PYQs, students can identify recurring question patterns, better understand examination formats, and gain insight into what areas of the syllabus are frequently tested.
                     </p>
                   </section>
                 </section>
                 <section id="whatWeOffer">
-                  <h2>What We Offer:</h2>
+                  <h2><b>AI features</b></h2>
                   <section id="whatWeOffer1">
                     <h3>
-                      KMCesports offers a wide range of features and services,
-                      including:
+                    <b>AI-Powered Solutions for PYQs</b>
                     </h3>
                     <p>
-                      Tournaments: We host a variety of tournaments for popular
-                      esports titles, with different formats to cater to casual
-                      and competitive players alike. Leagues: Join a league and
-                      compete against other players for a chance to win prizes
-                      and climb the ranks. Ladders: Challenge yourself and climb
-                      the ladder to prove your skills in individual competition.
-                      Community Features: Connect with other gamers, discuss
-                      strategies, and find teammates in our forums, chat rooms,
-                      and social media channels. Streaming: Watch top players
-                      compete live and learn from their skills and strategies.
-                      Join the KMCesports Community!
+                    To make studying even more efficient, our website integrates advanced <b>AI features</b> for logged-in users. By utilizing these tools, you can: <br/>
+                    - Get instant solutions and explanations for previous year question papers.<br/>
+                    - Receive personalized recommendations for study materials based on the PYQs.<br/>
+                    - Explore possible questions that may appear in future exams, based on AI analysis of past trends.<br/>
+                    This cutting-edge technology enables students to prepare strategically and gain deeper insights into their coursework.<br/>
                     </p>
                   </section>
                   <section id="whatWeOffer2">
-                    <h3>KMCesports: Elevate Your Game, Claim Your Glory</h3>
+                    <h3><b>Online Assistance and Support</b></h3>
                     <p>
-                      At KMCesports, victory isn't just about bragging rights -
-                      it's about reaping the rewards! Every tournament holds the
-                      potential for a thriving prize pool and a system of
-                      earning points you can use to grab epic loot across our
-                      platform. Gear up, sharpen your skills, and get ready to
-                      dominate!
+                    We know that navigating academic resources can sometimes be challenging. That's why we offer <b>real-time support</b> through: <br/>
+                    - <b>Live Chat with Librarians:</b> Get quick answers to your questions or guidance on finding resources via our live chat feature.<br/>
+                    - <b>Research Consultations:</b> Schedule one-on-one consultations with our librarians to receive in-depth assistance on research projects, paper citations, or utilizing our digital resources effectively.
+                    - <b>FAQs and Tutorials:</b> Browse through a curated list of frequently asked questions or access video tutorials that guide you on how to make the most out of the library’s online tools.
+
                     </p>
                   </section>
                 </section>
-                <section id="powerhouse">
-                  <h2>Prize Pool Powerhouse:</h2>
+                <section id="whyus">
+                  <h2><b>Why Choose Our Library?</b></h2>
                   <section id="powerhouse1">
-                    <h2>Exciting Escalation:</h2>
+                    <h2><b>University Library</b></h2>
                     <p>
-                      he more players join a tournament, the higher the prize
-                      pool climbs! Watch the anticipation surge as the pot
-                      swells, promising lucrative rewards for the top
-                      performers.
+                     
+                    Our mission is to support the academic success of our university community by providing easy access to valuable resources. We continuously update our services to meet the evolving needs of students and faculty, blending traditional library services with innovative digital tools for an unparalleled learning experience.
                     </p>
                   </section>
-                  <section id="powerhouse2">
-                    <h2>Tiered Triumphs:</h2>
-                    <p>
-                      Whether you're a seasoned champion or a rising star,
-                      there's a place for you in the winning circle. Every
-                      tournament features multiple prize tiers, ensuring top
-                      contenders and promising newcomers alike walk away with a
-                      satisfying haul.
-                    </p>
-                  </section>
-                  <section id="powerhouse3">
-                    <h2>Cash & More:</h2>
-                    <p>
-                      From cold, hard cash to sponsor-provided gaming gear and
-                      peripherals, our prize pools offer a mix of rewards that
-                      fuel your competitive spirit and level up your gameplay.
-                    </p>
-                  </section>
-                </section>
-                <section id="pointsSystem">
-                  <h2 className="text-2xl " style={{ marginBottom: "1rem" }}>
-                    Points System:
-                  </h2>
-                  <p>
-                    Level Up Your Loot Every Match Matters: Earn points not just
-                    for tournament victories, but for every competitive match
-                    you play! Consistent performance builds your point total,
-                    opening doors to even more rewards. Redemption Paradise: Our
-                    website boasts a curated store bursting with awesome
-                    goodies. Use your earned points to snag exclusive in-game
-                    items, cosmetics, merchandise, and even tournament entries,
-                    keeping the value and excitement flowing. Exclusive Perks:
-                    As your point level climbs, you unlock exclusive benefits
-                    like priority tournament registration, access to special
-                    events, and even personalized rewards tailored to your
-                    gaming preferences.
-                  </p>
-                </section>
-                <section id="KMCesports">
-                  <h2 className="text-2xl" style={{ marginBottom: "1rem" }}>
-                    KMCesports - Where Skill Meets Reward:
-                  </h2>
-                  <p style={{ marginBottom: "2rem" }}>
-                    At KMCesports, we believe every victory deserves to be
-                    celebrated. Join our passionate community, push your limits,
-                    and reap the rewards of your dedication. With a robust prize
-                    pool system and a point-based redemption paradise, your
-                    triumphs translate into tangible gains, fueling your passion
-                    and propelling you further on your esports journey. So, step
-                    onto the virtual arena, unleash your skills, and claim your
-                    glory! The more you win, the more you earn, and the more
-                    epic your KMCesports experience becomes. Remember, this is
-                    just a template, feel free to customize it with specific
-                    prize pool figures, point values, and reward examples
-                    relevant to your website and target audience. Whether you're
-                    a seasoned veteran or a curious newcomer, we welcome you to
-                    join the KMCesports community. Sign up today and start your
-                    esports journey with us!
-                  </p>
-                </section>
+        
+
+                </section>  
               </div>
               <nav className={styleAbout.sectionNav}>
                 <ol>
                   <li>
-                    <a href="#aboutKMCesports">About KMCesports</a>
+                    <a href="#aboutScholarHub">About ScholarHub</a>
                   </li>
-                  <li>
-                    <a href="#ourMission">Our Mission</a>
+                <li>
+                    <a href="#ourMission">Feature's offered</a>
                     <ul>
                       <li>
-                        <a href="#ourMission1">Platform for gamers</a>
+                        <a href="#ourMission1">Issue & Return</a>
                       </li>
                       <li>
-                        <a href="#ourMission2">Values</a>
+                        <a href="#ourMission2">Previous year Question's</a>
+                      </li>
+                    </ul>
+                  </li>
+                <li>
+                    <a href="#whatWeOffer">AI-Features</a>
+                    <ul>
+                      <li>
+                        <a href="#whatWeOffer1">AI powered Answers</a>
+                      </li>
+                      <li>
+                        <a href="#whatWeOffer2">Assistance & Support</a>
                       </li>
                     </ul>
                   </li>
                   <li>
-                    <a href="#whatWeOffer">What We Offer</a>
+                    <a href="#whyus">Conclusion</a>
                     <ul>
                       <li>
-                        <a href="#whatWeOffer1">Tournaments</a>
-                      </li>
-                      <li>
-                        <a href="#whatWeOffer2">Claim Your Glory</a>
+                        <a href="#powerhouse1"></a>
                       </li>
                     </ul>
-                  </li>
-                  <li>
-                    <a href="#powerhouse">Prize Pool</a>
-                    <ul>
-                      <li>
-                        <a href="#powerhouse1">Exciting Escalation</a>
-                      </li>
-                      <li>
-                        <a href="#powerhouse2">Multiple prize tiers</a>
-                      </li>
-                      <li>
-                        <a href="#powerhouse3">Rewards</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#pointsSystem">Points System</a>
-                  </li>
-                  <li>
-                    <a href="#KMCesports">KMCesports</a>
-                  </li>
+                  </li> 
                 </ol>
                 <div className={styleAbout.backToTopBtn}>
                   <a href="#about-Us">
@@ -344,22 +251,22 @@ const About = () => {
                       fontWeight: "400",
                     }}
                   >
-                    How to join KMCesports
+                    How to join ScholarHub
                   </h1>
                   <p>
-                    KMC Esports provides an exciting platform for gamers to
+                    ScholarHub provides an exciting platform for gamers to
                     showcase their skills and compete in various online gaming
                     tournaments. If you're eager to join the action, follow this
-                    step-by-step guide to participate in KMC Esports games and
+                    step-by-step guide to participate in ScholarHub games and
                     elevate your gaming experience.
                   </p>
                 </section>
                 <section id="getStarted">
                   <h2>How to get started:</h2>
                   <section id="getStarted1">
-                    <h3>Visit the KMC Esports Website:</h3>
+                    <h3>Visit the ScholarHub Website:</h3>
                     <p>
-                      Start by visiting the official KMC Esports website.
+                      Start by visiting the official ScholarHub website.
                       Navigate to the registration or sign-up section to create
                       a user account. Fill in the required information
                       accurately and confirm your account through the
@@ -370,7 +277,7 @@ const About = () => {
                     <h3>Explore Available Tournaments:</h3>
                     <p>
                       Once your account is set up, browse through the website to
-                      discover the ongoing and upcoming tournaments. KMC Esports
+                      discover the ongoing and upcoming tournaments. ScholarHub
                       hosts a variety of games, so choose the one that aligns
                       with your interests and expertise.
                     </p>
@@ -423,7 +330,7 @@ const About = () => {
                   <section id="prep4tour3">
                     <h2>Join the Tournament Lobby:</h2>
                     <p>
-                      On the day of the tournament, log in to your KMC Esports
+                      On the day of the tournament, log in to your ScholarHub
                       account and navigate to the tournament lobby. Follow the
                       provided instructions to join the lobby or wait for an
                       invitation from the tournament organizers.
@@ -450,11 +357,11 @@ const About = () => {
                     Keep an eye on the tournament updates and results. Stay
                     informed about future tournaments, events, and community
                     activities. Connect with fellow gamers, share experiences,
-                    and embrace the sense of camaraderie within the KMC Esports
+                    and embrace the sense of camaraderie within the ScholarHub
                     community.
                   </p>
                   <p>
-                    Participating in KMC Esports games is a thrilling adventure
+                    Participating in ScholarHub games is a thrilling adventure
                     for gaming enthusiasts. By following these steps, you'll be
                     well-prepared to dive into the world of competitive gaming
                     and enjoy the challenges and camaraderie that come with it.
@@ -472,7 +379,7 @@ const About = () => {
                     <a href="#getStarted">How to get started</a>
                     <ul>
                       <li>
-                        <a href="#getStarted1">Visit KMCesports</a>
+                        <a href="#getStarted1">Visit ScholarHub</a>
                       </li>
                       <li>
                         <a href="#getStarted2">Browse Tournaments</a>
