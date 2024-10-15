@@ -290,7 +290,7 @@ function Navbar() {
             <span className="fas fa-times"></span>
           </div>
         </div>
-        <form action="#" style={{ marginLeft: "1rem" }}>
+        <form action="#" style={{ marginLeft: "1rem", zIndex: "1" }}>
           <input
             type="search"
             className="search-data"

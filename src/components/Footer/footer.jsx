@@ -152,7 +152,7 @@ function Footer() {
                 placeholder="Your email"
                 name="email"
                 id="subEmail"
-                value={email}
+                value={email||""}
                 onChange={handelEmail}
                 className="input-field"
                 style={{"color": "black"}}

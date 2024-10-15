@@ -81,7 +81,7 @@
         left: 1%;
         border-radius: 10px;
         background-color: #fff;
-        z-index: 2;
+        z-index: 100;
 
         li {
           list-style-type: none;
@@ -304,7 +304,7 @@
     }
     nav .nav-items {
       position: fixed;
-      z-index: 99;
+      z-index:99 ;
       top: 70px;
       width: 100%;
       left: -100%;

@@ -10,7 +10,7 @@
 .content h2.header {
   font-size: 18vw;
   line-height: 1em;
-  z-index: -1;
+  z-index: -5;
   animation: animate 10s ease-in-out infinite;
   background: -webkit-repeating-linear-gradient(
     -60deg,

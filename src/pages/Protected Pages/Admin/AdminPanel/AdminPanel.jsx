@@ -633,7 +633,7 @@ const AdminPanel = () => {
               </tbody>
             </table>
           </div>
-          <div className="mt-4 mb-4 flex justify-between items-center">
+          <div className="mt-4 mb-4 flex justify-between items-center gap-4">
             <div>
               <span className="text-gray-600">
                 Page {currentPage} of {totalPages}
