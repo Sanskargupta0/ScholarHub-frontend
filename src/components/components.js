@@ -5,6 +5,7 @@ import Button from "./Button/Button";
 import Loader from "./Loader/Loader";
 import NotificationCard from './NotificationCard/NotificationCard';
 import Pagination from './Pagination/Pagination';
+import SideBar from './SideBar/SideBar';
 
 export default {
     Navbar,
@@ -13,5 +14,6 @@ export default {
     Button,
     Loader,
     NotificationCard,
-    Pagination
+    Pagination,
+    SideBar
 };   

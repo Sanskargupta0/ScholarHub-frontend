@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../../store/auth";
+import { components } from "../../../../components";
 import config from "../../../../config";
 const ProtectedForAdmin = (props) => {
   const navigate = useNavigate();
@@ -43,7 +44,12 @@ const ProtectedForAdmin = (props) => {
       verifyToken();
     }
   }, []);
-  return <Component />;
+  return (
+    <>
+      <components.SideBar />
+      <Component />
+    </>
+  );
 };
 
 export default ProtectedForAdmin;
