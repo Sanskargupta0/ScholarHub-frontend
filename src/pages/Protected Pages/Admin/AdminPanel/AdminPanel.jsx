@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Edit, Trash2, ToggleLeft, ToggleRight, RotateCcw } from "lucide-react";
 import { components } from "../../../../components";
 import { images } from "../../../../assets";
 import { toast } from "react-toastify";
@@ -233,9 +232,13 @@ const AdminPanel = () => {
         }
       );
       if (res.status === 200) {
-        toast.success(res.data.msg, {
-          position: "top-center",
-        });
+        {
+          !e.target.checked?toast.success("User Activated", {
+            position: "top-center",
+          }):toast.info("User Deactivated", {
+            position: "top-center",
+          });
+        }
         setUsersData(
           usersData.map((user) =>
             user._id === id ? { ...user, status: !e.target.checked } : user
@@ -296,8 +299,7 @@ const AdminPanel = () => {
         }
       );
       if (res.status === 200) {
-        console.log(res);
-        toast.success(res.data.msg, {
+        toast.info(res.data.msg, {
           position: "top-center",
         });
         setUsersData(usersData.filter((user) => user._id !== id));
