@@ -221,9 +221,11 @@ const AdminPanel = () => {
 
   const handleStatusChange = (id) => async (e) => {
     try {
-      const res = await axios.put(
+      const status = e.target.checked;
+
+      const updatePromise = axios.put(
         `${config.backendUrl}/admin/updateUser`,
-        { id, updateData: { status: e.target.checked } },
+        { id, updateData: { status } },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,
@@ -231,17 +233,27 @@ const AdminPanel = () => {
           },
         }
       );
-      if (res.status === 200) {
+
+      toast.promise(
+        updatePromise,
         {
-          !e.target.checked?toast.success("User Activated", {
-            position: "top-center",
-          }):toast.info("User Deactivated", {
-            position: "top-center",
-          });
+          pending: status ? "Activating user..." : "Deactivating user...",
+          success: status ? "User Activated" : "User Deactivated",
+          error: status
+            ? "Failed to activate user"
+            : "Failed to deactivate user",
+        },
+        {
+          position: "top-center",
         }
+      );
+
+      const res = await updatePromise;
+
+      if (res.status === 200) {
         setUsersData(
           usersData.map((user) =>
-            user._id === id ? { ...user, status: !e.target.checked } : user
+            user._id === id ? { ...user, status } : user
           )
         );
       } else {
@@ -251,6 +263,9 @@ const AdminPanel = () => {
       }
     } catch (error) {
       console.error("Error updating user status:", error);
+      toast.error("An error occurred while updating the user status", {
+        position: "top-center",
+      });
     }
   };
 
@@ -286,11 +301,9 @@ const AdminPanel = () => {
 
   const handleDeleteUser = async (id) => {
     try {
-      const res = await axios.post(
+      const deletePromise = axios.post(
         `${config.backendUrl}/admin/deleteUser`,
-        {
-          id,
-        },
+        { id },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,
@@ -298,10 +311,22 @@ const AdminPanel = () => {
           },
         }
       );
-      if (res.status === 200) {
-        toast.info(res.data.msg, {
+
+      toast.promise(
+        deletePromise,
+        {
+          pending: "Deleting user...",
+          success: "User deleted successfully",
+          error: "Failed to delete user",
+        },
+        {
           position: "top-center",
-        });
+        }
+      );
+
+      const res = await deletePromise;
+
+      if (res.status === 200) {
         setUsersData(usersData.filter((user) => user._id !== id));
       } else {
         toast.error(res.data.msg, {
@@ -310,6 +335,9 @@ const AdminPanel = () => {
       }
     } catch (error) {
       console.error("Error deleting user:", error);
+      toast.error("An error occurred while deleting the user", {
+        position: "top-center",
+      });
     }
   };
 
