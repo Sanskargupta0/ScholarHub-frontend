@@ -38,7 +38,12 @@ const AdminPanel = () => {
     github: "",
     rollNumber: "",
   });
-
+  const [isMessageOpen, setIsMessageOpen] = useState(false);
+  const [notification, setNotification] = useState([]);
+  const [newNotification, setNewNotification] = useState({
+    title: "",
+    description: "",
+  });
   useEffect(() => {
     fetchUsersData();
     if (
@@ -418,6 +423,78 @@ const AdminPanel = () => {
     });
   };
 
+  const handleNotification = async (id) => {
+    try {
+      const res = await axios.post(
+        `${config.backendUrl}/admin/getUserNotifications`,
+        {
+          id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("Token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        setNotification(res.data.notifications.reverse());
+        setIsMessageOpen(true);
+        setEditUserData(id);
+      } else {
+        toast.error(res.data.msg, {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const newNotificationData = (e) => {
+    setNewNotification({
+      ...newNotification,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSendNotification = async (id) => {
+    try {
+      const res = await axios.post(
+        `${config.backendUrl}/sendNotification`,
+        {
+          userId: id,
+          title: newNotification.title,
+          description: newNotification.description,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("Token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        toast.success(res.data.msg, {
+          position: "top-center",
+        });
+        setNewNotification({
+          title: "",
+          description: "",
+        });
+        setNotification([res.data.notification, ...notification]);
+      } else {
+        toast.error(res.data.msg, {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const totalPages = Math.ceil(totalUsers / rowsPerPage);
@@ -452,7 +529,7 @@ const AdminPanel = () => {
         </div>
       </div>
 
-      {!isModalOpen ? (
+      {!isModalOpen && !isMessageOpen ? (
         <>
           <div className="overflow-x-auto shadow-lg rounded-lg">
             <table className="min-w-full bg-white">
@@ -745,6 +822,40 @@ const AdminPanel = () => {
                             </div>
                           </div>
                         </label>
+
+                        <div className="group relative">
+                          <button
+                            onClick={() => {
+                              handleNotification(user._id);
+                            }}
+                            type="button"
+                          >
+                            <svg
+                              strokeLinejoin="round"
+                              strokeLinecap="round"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              viewBox="0 0 24 24"
+                              height="44"
+                              width="44"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="w-8 hover:scale-125 duration-200 hover:stroke-blue-500"
+                              fill="none"
+                            >
+                              <path
+                                fill="none"
+                                d="M0 0h24v24H0z"
+                                stroke="none"
+                              ></path>
+                              <path d="M8 9h8"></path>
+                              <path d="M8 13h6"></path>
+                              <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"></path>
+                            </svg>
+                          </button>
+                          <span className="absolute -top-14 left-[50%] -translate-x-[50%] z-20 origin-left scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm font-bold shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
+                            Message<span> </span>
+                          </span>
+                        </div>
                       </div>
                     </td>
                   </tr>
@@ -1022,6 +1133,138 @@ const AdminPanel = () => {
                 />
               </label>
             </form>
+          </div>
+        </div>
+      )}
+
+      {isMessageOpen && (
+        <div className="container mx-auto px-4 py-8">
+          <h1
+            className="text-4xl font-bold text-800 mb-6"
+            style={{ color: "#1DB398" }}
+          >
+            Notifications
+          </h1>
+          <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+            <h2 className="text-2xl font-semibold mb-4 text-black">
+              Add New Notification
+            </h2>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 font-medium mb-2">
+                Title
+              </label>
+              <input
+                type="text"
+                placeholder="Enter title"
+                onChange={newNotificationData}
+                name="title"
+                value={newNotification.title}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 font-medium mb-2">
+                Description
+              </label>
+              <textarea
+                name="description"
+                value={newNotification.description}
+                onChange={newNotificationData}
+                placeholder="Enter description"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md"
+              />
+            </div>
+
+            <div className="flex space-x-4 justify-between">
+              <button
+                className="bg-white text-center w-48 rounded-2xl h-14 relative text-black text-xl font-semibold group"
+                type="button"
+                onClick={() => {
+                  setIsMessageOpen(false);
+                  setNotification([]);
+                  setNewNotification({ title: "", description: "" });
+                  setEditUserData(null);
+                }}
+              >
+                <div className="bg-green-400 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[184px] z-10 duration-500">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1024 1024"
+                    height="25px"
+                    width="25px"
+                  >
+                    <path
+                      d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"
+                      fill="#000000"
+                    ></path>
+                    <path
+                      d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"
+                      fill="#000000"
+                    ></path>
+                  </svg>
+                </div>
+                <p className="translate-x-2">Go Back</p>
+              </button>
+              <div className="flex gap-4">
+                <button
+                  className="buttonrpt mt-3"
+                  onClick={() => {
+                    setNewNotification({ title: "", description: "" });
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    viewBox="0 0 20 20"
+                    height="20"
+                    fill="none"
+                    className="svg-icon"
+                  >
+                    <g strokeWidth="1.5" strokeLinecap="round" stroke="#ff342b">
+                      <path d="m3.33337 10.8333c0 3.6819 2.98477 6.6667 6.66663 6.6667 3.682 0 6.6667-2.9848 6.6667-6.6667 0-3.68188-2.9847-6.66664-6.6667-6.66664-1.29938 0-2.51191.37174-3.5371 1.01468"></path>
+                      <path d="m7.69867 1.58163-1.44987 3.28435c-.18587.42104.00478.91303.42582 1.0989l3.28438 1.44986"></path>
+                    </g>
+                  </svg>
+                  <span className="lable">Reset</span>
+                </button>
+
+                <button
+                  className="sendbtn"
+                  onClick={()=>handleSendNotification(editUserData)}
+                >
+                  <div className="svg-wrapper-1">
+                    <div className="svg-wrapper">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                      >
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path
+                          fill="currentColor"
+                          d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <span>Send</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            {notification.map((item, index) => (
+              <components.NotificationCard
+                key={index}
+                title={item.title}
+                description={item.description}
+                date={item.date}
+              />
+            ))}
           </div>
         </div>
       )}
