@@ -38,6 +38,7 @@ function App() {
     <>
       <BrowserRouter>
         <components.Navbar />
+        <components.ScrollToTop />
         <Routes>
           <Route path="/" element={<pages.Home />} />
           <Route path="/about" element={<pages.About />} />
@@ -45,6 +46,8 @@ function App() {
           <Route path="/login" element={<pages.Login />} />
           <Route path="/OtpVerfication" element={<pages.OtpVerication />} />
           <Route path="/logout" element={<pages.Logout />} />
+          <Route path="/legal" element={<pages.Legal />} />
+
           <Route
             path="/dashboard"
             element={<pages.Protected Component={pages.Dashboard} />}
