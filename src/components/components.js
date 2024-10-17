@@ -6,7 +6,6 @@ import Loader from "./Loader/Loader";
 import NotificationCard from './NotificationCard/NotificationCard';
 import Pagination from './Pagination/Pagination';
 import SideBar from './SideBar/SideBar';
-import ScrollToTop from "./ScrollToTop/ScrollToTop"
 
 export default {
     Navbar,
@@ -16,6 +15,5 @@ export default {
     Loader,
     NotificationCard,
     Pagination,
-    SideBar,
-    ScrollToTop,
+    SideBar
 };   

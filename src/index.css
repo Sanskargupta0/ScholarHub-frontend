@@ -36,8 +36,5 @@ body[data-theme="dark"]{
    .CardTitle, .CardText{
     color: black;
    }
-   .legalDark{
-    color: white;
-   }
   
 }

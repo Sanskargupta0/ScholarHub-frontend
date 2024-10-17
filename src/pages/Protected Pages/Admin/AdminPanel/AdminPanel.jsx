@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Edit, Trash2, ToggleLeft, ToggleRight, RotateCcw } from "lucide-react";
 import { components } from "../../../../components";
 import { images } from "../../../../assets";
 import { toast } from "react-toastify";
@@ -39,7 +38,12 @@ const AdminPanel = () => {
     github: "",
     rollNumber: "",
   });
-
+  const [isMessageOpen, setIsMessageOpen] = useState(false);
+  const [notification, setNotification] = useState([]);
+  const [newNotification, setNewNotification] = useState({
+    title: "",
+    description: "",
+  });
   useEffect(() => {
     fetchUsersData();
     if (
@@ -220,11 +224,28 @@ const AdminPanel = () => {
     }
   };
 
-  const handleStatusChange = (id) => async (e) => {
+  const handleRoleChange = async (id, role) => {
     try {
-      const res = await axios.put(
+      let updateData;
+      if (role === "admin") {
+        updateData = {
+          isAdmin: true,
+          editor: false,
+        };
+      } else if (role === "editor") {
+        updateData = {
+          isAdmin: false,
+          editor: true,
+        };
+      } else {
+        updateData = {
+          isAdmin: false,
+          editor: false,
+        };
+      }
+      const updatePromise = axios.put(
         `${config.backendUrl}/admin/updateUser`,
-        { id, updateData: { status: e.target.checked } },
+        { id, updateData },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,
@@ -232,13 +253,64 @@ const AdminPanel = () => {
           },
         }
       );
-      if (res.status === 200) {
-        toast.success(res.data.msg, {
-          position: "top-center",
-        });
+
+      if ((await updatePromise).status === 200) {
         setUsersData(
           usersData.map((user) =>
-            user._id === id ? { ...user, status: !e.target.checked } : user
+            user._id === id ? { ...user, ...updateData } : user
+          )
+        );
+        toast.success(`User role updated to ${role} successfully`, {
+          position: "top-center",
+        });
+      } else {
+        toast.error("Failed to update user role", {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.error("Error updating user role:", error);
+      toast.error("An error occurred while updating the user role", {
+        position: "top-center",
+      });
+    }
+  };
+
+  const handleStatusChange = (id) => async (e) => {
+    try {
+      const status = e.target.checked;
+
+      const updatePromise = axios.put(
+        `${config.backendUrl}/admin/updateUser`,
+        { id, updateData: { status } },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("Token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      toast.promise(
+        updatePromise,
+        {
+          pending: status ? "Activating user..." : "Deactivating user...",
+          success: status ? "User Activated" : "User Deactivated",
+          error: status
+            ? "Failed to activate user"
+            : "Failed to deactivate user",
+        },
+        {
+          position: "top-center",
+        }
+      );
+
+      const res = await updatePromise;
+
+      if (res.status === 200) {
+        setUsersData(
+          usersData.map((user) =>
+            user._id === id ? { ...user, status } : user
           )
         );
       } else {
@@ -248,6 +320,9 @@ const AdminPanel = () => {
       }
     } catch (error) {
       console.error("Error updating user status:", error);
+      toast.error("An error occurred while updating the user status", {
+        position: "top-center",
+      });
     }
   };
 
@@ -283,11 +358,9 @@ const AdminPanel = () => {
 
   const handleDeleteUser = async (id) => {
     try {
-      const res = await axios.post(
+      const deletePromise = axios.post(
         `${config.backendUrl}/admin/deleteUser`,
-        {
-          id,
-        },
+        { id },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,
@@ -295,11 +368,22 @@ const AdminPanel = () => {
           },
         }
       );
-      if (res.status === 200) {
-        console.log(res);
-        toast.success(res.data.msg, {
+
+      toast.promise(
+        deletePromise,
+        {
+          pending: "Deleting user...",
+          success: "User deleted successfully",
+          error: "Failed to delete user",
+        },
+        {
           position: "top-center",
-        });
+        }
+      );
+
+      const res = await deletePromise;
+
+      if (res.status === 200) {
         setUsersData(usersData.filter((user) => user._id !== id));
       } else {
         toast.error(res.data.msg, {
@@ -308,6 +392,9 @@ const AdminPanel = () => {
       }
     } catch (error) {
       console.error("Error deleting user:", error);
+      toast.error("An error occurred while deleting the user", {
+        position: "top-center",
+      });
     }
   };
 
@@ -334,6 +421,78 @@ const AdminPanel = () => {
       github: user.github,
       rollNumber: user.rollNumber,
     });
+  };
+
+  const handleNotification = async (id) => {
+    try {
+      const res = await axios.post(
+        `${config.backendUrl}/admin/getUserNotifications`,
+        {
+          id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("Token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        setNotification(res.data.notifications.reverse());
+        setIsMessageOpen(true);
+        setEditUserData(id);
+      } else {
+        toast.error(res.data.msg, {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const newNotificationData = (e) => {
+    setNewNotification({
+      ...newNotification,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSendNotification = async (id) => {
+    try {
+      const res = await axios.post(
+        `${config.backendUrl}/sendNotification`,
+        {
+          userId: id,
+          title: newNotification.title,
+          description: newNotification.description,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("Token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        toast.success(res.data.msg, {
+          position: "top-center",
+        });
+        setNewNotification({
+          title: "",
+          description: "",
+        });
+        setNotification([res.data.notification, ...notification]);
+      } else {
+        toast.error(res.data.msg, {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const indexOfLastRow = currentPage * rowsPerPage;
@@ -370,7 +529,7 @@ const AdminPanel = () => {
         </div>
       </div>
 
-      {!isModalOpen ? (
+      {!isModalOpen && !isMessageOpen ? (
         <>
           <div className="overflow-x-auto shadow-lg rounded-lg">
             <table className="min-w-full bg-white">
@@ -458,8 +617,9 @@ const AdminPanel = () => {
                       }
                     >
                       <option value="">All</option>
-                      <option value="true">Admin</option>
-                      <option value="false">User</option>
+                      <option value="admin">Admin</option>
+                      <option value="editor">Editor</option>
+                      <option value="user">User</option>
                     </select>
                   </td>
                   {!hideLastThreeColumns && (
@@ -500,7 +660,6 @@ const AdminPanel = () => {
                   <td className="py-3 px-6">
                     <div className="flex items-center space-x-2">
                       {showReset && (
-                        /* From Uiverse.io by andrew-demchenk0 */
                         <button className="buttonrpt" onClick={handleReset}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -539,8 +698,45 @@ const AdminPanel = () => {
                     <td className="py-3 px-6">{user.email}</td>
                     <td className="py-3 px-6">{user.rollNumber}</td>
                     <td className="py-3 px-6">
-                      {user.isAdmin ? "Admin" : "User"}
+                      <div className="relative">
+                        <select
+                          className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
+                          value={
+                            user.isAdmin
+                              ? "admin"
+                              : user.editor
+                              ? "editor"
+                              : "user"
+                          }
+                          onChange={(e) =>
+                            handleRoleChange(user._id, e.target.value)
+                          }
+                        >
+                          <option
+                            value="user"
+                            disabled={!user.isAdmin && !user.editor}
+                          >
+                            User
+                          </option>
+                          <option value="editor" disabled={user.editor}>
+                            Editor
+                          </option>
+                          <option value="admin" disabled={user.isAdmin}>
+                            Admin
+                          </option>
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                          <svg
+                            className="fill-current h-4 w-4"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M7 10l5 5 5-5H7z" />
+                          </svg>
+                        </div>
+                      </div>
                     </td>
+
                     {!hideLastThreeColumns && (
                       <>
                         <td className="py-3 px-6">{user.phone}</td>
@@ -626,6 +822,40 @@ const AdminPanel = () => {
                             </div>
                           </div>
                         </label>
+
+                        <div className="group relative">
+                          <button
+                            onClick={() => {
+                              handleNotification(user._id);
+                            }}
+                            type="button"
+                          >
+                            <svg
+                              strokeLinejoin="round"
+                              strokeLinecap="round"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              viewBox="0 0 24 24"
+                              height="44"
+                              width="44"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="w-8 hover:scale-125 duration-200 hover:stroke-blue-500"
+                              fill="none"
+                            >
+                              <path
+                                fill="none"
+                                d="M0 0h24v24H0z"
+                                stroke="none"
+                              ></path>
+                              <path d="M8 9h8"></path>
+                              <path d="M8 13h6"></path>
+                              <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"></path>
+                            </svg>
+                          </button>
+                          <span className="absolute -top-14 left-[50%] -translate-x-[50%] z-20 origin-left scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm font-bold shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
+                            Message<span> </span>
+                          </span>
+                        </div>
                       </div>
                     </td>
                   </tr>
@@ -903,6 +1133,138 @@ const AdminPanel = () => {
                 />
               </label>
             </form>
+          </div>
+        </div>
+      )}
+
+      {isMessageOpen && (
+        <div className="container mx-auto px-4 py-8">
+          <h1
+            className="text-4xl font-bold text-800 mb-6"
+            style={{ color: "#1DB398" }}
+          >
+            Notifications
+          </h1>
+          <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+            <h2 className="text-2xl font-semibold mb-4 text-black">
+              Add New Notification
+            </h2>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 font-medium mb-2">
+                Title
+              </label>
+              <input
+                type="text"
+                placeholder="Enter title"
+                onChange={newNotificationData}
+                name="title"
+                value={newNotification.title}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 font-medium mb-2">
+                Description
+              </label>
+              <textarea
+                name="description"
+                value={newNotification.description}
+                onChange={newNotificationData}
+                placeholder="Enter description"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md"
+              />
+            </div>
+
+            <div className="flex space-x-4 justify-between">
+              <button
+                className="bg-white text-center w-48 rounded-2xl h-14 relative text-black text-xl font-semibold group"
+                type="button"
+                onClick={() => {
+                  setIsMessageOpen(false);
+                  setNotification([]);
+                  setNewNotification({ title: "", description: "" });
+                  setEditUserData(null);
+                }}
+              >
+                <div className="bg-green-400 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[184px] z-10 duration-500">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1024 1024"
+                    height="25px"
+                    width="25px"
+                  >
+                    <path
+                      d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"
+                      fill="#000000"
+                    ></path>
+                    <path
+                      d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"
+                      fill="#000000"
+                    ></path>
+                  </svg>
+                </div>
+                <p className="translate-x-2">Go Back</p>
+              </button>
+              <div className="flex gap-4">
+                <button
+                  className="buttonrpt mt-3"
+                  onClick={() => {
+                    setNewNotification({ title: "", description: "" });
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    viewBox="0 0 20 20"
+                    height="20"
+                    fill="none"
+                    className="svg-icon"
+                  >
+                    <g strokeWidth="1.5" strokeLinecap="round" stroke="#ff342b">
+                      <path d="m3.33337 10.8333c0 3.6819 2.98477 6.6667 6.66663 6.6667 3.682 0 6.6667-2.9848 6.6667-6.6667 0-3.68188-2.9847-6.66664-6.6667-6.66664-1.29938 0-2.51191.37174-3.5371 1.01468"></path>
+                      <path d="m7.69867 1.58163-1.44987 3.28435c-.18587.42104.00478.91303.42582 1.0989l3.28438 1.44986"></path>
+                    </g>
+                  </svg>
+                  <span className="lable">Reset</span>
+                </button>
+
+                <button
+                  className="sendbtn"
+                  onClick={()=>handleSendNotification(editUserData)}
+                >
+                  <div className="svg-wrapper-1">
+                    <div className="svg-wrapper">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                      >
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path
+                          fill="currentColor"
+                          d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <span>Send</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            {notification.map((item, index) => (
+              <components.NotificationCard
+                key={index}
+                title={item.title}
+                description={item.description}
+                date={item.date}
+              />
+            ))}
           </div>
         </div>
       )}

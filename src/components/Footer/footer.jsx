@@ -122,9 +122,6 @@ function Footer() {
             <li>
               <Link to="/Contact">Contact Us</Link>
             </li>
-            <li>
-              <Link to="/Legal">Legal</Link>
-            </li>
           </ul>
 
           <ul className="footer-list">
@@ -133,7 +130,7 @@ function Footer() {
             </li>
 
             <li>
-              <Link to="/Login">Sign In/Registration</Link>
+              <Link to="/SignIn">Sign In/Registration</Link>
             </li>
 
             <li>
