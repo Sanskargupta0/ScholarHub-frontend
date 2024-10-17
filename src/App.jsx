@@ -6,6 +6,7 @@ import { adminPages } from "./pages/Protected Pages/Admin";
 import { components } from "./components";
 import { initializeSocket, getSocket } from "./store/socketService";
 import { useAuth } from "./store/auth";
+import { Component } from "lucide-react";
 function App() {
   const { islogedIn, userdata, setNewNotification } = useAuth();
   const [userCount, setUserCount] = useState(0);
@@ -38,13 +39,18 @@ function App() {
     <>
       <BrowserRouter>
         <components.Navbar />
+        <components.ScrollToTop />
         <Routes>
+          
           <Route path="/" element={<pages.Home />} />
           <Route path="/about" element={<pages.About />} />
           <Route path="/contact" element={<pages.Contact />} />
           <Route path="/login" element={<pages.Login />} />
           <Route path="/OtpVerfication" element={<pages.OtpVerication />} />
           <Route path="/logout" element={<pages.Logout />} />
+          <Route path="/Legal" element={<pages.Legal />} />
+          <Route path="/Login" element={<pages.Login />} />
+
           <Route
             path="/dashboard"
             element={<pages.Protected Component={pages.Dashboard} />}
