@@ -219,6 +219,58 @@ const AdminPanel = () => {
     }
   };
 
+  const handleRoleChange = async (id, role) => {
+    try {
+      let updateData;
+      if (role === "admin") {
+        updateData = {
+          isAdmin: true,
+          editor: false,
+        };
+      } else if (role === "editor") {
+        updateData = {
+          isAdmin: false,
+          editor: true,
+        };
+      } else {
+        updateData = {
+          isAdmin: false,
+          editor: false,
+        };
+      }
+      const updatePromise = axios.put(
+        `${config.backendUrl}/admin/updateUser`,
+        { id, updateData },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("Token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if ((await updatePromise).status === 200) {
+        setUsersData(
+          usersData.map((user) =>
+            user._id === id ? { ...user, ...updateData } : user
+          )
+        );
+        toast.success(`User role updated to ${role} successfully`, {
+          position: "top-center",
+        });
+      } else {
+        toast.error("Failed to update user role", {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.error("Error updating user role:", error);
+      toast.error("An error occurred while updating the user role", {
+        position: "top-center",
+      });
+    }
+  };
+
   const handleStatusChange = (id) => async (e) => {
     try {
       const status = e.target.checked;
@@ -488,8 +540,9 @@ const AdminPanel = () => {
                       }
                     >
                       <option value="">All</option>
-                      <option value="true">Admin</option>
-                      <option value="false">User</option>
+                      <option value="admin">Admin</option>
+                      <option value="editor">Editor</option>
+                      <option value="user">User</option>
                     </select>
                   </td>
                   {!hideLastThreeColumns && (
@@ -530,7 +583,6 @@ const AdminPanel = () => {
                   <td className="py-3 px-6">
                     <div className="flex items-center space-x-2">
                       {showReset && (
-                        /* From Uiverse.io by andrew-demchenk0 */
                         <button className="buttonrpt" onClick={handleReset}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -569,8 +621,45 @@ const AdminPanel = () => {
                     <td className="py-3 px-6">{user.email}</td>
                     <td className="py-3 px-6">{user.rollNumber}</td>
                     <td className="py-3 px-6">
-                      {user.isAdmin ? "Admin" : "User"}
+                      <div className="relative">
+                        <select
+                          className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
+                          value={
+                            user.isAdmin
+                              ? "admin"
+                              : user.editor
+                              ? "editor"
+                              : "user"
+                          }
+                          onChange={(e) =>
+                            handleRoleChange(user._id, e.target.value)
+                          }
+                        >
+                          <option
+                            value="user"
+                            disabled={!user.isAdmin && !user.editor}
+                          >
+                            User
+                          </option>
+                          <option value="editor" disabled={user.editor}>
+                            Editor
+                          </option>
+                          <option value="admin" disabled={user.isAdmin}>
+                            Admin
+                          </option>
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                          <svg
+                            className="fill-current h-4 w-4"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M7 10l5 5 5-5H7z" />
+                          </svg>
+                        </div>
+                      </div>
                     </td>
+
                     {!hideLastThreeColumns && (
                       <>
                         <td className="py-3 px-6">{user.phone}</td>
