@@ -3,60 +3,6 @@
   justify-content: center;
   margin: 2rem;
 
-  .containerpass {
-    --color: #a5a5b0;
-    --size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-    font-size: var(--size);
-    user-select: none;
-    fill: var(--color);
-    bottom: 1.5rem;
-    left: 8.5rem;
-  }
-
-  .containerpass .eye {
-    position: absolute;
-    animation: keyframes-fill 0.5s;
-  }
-
-  .containerpass .eye-slash {
-    position: absolute;
-    animation: keyframes-fill 0.5s;
-    display: none;
-  }
-
-  /* ------ On check event ------ */
-  .containerpass input:checked ~ .eye {
-    display: none;
-  }
-
-  .containerpass input:checked ~ .eye-slash {
-    display: block;
-  }
-
-  .containerpass input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-
-  @keyframes keyframes-fill {
-    0% {
-      transform: scale(0);
-      opacity: 0;
-    }
-
-    50% {
-      transform: scale(1.2);
-    }
-  }
-
   .loginContainer {
     .parent {
       width: 100%;
@@ -120,84 +66,84 @@
   }
 
   /* Hide the default checkbox */
-  .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
 
-  .container {
-    display: block;
-    position: relative;
-    cursor: pointer;
-    font-size: 25px;
-    user-select: none;
-  }
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 25px;
+  user-select: none;
+}
 
-  /* Create a custom checkbox */
-  .checkmark {
-    position: relative;
-    top: 0;
-    left: 0;
-    height: 1em;
-    width: 1em;
-    background: black;
-    border-radius: 50px;
-    transition: all 0.7s;
-    --spread: 20px;
-  }
+/* Create a custom checkbox */
+.checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1em;
+  width: 1em;
+  background: black;
+  border-radius: 50px;
+  transition: all 0.7s;
+  --spread: 20px;
+}
 
-  /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
-    background: black;
-    box-shadow: -10px -10px var(--spread) 0px #5b51d8,
-      0 -10px var(--spread) 0px #833ab4, 10px -10px var(--spread) 0px #e1306c,
-      10px 0 var(--spread) 0px #fd1d1d, 10px 10px var(--spread) 0px #f77737,
-      0 10px var(--spread) 0px #fcaf45, -10px 10px var(--spread) 0px #ffdc80;
-  }
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background: black;
+  box-shadow: -10px -10px var(--spread) 0px #5b51d8,
+    0 -10px var(--spread) 0px #833ab4, 10px -10px var(--spread) 0px #e1306c,
+    10px 0 var(--spread) 0px #fd1d1d, 10px 10px var(--spread) 0px #f77737,
+    0 10px var(--spread) 0px #fcaf45, -10px 10px var(--spread) 0px #ffdc80;
+}
 
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
 
-  /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
-    display: block;
-  }
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
 
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
-    left: 0.45em;
-    top: 0.25em;
-    width: 0.25em;
-    height: 0.5em;
-    border: solid #f0f0f0;
-    border-width: 0 0.15em 0.15em 0;
-    transform: rotate(45deg);
-  }
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 0.45em;
+  top: 0.25em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid #f0f0f0;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}
 
-  .rememberMe {
-    display: flex;
-  }
+.rememberMe {
+  display: flex;
+}
 
-  .forget-password {
-    font-size: 14px;
-    font-weight: 700;
-    color: #2879f3;
-    text-decoration: none;
-    padding-top: 0.1rem;
-    margin-left: 3rem;
-  }
+.forget-password {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2879f3;
+  text-decoration: none;
+  padding-top: 0.1rem;
+  margin-left: 3rem;
+}
 
-  .forget-password:hover {
-    text-decoration: underline;
-    color: #bd4a4a;
-  }
+.forget-password:hover {
+  text-decoration: underline;
+  color: #bd4a4a;
+}
 
   .continueWithGoogle {
     justify-content: center;

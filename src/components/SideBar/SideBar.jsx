@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./SideBar.css";
 function SideBar() {
+    
   useEffect(() => {
     const sidebar = document.querySelector(".sidebar");
+    
     const sidebarClose = document.querySelector(".collapse_sidebar");
     const sidebarExpand = document.querySelector(".expand_sidebar");
 
@@ -25,55 +26,72 @@ function SideBar() {
       }
     });
 
+
+
     if (window.innerWidth < 768) {
       sidebar.classList.add("close");
     } else {
       sidebar.classList.remove("close");
     }
     const handleSubmenuToggle = (event) => {
-      const clickedItem = event.target.closest(".submenu_item");
-
-      // If no submenu item was clicked, exit early
-      if (!clickedItem) return;
-
-      // Toggle the clicked submenu
-      clickedItem.classList.toggle("show_submenu");
-
-      // Find any currently active submenu and close it, except the clicked one
-      document
-        .querySelectorAll(".submenu_item.show_submenu")
-        .forEach((item) => {
+        const clickedItem = event.target.closest(".submenu_item");
+    
+        // If no submenu item was clicked, exit early
+        if (!clickedItem) return;
+    
+        // Toggle the clicked submenu
+        clickedItem.classList.toggle("show_submenu");
+    
+        // Find any currently active submenu and close it, except the clicked one
+        document.querySelectorAll(".submenu_item.show_submenu").forEach((item) => {
           if (item !== clickedItem) {
             item.classList.remove("show_submenu");
           }
         });
-    };
-
-    // Attach event listener for event delegation
-    sidebar.addEventListener("click", handleSubmenuToggle);
-
-    // Clean up event listener on component unmount
-    return () => {
-      sidebar.removeEventListener("click", handleSubmenuToggle);
-    };
+      };
+    
+      
+    
+      // Attach event listener for event delegation
+      sidebar.addEventListener("click", handleSubmenuToggle);
+    
+      // Clean up event listener on component unmount
+      return () => {
+        sidebar.removeEventListener("click", handleSubmenuToggle);
+      };
   }, []);
 
+  
   return (
     <div className="adminsidebar">
-      <nav className="sidebar close hoverable">
+      <nav className="sidebar">
         <div className="menu_content">
           <ul className="menu_items">
             <div className="menu_title menu_dahsboard"></div>
 
             <li className="item">
-              <Link  to="/adminpanel">
-                <div href="#" className="nav_link">
-                  <span className="navlink_icon">
-                    <i className="bx bxs-user-account"></i>
-                  </span>
-                  <span className="navlink">Admin Panel</span>
-                </div>
-              </Link>
+              <div href="#" className="nav_link submenu_item ">
+                <span className="navlink_icon">
+                  <i className="bx bx-home-alt"></i>
+                </span>
+                <span className="navlink">Home</span>
+                <i className="bx bx-chevron-right arrow-left"></i>
+              </div>
+
+              <ul className="menu_items submenu">
+                <a href="#" className="nav_link sublink">
+                  Nav Sub Link
+                </a>
+                <a href="#" className="nav_link sublink">
+                  Nav Sub Link
+                </a>
+                <a href="#" className="nav_link sublink">
+                  Nav Sub Link
+                </a>
+                <a href="#" className="nav_link sublink">
+                  Nav Sub Link
+                </a>
+              </ul>
             </li>
 
             <li className="item">

@@ -9,6 +9,7 @@ import Protected from "./Protected/Protected";
 import Dashboard from "./Protected Pages/Dashboard/Dashboard";
 import UserProfile from "./Protected Pages/UserProfile/UserProfile";
 import Notification from "./Protected Pages/Notification/Notification";
+import Legal from "./Legal/Legal";
 
 
 export default {
@@ -22,5 +23,6 @@ export default {
     Protected,
     Dashboard,
     UserProfile,
-    Notification
+    Notification,
+    Legal,
 };
