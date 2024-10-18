@@ -86,9 +86,9 @@ function SideBar() {
               </div>
 
               <ul className="menu_items submenu">
-                <a href="#" className="nav_link sublink">
-                  Nav Sub Link
-                </a>
+                <Link to="/globalNotification" className="nav_link sublink">
+                  Global Notification
+                </Link>
                 <a href="#" className="nav_link sublink">
                   Nav Sub Link
                 </a>
