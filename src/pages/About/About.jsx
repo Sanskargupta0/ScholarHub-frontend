@@ -254,119 +254,87 @@ const About = () => {
                     How to join ScholarHub
                   </h1>
                   <p>
-                    ScholarHub provides an exciting platform for gamers to
-                    showcase their skills and compete in various online gaming
-                    tournaments. If you're eager to join the action, follow this
-                    step-by-step guide to participate in ScholarHub games and
-                    elevate your gaming experience.
+                  <b>Welcome to ScholarHub – Empowering Your Academic Success! <br/></b>
+                  ScholarHub is designed to be your go-to platform for all things academic, providing an array of resources to help you stay on top of your studies, prepare for exams, and engage with valuable learning materials. Whether you’re a student, educator, or lifelong learner, ScholarHub offers a user-friendly experience tailored to meet your educational needs.
                   </p>
                 </section>
                 <section id="getStarted">
-                  <h2>How to get started:</h2>
+                  <h2><b>Getting Started: Explore Without Signing Up</b></h2>
                   <section id="getStarted1">
                     <h3>Visit the ScholarHub Website:</h3>
                     <p>
-                      Start by visiting the official ScholarHub website.
-                      Navigate to the registration or sign-up section to create
-                      a user account. Fill in the required information
-                      accurately and confirm your account through the
-                      verification process.
+                    At ScholarHub, we understand the need for quick access to information, so we've made it easy to <b>explore the platform without logging in</b>. As a guest, you can:
                     </p>
                   </section>
                   <section id="getStarted2">
-                    <h3>Explore Available Tournaments:</h3>
-                    <p>
-                      Once your account is set up, browse through the website to
-                      discover the ongoing and upcoming tournaments. ScholarHub
-                      hosts a variety of games, so choose the one that aligns
-                      with your interests and expertise.
+                    <h3><b>Explore Available Resources:</b></h3>
+                    <p> 
+                    - Browse through previous years' question papers across various subjects and disciplines.<br/>
+                    - View page details and content for research, preparation, or curiosity.
+                    <br />
+                    This means you can start gaining insights and gathering information the moment you land on the site. No barriers, just seamless access to valuable content.
                     </p>
                   </section>
                 </section>
                 <section id="Regt-tour">
-                  <h2>Register to Tournaments:</h2>
+                  <h2><b>Unlock Advanced Features with a Free Account</b></h2>
                   <section id="Regt-tour1">
-                    <h3>Review Tournament Details:</h3>
+                    <p>To enhance your ScholarHub experience, signing up for an account opens the door to a host of advanced features that make your learning experience more engaging and efficient. By creating an account, you can:</p>
                     <p>
-                      Click on the tournament you wish to participate in and
-                      carefully read the details provided. Take note of the
-                      tournament format, rules, registration deadlines, and any
-                      other relevant information. Ensure that you meet the
-                      eligibility criteria for the chosen tournament
+                  <h3><b>Download question papers for offline study, ensuring you have access whenever you need it</b></h3>
+                  - Use <b>AI-powered tools</b> that can help you generate study plans, summarize complex topics, and offer personalized learning recommendations.<br/>
+                  - <b>Issue and return books</b> from our digital or physical libraries, providing the convenience of academic resources at your fingertips.<br/>
+                  - <b>Track late fines and make payments</b> easily through your ScholarHub account, ensuring you stay on top of your responsibilities.<br/>
                     </p>
                   </section>
-                  <section id="Regt-tour2">
-                    <h3>Register for the Tournament:</h3>
+                   <section id="Regt-tour2">
+                    <h3><b>Simple Sign-Up Process: Your Gateway to Learning</b></h3>
                     <p>
-                      After selecting a tournament, proceed to register for it.
-                      This typically involves clicking a "Register" or "Join"
-                      button and confirming your participation. Some tournaments
-                      may have entry fees, so be prepared to make the necessary
-                      payments, if required.
+                    To access these features, simply click the <b>"Join" button</b> at the top of the homepage. ScholarHub offers several ways to sign up, giving you flexibility and ease of use:
                     </p>
                   </section>
                 </section>
                 <section id="prep4tour">
-                  <h2>Prepare your Self for Tournament:</h2>
+                  <h2><b>SignIn/Login</b></h2>
                   <section id="prep4tour1">
-                    <h2>Set Up Your Gaming Gear:</h2>
                     <p>
-                      Prepare your gaming setup, ensuring that your hardware,
-                      software, and internet connection meet the tournament
-                      requirements. Check for any specific rules related to
-                      equipment, as some tournaments may have restrictions on
-                      certain peripherals or settings.
+                    <b>Sign up with your personal details:</b> Provide your first name, last name, email address, and password to create a standard account.
+                    </p>
+                    <p>
+                     <b>Continue with Social Media or GitHub</b>: Prefer a quicker sign-up? You can easily create your account using <b>Google</b>, <b>GitHub</b>, <b>Twitter</b>, or <b>Facebook</b>. Just a few clicks and you’re ready to explore all that ScholarHub has to offer!
                     </p>
                   </section>
                   <section id="prep4tour2">
-                    <h2>Practice and Warm-up:</h2>
+                    <h2><b>Personalized Experience at Your Fingertips</b></h2>
                     <p>
-                      Before the tournament begins, dedicate time to practice
-                      and warm-up sessions. Familiarize yourself with the game
-                      mechanics, maps, and strategies to improve your
-                      performance during the competition.
+                    Once you're logged in, ScholarHub customizes your dashboard based on your academic interests and preferences. You can:<br/>
+                    - Save your favorite resources and materials for easy access.<br/>
+                    - Track your progress on borrowed books, late fines, and upcoming deadlines.<br/>
+                    - Receive recommendations for study guides, papers, and books that align with your academic journey<br/>.
+                    - Stay updated on new resources, question papers, and learning tools tailored to your subjects of interest.<br/>
                     </p>
                   </section>
                   <section id="prep4tour3">
-                    <h2>Join the Tournament Lobby:</h2>
+                    <h2>Why Wait? Join ScholarHub Today!</h2>
                     <p>
-                      On the day of the tournament, log in to your ScholarHub
-                      account and navigate to the tournament lobby. Follow the
-                      provided instructions to join the lobby or wait for an
-                      invitation from the tournament organizers.
+                    Whether you’re preparing for exams, conducting research, or simply expanding your knowledge, ScholarHub makes it easy to access and manage academic resources. Join today and take the next step in your academic journey with all the tools and features you need, right at your fingertips.
                     </p>
                   </section>
-                </section>
+                </section> 
                 <section id="fun-enjoy">
                   <h2 className="text-2xl " style={{ marginBottom: "1rem" }}>
-                    Compete and Enjoy:
+                    <b>Conclusion</b>
                   </h2>
-                  <p>
-                    Once in the tournament lobby, compete against other
-                    participants in your assigned matches. Follow the tournament
-                    schedule, adhere to the rules, and maintain good
-                    sportsmanship throughout. Enjoy the experience and use it as
-                    an opportunity to learn and grow as a gamer.
-                  </p>
+                  
                 </section>
                 <section id="connected">
                   <h2 className="text-2xl" style={{ marginBottom: "1rem" }}>
-                    Stay Informed and Connect:
+                  Empower Your Learning Journey with ScholarHub
                   </h2>
                   <p style={{ marginBottom: "2rem" }}>
-                    Keep an eye on the tournament updates and results. Stay
-                    informed about future tournaments, events, and community
-                    activities. Connect with fellow gamers, share experiences,
-                    and embrace the sense of camaraderie within the ScholarHub
-                    community.
-                  </p>
-                  <p>
-                    Participating in ScholarHub games is a thrilling adventure
-                    for gaming enthusiasts. By following these steps, you'll be
-                    well-prepared to dive into the world of competitive gaming
-                    and enjoy the challenges and camaraderie that come with it.
-                    Good luck, and may you achieve victory in your esports
-                    endeavors!
+                  ScholarHub is more than just a resource hub—it's your academic partner, designed to make learning easier, more efficient, and personalized. Whether you're accessing previous years' question papers without logging in or utilizing our advanced features like AI-powered tools, downloading materials, or managing book loans, ScholarHub provides everything you need to succeed academically.<br/>
+
+                  By creating an account, you unlock a wealth of resources and tools that cater to your unique learning style and academic goals. Don’t miss out on the opportunity to enhance your education—<b>sign up today</b> and start your journey with ScholarHub. With just a few clicks, you’ll have the power of knowledge at your fingertips, ready to help you thrive in your studies!.
                   </p>
                 </section>
               </div>
@@ -382,42 +350,42 @@ const About = () => {
                         <a href="#getStarted1">Visit ScholarHub</a>
                       </li>
                       <li>
-                        <a href="#getStarted2">Browse Tournaments</a>
+                        <a href="#getStarted2">Instant Access</a>
                       </li>
                     </ul>
                   </li>
                   <li>
-                    <a href="#Regt-tour">Register to Tournament</a>
+                    <a href="#Regt-tour">Advanced-Features</a>
                     <ul>
                       <li>
                         <a href="#Regt-tour1" style={{ textWrap: "nowrap" }}>
-                          Review Tournament Details
+                          Options available
                         </a>
                       </li>
                       <li>
-                        <a href="#Regt-tour2">Participate in Tournament</a>
+                        <a href="#Regt-tour2">How to Join</a>
                       </li>
                     </ul>
                   </li>
                   <li>
-                    <a href="#prep4tour">Prep for Tournament</a>
+                    <a href="#prep4tour">Sign-Up/Login</a>
                     <ul>
                       <li>
-                        <a href="#prep4tour1">Set Up Your Gaming Gear</a>
+                        <a href="#prep4tour1">Create Your Account</a>
                       </li>
                       <li>
-                        <a href="#prep4tour2">Practice and Warm-up</a>
+                        <a href="#prep4tour2">Personalize your experience</a>
                       </li>
                       <li>
-                        <a href="#prep4tour3">Enter Tournament Lobby</a>
+                        <a href="#prep4tour3">Start Learning</a>
                       </li>
                     </ul>
                   </li>
                   <li>
-                    <a href="#fun-enjoy">Compete and Enjoy</a>
+                    <a href="#fun-enjoy">Conclusion</a>
                   </li>
                   <li>
-                    <a href="#connected">Stay Informed and Connect</a>
+                    <a href="#connected">Academic Empowerment</a>
                   </li>
                 </ol>
                 <div className={styleAbout.backToTopBtn}>
