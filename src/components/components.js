@@ -7,6 +7,7 @@ import NotificationCard from './NotificationCard/NotificationCard';
 import Pagination from './Pagination/Pagination';
 import SideBar from './SideBar/SideBar';
 import ScrollToTop from "./ScrollToTop/ScrollToTop"
+import Dropdown from './Dropdown/Dropdown';
 
 export default {
     Navbar,
@@ -18,4 +19,5 @@ export default {
     Pagination,
     SideBar,
     ScrollToTop,
+    Dropdown
 };   

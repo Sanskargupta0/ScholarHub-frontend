@@ -72,6 +72,12 @@ function App() {
               <adminPages.ProtectedForAdmin Component={adminPages.GlobalNotification} />
             }
           />
+          <Route
+            path="/course"
+            element={
+              <adminPages.ProtectedForAdmin Component={adminPages.Course} />
+            }
+          />
           <Route path="*" element={<pages.Error />} />
         </Routes>
         <components.Footer />

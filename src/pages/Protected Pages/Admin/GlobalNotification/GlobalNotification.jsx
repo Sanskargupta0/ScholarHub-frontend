@@ -7,7 +7,9 @@ import config from "../../../../config";
 
 function GlobalNotification() {
   const { globalNotification } = useAuth();
-  const [notification, setNotification] = useState(() => [...globalNotification].reverse());
+  const [notification, setNotification] = useState(() =>
+    [...globalNotification].reverse()
+  );
   const [newNotification, setNewNotification] = useState({
     title: "",
     description: "",
@@ -69,8 +71,14 @@ function GlobalNotification() {
         </h2>
 
         <div className="mb-4">
-          <label className="block text-gray-700 font-medium mb-2">Title</label>
+          <label
+            className="block text-gray-700 font-medium mb-2"
+            htmlFor="title"
+          >
+            Title
+          </label>
           <input
+            id="title"
             type="text"
             placeholder="Enter title"
             onChange={newNotificationData}
@@ -81,10 +89,11 @@ function GlobalNotification() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 font-medium mb-2">
+          <label className="block text-gray-700 font-medium mb-2" htmlFor="description">
             Description
           </label>
           <textarea
+          id="description"
             name="description"
             value={newNotification.description}
             onChange={newNotificationData}
@@ -116,10 +125,7 @@ function GlobalNotification() {
             <span className="lable">Reset</span>
           </button>
 
-          <button
-            className="sendbtn"
-            onClick={() => handleSendNotification()}
-          >
+          <button className="sendbtn" onClick={() => handleSendNotification()}>
             <div className="svg-wrapper-1">
               <div className="svg-wrapper">
                 <svg

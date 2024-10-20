@@ -89,9 +89,9 @@ function SideBar() {
                 <Link to="/globalNotification" className="nav_link sublink">
                   Global Notification
                 </Link>
-                <a href="#" className="nav_link sublink">
-                  Nav Sub Link
-                </a>
+                <Link to="/course" className="nav_link sublink">
+                  Courses
+                </Link>
                 <a href="#" className="nav_link sublink">
                   Nav Sub Link
                 </a>
