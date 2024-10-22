@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { components } from "../../../../components";
 import { toast } from "react-toastify";
+import { Edit, Trash } from "lucide-react";
 import axios from "axios";
 import config from "../../../../config";
 import "./Course.css";
@@ -18,18 +19,60 @@ function Course() {
   const [allCoursesData, setAllCoursesData] = useState([]);
   const [showComfirmation, setShowComfirmation] = useState(false);
   const [filters, setFilters] = useState({
-    courseName: "",
+    courseId: "",
     courseCode: "",
   });
   const [course, setCourse] = useState(null);
   const [isDelete, setIsDelete] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+  const [totalCourses, setTotalCourses] = useState(0);
   const handledelete = async () => {
     try {
-      const res = await axios.post(
-        `${config.backendUrl}/deleteCourse`,
+      const res = await fetch(`${config.backendUrl}/deleteCourse`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("Token")}`,
+        },
+        body: JSON.stringify({ id: course._id }),
+      });
+  
+      const data = await res.json();
+  
+      if (res.ok) {
+        toast.success(data.msg, {
+          position: "top-center",
+        });
+        setCoursesData(coursesData.filter((c) => c._id !== course._id));
+        getAllCourses();
+      } else {
+        toast.error(data.msg, {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.log("Error in handledelete", error);
+    }
+  };
+  
+  const handleEdit = async () => {
+    try {
+      const perviousCourse = coursesData.find((c) => c._id === course._id);
+      if (
+        perviousCourse.courseName === course.courseName &&
+        perviousCourse.courseCode === course.courseCode
+      ) {
+        toast.error("No changes made", {
+          position: "top-center",
+        });
+        return;
+      }
+      const res = await axios.put(
+        `${config.backendUrl}/updateCourse`,
         {
           id: course._id,
+          courseName: course.courseName,
+          courseCode: course.courseCode,
         },
         {
           headers: {
@@ -41,40 +84,9 @@ function Course() {
         toast.success(res.data.msg, {
           position: "top-center",
         });
-        setCoursesData(coursesData.filter((c) => c._id !== course._id));
-        getAllCourses();
-      } else {
-        toast.error(res.data.msg, {
-          position: "top-center",
-        });
-      }
-    } catch (error) {
-      console.log("Error in handledelete", error);
-    }
-  };
-  const handleEdit = async () => {
-    try {
-    const perviousCourse = coursesData.find((c) => c._id === course._id);
-    if(perviousCourse.courseName === course.courseName && perviousCourse.courseCode === course.courseCode){
-      toast.error("No changes made", {
-        position: "top-center",
-      });
-      return;
-    }
-      const res = await axios.put( `${config.backendUrl}/updateCourse`, {
-        id: course._id,
-        courseName: course.courseName,
-        courseCode: course.courseCode,
-      }, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("Token")}`,
-        },
-      });
-      if (res.status === 200) {
-        toast.success(res.data.msg, {
-          position: "top-center",
-        });
-        setCoursesData(coursesData.map((c) => (c._id === course._id ? course : c)));
+        setCoursesData(
+          coursesData.map((c) => (c._id === course._id ? course : c))
+        );
         getAllCourses();
         setIsEdit(false);
       } else {
@@ -87,7 +99,6 @@ function Course() {
       console.log("Error in handleEdit", error);
     }
   };
-  const [totalCourses, setTotalCourses] = useState(0);
   const handleRowsPerPageChange = (e) => {
     setRowsPerPage(Number(e.target.value));
     setCurrentPage(1);
@@ -181,8 +192,11 @@ function Course() {
   };
 
   useEffect(() => {
-    getCourses();
     getAllCourses();
+  }, []);
+
+  useEffect(() => {
+    getCourses();
     if (filters.courseName || filters.courseCode) {
       setShowReset(true);
     } else {
@@ -395,27 +409,25 @@ function Course() {
                 <td className="py-3 px-6">
                   <div className="flex items-center space-x-2">
                     <button
-                      className="edit-button"
+                      className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition-all duration-200 flex items-center justify-center"
                       onClick={() => {
                         setIsEdit(true);
                         setCourse(course);
                       }}
                     >
-                      <svg className="edit-svgIcon" viewBox="0 0 512 512">
-                        <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
-                      </svg>
+                      <Edit className="w-5 h-5 mr-2" />
+                      Edit
                     </button>
 
                     <button
-                      className="dltbutton"
+                      className="bg-red-500 text-white p-2 rounded-md hover:bg-red-600 transition-all duration-200 flex items-center justify-center ml-2"
                       onClick={() => {
                         setIsDelete(true);
                         setCourse(course);
                       }}
                     >
-                      <svg viewBox="0 0 448 512" className="svgIcon">
-                        <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path>
-                      </svg>
+                      <Trash className="w-5 h-5 mr-2" />
+                      Delete
                     </button>
                   </div>
                 </td>

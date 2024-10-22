@@ -8,6 +8,7 @@ import Pagination from './Pagination/Pagination';
 import SideBar from './SideBar/SideBar';
 import ScrollToTop from "./ScrollToTop/ScrollToTop"
 import Dropdown from './Dropdown/Dropdown';
+import FileUploadButton from './FileUploadButton/FileUploadButton';
 
 export default {
     Navbar,
@@ -19,5 +20,6 @@ export default {
     Pagination,
     SideBar,
     ScrollToTop,
-    Dropdown
+    Dropdown,
+    FileUploadButton
 };   
