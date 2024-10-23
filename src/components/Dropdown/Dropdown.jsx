@@ -178,7 +178,7 @@ const DropDown = ({
       </div>
 
       {isOpen && (
-        <div className="absolute mt-1 w-full bg-white border rounded-md shadow-lg">
+        <div className="absolute mt-1 w-full bg-white border rounded-md shadow-lg z-10">
           <div className="p-2">
             <input
               ref={searchInputRef}
