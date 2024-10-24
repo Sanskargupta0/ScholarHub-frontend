@@ -164,6 +164,7 @@ function Dashboard() {
                 setCode("");
                 setSemester("");
                 setAddReset(true);
+                setContribute("");
                 setEnable({ courseName: false, semester: false });
                 setWork({ prePaper: false, notes: false, books: false });
                 setNewPreviousPaper({

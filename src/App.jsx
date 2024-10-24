@@ -84,6 +84,12 @@ function App() {
               <adminPages.ProtectedForAdmin Component={adminPages.Semester} />
             }
           />
+          <Route
+            path="/paper"
+            element={
+              <adminPages.ProtectedForAdmin Component={adminPages.Paper} />
+            }
+          />
           <Route path="*" element={<pages.Error />} />
         </Routes>
         <components.Footer />

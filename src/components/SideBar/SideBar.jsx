@@ -95,9 +95,9 @@ function SideBar() {
                 <Link to="/semester" className="nav_link sublink">
                   Semesters
                 </Link>
-                <a href="#" className="nav_link sublink">
-                  Nav Sub Link
-                </a>
+                <Link to="/paper" className="nav_link sublink">
+                  Papers
+                </Link>
               </ul>
             </li>
           </ul>

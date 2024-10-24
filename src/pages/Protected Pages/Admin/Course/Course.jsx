@@ -44,6 +44,7 @@ function Course() {
           position: "top-center",
         });
         setCoursesData(coursesData.filter((c) => c._id !== course._id));
+        setTotalCourses(totalCourses - 1);
         getAllCourses();
       } else {
         toast.error(data.msg, {

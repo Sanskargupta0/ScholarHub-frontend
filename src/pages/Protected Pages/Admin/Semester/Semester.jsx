@@ -243,6 +243,7 @@ function Semester() {
         );
         setIsDelete(false);
         setSemester(null);
+        setTotalSemesters(totalSemesters - 1);
       } else {
         const data = await res.json();
         toast.error(data.msg, {
