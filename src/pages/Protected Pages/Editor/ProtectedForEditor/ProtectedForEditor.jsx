@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAuth } from "../../store/auth";
-import { components } from "../../components";
-import config from "../../config";
-const Protected = (props) => {
+import { useAuth } from "../../../../store/auth";
+import { components } from "../../../../components";
+import config from "../../../../config";
+const ProtectedForEditor = (props) => {
   const navigate = useNavigate();
   const { logoutUser } = useAuth();
   const { Component } = props;
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [editor, setEditor] = useState(false);
+  const [data, setData] = useState({});
   let token = localStorage.getItem("Token");
   const verifyToken = async () => {
     const response = await fetch(`${config.backendUrl + "/tokenValidation"}`, {
@@ -25,15 +24,17 @@ const Protected = (props) => {
       toast.error(`Your Access token is not valid`, {
         position: "top-center",
       });
-    }
-    if (response.status === 200) {
-      if (data.isAdmin === true) {
-        setIsAdmin(true);
-      } else if (data.editor === true) {
-        setEditor(true);
+    } else if (response.status === 200) {
+      setData(data);
+      if (data.isAdmin === false && data.editor === false) {
+        navigate("/dashboard");
+        toast.error(`You are not either Admin nor Editor`, {
+          position: "top-center",
+        });
       }
     }
   };
+
   useEffect(() => {
     if (!token) {
       logoutUser();
@@ -45,8 +46,9 @@ const Protected = (props) => {
       verifyToken();
     }
   }, []);
+
   useEffect(() => {
-    if (editor === true) {
+    if (data.editor === true) {
       const sidebar = document.querySelector(".sidebar");
       const sidebarClose = document.querySelector(".collapse_sidebar");
       const sidebarExpand = document.querySelector(".expand_sidebar");
@@ -101,11 +103,11 @@ const Protected = (props) => {
         sidebar.removeEventListener("click", handleSubmenuToggle);
       };
     }
-  }, [editor]);
+  }, [data]);
   return (
     <>
-      {isAdmin ? <components.SideBar /> : ""}
-      {editor ? (
+      {data.isAdmin ? <components.SideBar /> : ""}
+      {data.editor ? (
         <div className="adminsidebar">
           <nav className="sidebar close hoverable" style={{"height":"20rem"}}>
             <div className="menu_content">
@@ -167,4 +169,4 @@ const Protected = (props) => {
   );
 };
 
-export default Protected;
+export default ProtectedForEditor;

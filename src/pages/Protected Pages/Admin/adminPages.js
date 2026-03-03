@@ -4,6 +4,9 @@ import GlobalNotification from "./GlobalNotification/GlobalNotification";
 import Course from "./Course/Course";
 import Semester from "./Semester/Semester";
 import Paper from "./Paper/Paper";
+import Notes from "./Notes/Notes";
+import Books from "./Books/Books";
+import EBooks from "./EBooks/EBooks";
 
 export default {
     AdminPanel,
@@ -11,5 +14,8 @@ export default {
     GlobalNotification,
     Course,
     Semester,
-    Paper
+    Paper,
+    Notes,
+    Books,
+    EBooks,
 };

@@ -500,8 +500,8 @@ const AdminPanel = () => {
   const totalPages = Math.ceil(totalUsers / rowsPerPage);
 
   return (
-    <div className="container mx-auto p-4 adminpanel">
-      <h1 className="text-3xl font-semibold mb-6">Admin Panel</h1>
+    <div className="container mx-auto p-4 adminpanel dark:bg-gray-900">
+      <h1 className="text-3xl font-semibold mb-6 dark:text-white">Admin Panel</h1>
 
       <div className="mb-6 flex justify-between items-center">
         <button
@@ -512,12 +512,12 @@ const AdminPanel = () => {
         </button>
 
         <div className="flex items-center space-x-2">
-          <label htmlFor="rowsPerPage" className="text-gray-700 font-semibold">
+          <label htmlFor="rowsPerPage" className="text-gray-700 dark:text-gray-300 font-semibold">
             Rows per page:
           </label>
           <select
             id="rowsPerPage"
-            className="border border-gray-300 rounded px-2 py-1"
+            className="border border-gray-300 dark:border-gray-600 rounded px-2 py-1 dark:bg-gray-700 dark:text-white"
             value={rowsPerPage}
             onChange={handleRowsPerPageChange}
           >
@@ -532,7 +532,7 @@ const AdminPanel = () => {
       {!isModalOpen && !isMessageOpen ? (
         <>
           <div className="overflow-x-auto shadow-lg rounded-lg">
-            <table className="min-w-full bg-white">
+            <table className="min-w-full bg-white dark:bg-gray-800">
               <thead>
                 <tr className="bg-gray-800 text-white text-sm uppercase leading-normal">
                   <th className="py-3 px-6 text-left">Name</th>
@@ -553,11 +553,11 @@ const AdminPanel = () => {
                   <th className="py-3 px-6 text-left">Actions</th>
                 </tr>
               </thead>
-              <tbody className="text-gray-700 text-sm">
-                <tr className="border-b border-gray-200 bg-gray-50 hover:bg-gray-100">
+              <tbody className="text-gray-700 dark:text-gray-300 text-sm">
+                <tr className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
                   <td className="py-3 px-6">
                     <input
-                      className="border rounded px-2 py-1 w-full"
+                      className="border rounded px-2 py-1 w-full dark:bg-gray-700 dark:text-white dark:border-gray-600"
                       placeholder="Filter Name"
                       type="text"
                       title="Name should only contain letters"
@@ -570,7 +570,7 @@ const AdminPanel = () => {
                   {!hideLastThreeColumns && (
                     <td className="py-3 px-6">
                       <input
-                        className="border rounded px-2 py-1 w-full"
+                        className="border rounded px-2 py-1 w-full dark:bg-gray-700 dark:text-white dark:border-gray-600"
                         placeholder="Filter Last Name"
                         type="text"
                         title="Last Name should only contain letters"
@@ -583,7 +583,7 @@ const AdminPanel = () => {
                   )}
                   <td className="py-3 px-6">
                     <input
-                      className="border rounded px-2 py-1 w-full"
+                      className="border rounded px-2 py-1 w-full dark:bg-gray-700 dark:text-white dark:border-gray-600"
                       placeholder="Filter Email"
                       type="email"
                       title="Enter a valid email address"
@@ -595,7 +595,7 @@ const AdminPanel = () => {
                   </td>
                   <td className="py-3 px-6">
                     <input
-                      className="border rounded px-2 py-1 w-full"
+                      className="border rounded px-2 py-1 w-full dark:bg-gray-700 dark:text-white dark:border-gray-600"
                       placeholder="Filter Roll Number"
                       type="number"
                       title="Roll Number should only contain Numbers"
@@ -610,7 +610,7 @@ const AdminPanel = () => {
                   </td>
                   <td className="py-3 px-6">
                     <select
-                      className="border rounded px-2 py-1 w-full"
+                      className="border rounded px-2 py-1 w-full dark:bg-gray-700 dark:text-white dark:border-gray-600"
                       value={filters.role}
                       onChange={(e) =>
                         setFilters({ ...filters, role: e.target.value })
@@ -626,7 +626,7 @@ const AdminPanel = () => {
                     <>
                       <td className="py-3 px-6">
                         <input
-                          className="border rounded px-2 py-1 w-full"
+                          className="border rounded px-2 py-1 w-full dark:bg-gray-700 dark:text-white dark:border-gray-600"
                           placeholder="Filter Phone No."
                           type="number"
                           title="Phone Number should only contain Numbers"
@@ -641,7 +641,7 @@ const AdminPanel = () => {
                       </td>
                       <td className="py-3 px-6">
                         <select
-                          className="border rounded px-2 py-1 w-full"
+                          className="border rounded px-2 py-1 w-full dark:bg-gray-700 dark:text-white dark:border-gray-600"
                           value={filters.returnBook}
                           onChange={(e) =>
                             setFilters({
@@ -688,8 +688,8 @@ const AdminPanel = () => {
                   <tr
                     key={user._id}
                     className={`${
-                      index % 2 === 0 ? "bg-gray-200" : "bg-white"
-                    } border-b border-gray-200 hover:bg-gray-100`}
+                      index % 2 === 0 ? "bg-gray-200 dark:bg-gray-700" : "bg-white dark:bg-gray-800"
+                    } border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600`}
                   >
                     <td className="py-3 px-6">{user.firstName}</td>
                     {!hideLastThreeColumns && (
@@ -700,7 +700,7 @@ const AdminPanel = () => {
                     <td className="py-3 px-6">
                       <div className="relative">
                         <select
-                          className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
+                          className="block appearance-none w-full bg-white dark:bg-gray-700 dark:text-white border border-gray-300 dark:border-gray-600 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
                           value={
                             user.isAdmin
                               ? "admin"
@@ -725,7 +725,7 @@ const AdminPanel = () => {
                             Admin
                           </option>
                         </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
                           <svg
                             className="fill-current h-4 w-4"
                             xmlns="http://www.w3.org/2000/svg"
@@ -865,12 +865,12 @@ const AdminPanel = () => {
           </div>
           <div className="mt-4 mb-4 flex justify-between items-center gap-4">
             <div>
-              <span className="text-gray-600">
+              <span className="text-gray-600 dark:text-gray-300">
                 Page {currentPage} of {totalPages}
               </span>
             </div>
             <div>
-              <span className="text-gray-600">
+              <span className="text-gray-600 dark:text-gray-300">
                 Showing {indexOfFirstRow + 1} to{" "}
                 {Math.min(indexOfLastRow, totalUsers)} of {totalUsers} entries
               </span>
@@ -887,8 +887,8 @@ const AdminPanel = () => {
       )}
 
       {isModalOpen && (
-        <div className="flex items-center justify-center">
-          <div className="editform">
+        <div className="flex items-center justify-center dark:bg-gray-900">
+          <div className="editform dark:bg-gray-800">
             {" "}
             <form className="form">
               <div className="imageUpload">
@@ -1138,20 +1138,20 @@ const AdminPanel = () => {
       )}
 
       {isMessageOpen && (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 dark:bg-gray-900">
           <h1
-            className="text-4xl font-bold text-800 mb-6"
+            className="text-4xl font-bold text-800 mb-6 dark:text-white"
             style={{ color: "#1DB398" }}
           >
             Notifications
           </h1>
-          <div className="bg-white shadow-md rounded-lg p-6 mb-6">
-            <h2 className="text-2xl font-semibold mb-4 text-black">
+          <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-6">
+            <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">
               Add New Notification
             </h2>
 
             <div className="mb-4">
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
                 Title
               </label>
               <input
@@ -1160,12 +1160,12 @@ const AdminPanel = () => {
                 onChange={newNotificationData}
                 name="title"
                 value={newNotification.title}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
               />
             </div>
 
             <div className="mb-4">
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
                 Description
               </label>
               <textarea
@@ -1173,7 +1173,7 @@ const AdminPanel = () => {
                 value={newNotification.description}
                 onChange={newNotificationData}
                 placeholder="Enter description"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
               />
             </div>
 
@@ -1232,7 +1232,7 @@ const AdminPanel = () => {
 
                 <button
                   className="sendbtn"
-                  onClick={()=>handleSendNotification(editUserData)}
+                  onClick={() => handleSendNotification(editUserData)}
                 >
                   <div className="svg-wrapper-1">
                     <div className="svg-wrapper">
@@ -1270,13 +1270,13 @@ const AdminPanel = () => {
       )}
 
       {isDeleteOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-4 rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Delete User</h2>
-            <p className="text-gray-700 mb-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+            <h2 className="text-xl font-semibold mb-4 dark:text-white">Delete User</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
               Are you sure you want to delete this user?
             </p>
-            <p className="mb-4">
+            <p className="mb-4 dark:text-gray-300">
               <strong>Name:</strong>{" "}
               {deleteUserData.firstName + " " + deleteUserData.lastName}
               <br />

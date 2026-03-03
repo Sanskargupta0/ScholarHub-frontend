@@ -142,7 +142,7 @@ const DropDown = ({
       tabIndex={0}
     >
       <div
-        className="border rounded-md p-2 bg-white cursor-pointer flex justify-between items-center"
+        className="border rounded-md p-2 bg-white dark:bg-gray-700 dark:border-gray-600 cursor-pointer flex justify-between items-center"
         onClick={() => {
           setIsOpen(true);
           setTimeout(() => {
@@ -159,9 +159,9 @@ const DropDown = ({
           }, 0);
         }}
       >
-        <span className="text-gray-700">{selectedOption || placeholder}</span>
+        <span className="text-gray-700 dark:text-white">{selectedOption || placeholder}</span>
         <svg
-          className={`w-4 h-4 transition-transform ${
+          className={`w-4 h-4 transition-transform dark:text-white ${
             isOpen ? "rotate-180" : ""
           }`}
           fill="none"
@@ -178,12 +178,12 @@ const DropDown = ({
       </div>
 
       {isOpen && (
-        <div className="absolute mt-1 w-full bg-white border rounded-md shadow-lg z-10">
+        <div className="absolute mt-1 w-full bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-md shadow-lg z-10">
           <div className="p-2">
             <input
               ref={searchInputRef}
               type="text"
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400"
               placeholder="Search..."
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
@@ -195,10 +195,12 @@ const DropDown = ({
               <li
                 key={index}
                 ref={(el) => (optionsRef.current[index] = el)}
-                className={`px-4 py-2 cursor-pointer ${
-                  selectedOption === option ? "bg-gray-50" : ""
+                className={`px-4 py-2 cursor-pointer dark:text-white ${
+                  selectedOption === option ? "bg-gray-50 dark:bg-gray-700" : ""
                 } ${
-                  focusedIndex === index ? "bg-blue-100" : "hover:bg-gray-100"
+                  focusedIndex === index 
+                    ? "bg-blue-100 dark:bg-blue-900" 
+                    : "hover:bg-gray-100 dark:hover:bg-gray-700"
                 }`}
                 onClick={() => handleOptionClick(option)}
                 onMouseEnter={() => setFocusedIndex(index)}
@@ -207,7 +209,7 @@ const DropDown = ({
               </li>
             ))}
             {filteredOptions.length === 0 && (
-              <li className="px-4 py-2 text-gray-500">No results found</li>
+              <li className="px-4 py-2 text-gray-500 dark:text-gray-400">No results found</li>
             )}
           </ul>
         </div>

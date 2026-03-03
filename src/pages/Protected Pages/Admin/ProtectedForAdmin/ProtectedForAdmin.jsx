@@ -20,7 +20,6 @@ const ProtectedForAdmin = (props) => {
     if (response.status !== 200) {
       navigate("/login");
       logoutUser();
-      localStorage.removeItem("Token");
       toast.error(`Your Access token is not valid`, {
         position: "top-center",
       });

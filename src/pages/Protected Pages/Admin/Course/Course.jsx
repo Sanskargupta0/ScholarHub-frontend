@@ -210,17 +210,17 @@ function Course() {
   const totalPages = Math.ceil(totalCourses / rowsPerPage);
 
   return (
-    <div className="container mx-auto p-4 adminpanel">
+    <div className="container mx-auto p-4 adminpanel dark:bg-gray-800 dark:text-white">
       <div className="mb-6 mt-6 flex justify-between">
-        <h1 className="text-3xl font-semibold">Course Panel</h1>
+        <h1 className="text-3xl font-semibold dark:text-white">Course Panel</h1>
 
         <div className="flex items-center space-x-2">
-          <label htmlFor="rowsPerPage" className="text-gray-700 font-semibold">
+          <label htmlFor="rowsPerPage" className="text-gray-700 font-semibold dark:text-gray-300">
             Rows per page:
           </label>
           <select
             id="rowsPerPage"
-            className="border border-gray-300 rounded px-2 py-1"
+            className="border border-gray-300 rounded px-2 py-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             value={rowsPerPage}
             onChange={handleRowsPerPageChange}
           >
@@ -232,14 +232,14 @@ function Course() {
         </div>
       </div>
 
-      <div className="bg-white shadow-md rounded-lg p-6 mb-6">
-        <h2 className="text-2xl font-semibold mb-4 text-black">
+      <div className="bg-white shadow-md rounded-lg p-6 mb-6 dark:bg-gray-700">
+        <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">
           Add New Course
         </h2>
 
         <div className="mb-4">
           <label
-            className="block text-gray-700 font-medium mb-4"
+            className="block text-gray-700 font-medium mb-4 dark:text-gray-300"
             htmlFor="courseName"
           >
             Course Title
@@ -251,13 +251,13 @@ function Course() {
             onChange={newCourseData}
             name="courseName"
             value={newCourse.courseName}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white"
           />
         </div>
 
         <div className="mb-4">
           <label
-            className="block text-gray-700 font-medium mb-4"
+            className="block text-gray-700 font-medium mb-4 dark:text-gray-300"
             htmlFor="courseCode"
           >
             Course Code
@@ -269,13 +269,13 @@ function Course() {
             onChange={newCourseData}
             name="courseCode"
             value={newCourse.courseCode}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white"
           />
         </div>
 
         <div className="flex space-x-4 justify-between">
           <button
-            className="buttonrpt mt-3"
+            className="buttonrpt mt-3 dark:bg-gray-600 dark:hover:bg-gray-500"
             onClick={() => {
               setNewCourse({ courseName: "", courseCode: "" });
             }}
@@ -298,7 +298,7 @@ function Course() {
 
           <button
             type="button"
-            className="buttonadd"
+            className="buttonadd dark:bg-emerald-600 dark:hover:bg-emerald-700"
             onClick={() => {
               if (newCourse.courseCode && newCourse.courseName) {
                 setShowComfirmation(true);
@@ -331,7 +331,7 @@ function Course() {
         </div>
       </div>
       <div className="overflow-x-auto shadow-lg rounded-lg">
-        <table className="min-w-full bg-white">
+        <table className="min-w-full bg-white dark:bg-gray-700">
           <thead>
             <tr className="bg-gray-800 text-white text-sm uppercase leading-normal">
               <th className="py-3 px-6 text-left">Course Name</th>
@@ -339,8 +339,8 @@ function Course() {
               <th className="py-3 px-6 text-left">Actions</th>
             </tr>
           </thead>
-          <tbody className="text-gray-700 text-sm">
-            <tr className="border-b border-gray-200 bg-gray-50 hover:bg-gray-100">
+          <tbody className="text-gray-700 text-sm dark:text-gray-200">
+            <tr className="border-b border-gray-200 bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-900">
               <td className="py-3 px-6">
                 <components.Dropdown
                   placeholder="Course Name"
@@ -365,7 +365,7 @@ function Course() {
                 <div className="flex items-center space-x-2">
                   {showReset && (
                     <button
-                      className="buttonrpt"
+                      className="buttonrpt dark:bg-gray-600 dark:hover:bg-gray-500"
                       onClick={() => {
                         setFilters({
                           courseName: "",
@@ -402,8 +402,8 @@ function Course() {
               <tr
                 key={course._id}
                 className={`${
-                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
-                } border-b border-gray-200 hover:bg-gray-100`}
+                  index % 2 === 0 ? "bg-gray-200 dark:bg-gray-800" : "bg-white dark:bg-gray-700"
+                } border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600`}
               >
                 <td className="py-3 px-6">{course.courseName}</td>
                 <td className="py-3 px-6">{course.courseCode}</td>
@@ -439,12 +439,12 @@ function Course() {
       </div>
       <div className="mt-4 mb-4 flex justify-between items-center gap-4">
         <div>
-          <span className="text-gray-600">
+          <span className="text-gray-600 dark:text-gray-300">
             Page {currentPage} of {totalPages}
           </span>
         </div>
         <div>
-          <span className="text-gray-600">
+          <span className="text-gray-600 dark:text-gray-300">
             Showing {indexOfFirstRow + 1} to{" "}
             {Math.min(indexOfLastRow, totalCourses)} of {totalCourses} entries
           </span>
@@ -458,12 +458,12 @@ function Course() {
 
       {showComfirmation ? (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-out">
-          <div className="bg-white p-6 rounded-lg shadow-xl w-96 transform transition-transform duration-300 ease-out scale-105">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">
+          <div className="bg-white p-6 rounded-lg shadow-xl w-96 transform transition-transform duration-300 ease-out scale-105 dark:bg-gray-800">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
               Confirm Course Addition
             </h2>
 
-            <div className="mb-6 text-gray-600">
+            <div className="mb-6 text-gray-600 dark:text-gray-300">
               <p className="text-lg mb-2">
                 <span className="font-medium">Course Name:</span>{" "}
                 {newCourse.courseName || "Not provided"}
@@ -500,18 +500,18 @@ function Course() {
 
       {isEdit ? (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-out">
-          <div className="bg-white p-6 rounded-lg shadow-xl w-96 transform transition-transform duration-300 ease-out scale-105">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">
+          <div className="bg-white p-6 rounded-lg shadow-xl w-96 transform transition-transform duration-300 ease-out scale-105 dark:bg-gray-800">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
               Edit Course
             </h2>
 
-            <div className="mb-6 text-gray-600">
+            <div className="mb-6 text-gray-600 dark:text-gray-300">
               <p className="text-lg mb-2">
                 <span className="font-medium">Course Name:</span>{" "}
                 <input
                   type="text"
                   value={course.courseName}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                   onChange={(e) => {
                     setCourse({
                       ...course,
@@ -525,7 +525,7 @@ function Course() {
                 <input
                   type="text"
                   value={course.courseCode}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                   onChange={(e) => {
                     setCourse({
                       ...course,
@@ -565,12 +565,12 @@ function Course() {
 
       {isDelete ? (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-out">
-          <div className="bg-white p-6 rounded-lg shadow-xl w-96 transform transition-transform duration-300 ease-out scale-105">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">
+          <div className="bg-white p-6 rounded-lg shadow-xl w-96 transform transition-transform duration-300 ease-out scale-105 dark:bg-gray-800">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
               Confirm Course Deletion
             </h2>
 
-            <div className="mb-6 text-gray-600">
+            <div className="mb-6 text-gray-600 dark:text-gray-300">
               <p className="text-lg mb-2">
                 <span className="font-medium">Course Name:</span>{" "}
                 {course.courseName || "Not provided"}

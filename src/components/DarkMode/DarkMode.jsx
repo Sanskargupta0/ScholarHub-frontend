@@ -5,10 +5,12 @@ function DarkMode() {
 
   const setDarkmode = () => {
     document.querySelector("body").setAttribute("data-theme", "dark");
+    document.documentElement.classList.add("dark");
     localStorage.setItem("selectedTheme", "dark");
   };
   const setLightmode = () => {
     document.querySelector("body").setAttribute("data-theme", "light");
+    document.documentElement.classList.remove("dark");
     localStorage.setItem("selectedTheme", "light");
   };
 

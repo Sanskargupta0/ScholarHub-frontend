@@ -24,10 +24,13 @@ export const Authprovider = ({ children }) => {
 
   const [newNotification, setNewNotification] = useState({});
   const [globalNotification, setGlobalNotification] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const [rerun, setRerun] = useState(true);
   // checking if user is logged in or not
   const islogedIn = !!token.token;
+  
   // logout user
   const logoutUser = () => {
     setToken({ token: null });
@@ -46,10 +49,16 @@ export const Authprovider = ({ children }) => {
       rollNumber: null,
       notifications: null,
     });
+    setGlobalNotification([]);
+    setNewNotification({});
     localStorage.removeItem("Token");
   };
+  
   // Get user data from backend using token
   const getUserData = async (token) => {
+    setLoading(true);
+    setError(null);
+    
     try {
       const res = await fetch(`${config.backendUrl}/userData`, {
         method: "GET",
@@ -58,29 +67,35 @@ export const Authprovider = ({ children }) => {
         },
       });
       const data = await res.json();
+      
       if (!res.ok) {
-        console.log(data);
+        console.error("Failed to fetch user data:", data);
+        setError("Failed to load user data");
       } else {
         setUserData({
-          id: data._id,
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          phone: data.phone,
-          avatarURL: data.avatarURL,
-          bookmarks: data.bookmarks,
-          facebook: data.facebook,
-          instagram: data.instagram,
-          twitter: data.twitter,
-          github: data.github,
-          rollNumber: data.rollNumber,
-          notifications: data.notifications,
+          id: data._id || "",
+          firstName: data.firstName || "",
+          lastName: data.lastName || "",
+          email: data.email || "",
+          phone: data.phone || "",
+          avatarURL: data.avatarURL || "",
+          bookmarks: Array.isArray(data.bookmarks) ? data.bookmarks : [],
+          facebook: data.facebook || "",
+          instagram: data.instagram || "",
+          twitter: data.twitter || "",
+          github: data.github || "",
+          rollNumber: data.rollNumber || "",
+          notifications: Array.isArray(data.notifications) ? data.notifications : [],
         });
       }
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching user data:", error);
+      setError("Network error while loading user data");
+    } finally {
+      setLoading(false);
     }
   };
+  
   // get Global Notification
   const getGlobalNotification = async (token) => {
     try {
@@ -91,13 +106,15 @@ export const Authprovider = ({ children }) => {
         },
       });
       const data = await res.json();
+      
       if (!res.ok) {
-        console.log(data);
+        console.error("Failed to fetch global notifications:", data);
       } else {
-        setGlobalNotification(data);
+        // Ensure we're working with an array and set it
+        setGlobalNotification(Array.isArray(data) ? data : []);
       }
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching global notifications:", error);
     }
   };
 
@@ -106,12 +123,15 @@ export const Authprovider = ({ children }) => {
     localStorage.setItem("Token", token);
     setToken({ token: token });
   };
+  
   const setRerunData = () => {
     setRerun(!rerun);
   };
 
+  // Load user data and notifications when token changes or rerun is triggered
   useEffect(() => {
-    if (token.token != null) {
+    if (token.token) {
+      // Load user data and notifications in parallel
       getUserData(token.token);
       getGlobalNotification(token.token);
     }
@@ -124,11 +144,14 @@ export const Authprovider = ({ children }) => {
         logoutUser,
         islogedIn,
         userdata,
+        setUserData,
         setRerunData,
         newNotification,
         setNewNotification,
         globalNotification,
         setGlobalNotification,
+        loading,
+        error,
       }}
     >
       {children}

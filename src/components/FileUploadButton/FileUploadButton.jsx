@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import { toast } from "react-toastify";
 
 const FileUploadButton = ({
@@ -50,12 +49,15 @@ const FileUploadButton = ({
   }, [reset]);
 
   return (
-    <StyledWrapper>
-      
-      <label htmlFor="fileInput">
-        <button type="button" onClick={()=>{
-          document.getElementById("fileInput").click();}
-        }>
+    <div className="file-upload-wrapper">
+      <label htmlFor="fileInput" className="cursor-pointer">
+        <button 
+          type="button" 
+          className="flex items-center px-6 py-3 bg-blue-500 text-white text-xs font-bold uppercase rounded-lg gap-3 shadow-md hover:shadow-lg transition-all duration-600 ease-in-out hover:bg-blue-600 focus:opacity-85 active:opacity-85 focus:shadow-none active:shadow-none dark:bg-blue-600 dark:hover:bg-blue-700"
+          onClick={() => {
+            document.getElementById("fileInput").click();
+          }}
+        >
           <svg
             aria-hidden="true"
             stroke="currentColor"
@@ -63,6 +65,7 @@ const FileUploadButton = ({
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="w-5 h-5"
           >
             <path
               strokeWidth={2}
@@ -85,66 +88,19 @@ const FileUploadButton = ({
       <input
         type="file"
         accept="application/pdf"
-        style={{ display: "none" }}
+        className="hidden"
         id="fileInput"
         onChange={handleFileChange}
       />
 
       {/* Show selected file name */}
       {file && (
-        <div className="mt-2 text-black">
+        <div className="mt-2 text-black dark:text-white">
           <strong>Selected File:</strong> {file.name}
         </div>
       )}
-    </StyledWrapper>
+    </div>
   );
 };
-
-const StyledWrapper = styled.div`
-  button {
-    border: none;
-    display: flex;
-    padding: 0.75rem 1.5rem;
-    background-color: #488aec;
-    color: #ffffff;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    font-weight: 700;
-    text-align: center;
-    cursor: pointer;
-    text-transform: uppercase;
-    vertical-align: middle;
-    align-items: center;
-    border-radius: 0.5rem;
-    user-select: none;
-    gap: 0.75rem;
-    box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
-    transition: all 0.6s ease;
-  }
-
-  button:hover {
-    box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
-  }
-
-  button:focus,
-  button:active {
-    opacity: 0.85;
-    box-shadow: none;
-  }
-
-  button svg {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-
-  label {
-    display: flex;
-    align-items: center;
-  }
-
-  div {
-    margin-top: 0.5rem;
-  }
-`;
 
 export default FileUploadButton;

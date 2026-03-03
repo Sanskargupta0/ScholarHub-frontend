@@ -98,6 +98,15 @@ function SideBar() {
                 <Link to="/paper" className="nav_link sublink">
                   Papers
                 </Link>
+                <Link to="/notes" className="nav_link sublink">
+                  Notes
+                </Link>
+                <Link to="/books" className="nav_link sublink">
+                  Books
+                </Link>
+                <Link to="/ebooks" className="nav_link sublink">
+                  EBooks
+                </Link>
               </ul>
             </li>
           </ul>
@@ -106,37 +115,37 @@ function SideBar() {
             <div className="menu_title menu_editor"></div>
 
             <li className="item">
-              <a href="#" className="nav_link">
+              <Link to="/editor/paper" className="nav_link">
                 <span className="navlink_icon">
                   <i className="bx bxs-magic-wand"></i>
                 </span>
-                <span className="navlink">Magic build</span>
-              </a>
+                <span className="navlink">Paper</span>
+              </Link>
             </li>
 
             <li className="item">
-              <a href="#" className="nav_link">
+              <Link to="/editor/notes" className="nav_link">
                 <span className="navlink_icon">
                   <i className="bx bx-loader-circle"></i>
                 </span>
-                <span className="navlink">Filters</span>
-              </a>
+                <span className="navlink">Notes</span>
+              </Link>
             </li>
             <li className="item">
-              <a href="#" className="nav_link">
+              <Link to="/editor/books" className="nav_link">
                 <span className="navlink_icon">
                   <i className="bx bx-filter"></i>
                 </span>
-                <span className="navlink">Filter</span>
-              </a>
+                <span className="navlink">Books</span>
+              </Link>
             </li>
             <li className="item">
-              <a href="#" className="nav_link">
+              <Link to="/editor/ebooks" className="nav_link">
                 <span className="navlink_icon">
                   <i className="bx bx-cloud-upload"></i>
                 </span>
-                <span className="navlink">Upload new</span>
-              </a>
+                <span className="navlink">EBooks</span>
+              </Link>
             </li>
           </ul>
           <ul className="menu_items">

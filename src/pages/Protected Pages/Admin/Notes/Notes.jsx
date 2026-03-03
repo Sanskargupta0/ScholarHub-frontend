@@ -5,17 +5,17 @@ import { Trash, Eye } from "lucide-react";
 import axios from "axios";
 import config from "../../../../config";
 
-function Paper() {
+function Notes() {
   const [hideLastThreeColumns, setHideLastThreeColumns] = useState(true);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPaper, setTotalPaper] = useState([]);
+  const [totalNotes, setTotalNotes] = useState([]);
   const [showReset, setShowReset] = useState(false);
   const [reset, setReset] = useState(false);
   const [allCoursesData, setAllCoursesData] = useState([]);
   const [semesterData, setSemesterData] = useState([]);
-  const [paperData, setPaperData] = useState([]);
-  const [paper, setPaper] = useState(null);
+  const [notesData, setNotesData] = useState([]);
+  const [notes, setNotes] = useState(null);
   const [isDelete, setIsDelete] = useState(false);
   const [filters, setFilters] = useState({
     semesterNumber: "",
@@ -80,10 +80,10 @@ function Paper() {
     }
   };
 
-  const getPaper = async () => {
+  const getNotes = async () => {
     try {
       const res = await fetch(
-        `${config.backendUrl}/getAllPapers?page=${currentPage}&perPage=${rowsPerPage}`,
+        `${config.backendUrl}/getAllNotes?page=${currentPage}&perPage=${rowsPerPage}`,
         {
           method: "POST",
           headers: {
@@ -92,7 +92,7 @@ function Paper() {
           },
           body: JSON.stringify({
             filterdata: {
-              paperTitle: filters.title,
+              NotesTitle: filters.title,
               year: filters.year,
               courseId: allCoursesData.find(
                 (course) => course.courseName === filters.courseName
@@ -106,17 +106,17 @@ function Paper() {
       );
       const data = await res.json();
       if (res.status === 200) {
-        setTotalPaper(data.totalPapers);
-        setPaperData(data.papers);
+        setTotalNotes(data.totalNotes);
+        setNotesData(data.notes);
       } else {
         toast.error(data.msg, {
           position: "top-center",
         });
-        setPaperData([]);
-        setTotalPaper(0);
+        setNotesData([]);
+        setTotalNotes(0);
       }
     } catch (error) {
-      console.log("Error in getPaper", error);
+      console.log("Error in getNotes", error);
     }
   };
 
@@ -146,7 +146,7 @@ function Paper() {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`${config.backendUrl}/deletePaper`, {
+      const res = await fetch(`${config.backendUrl}/deleteNotes`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -159,9 +159,9 @@ function Paper() {
         toast.success(data.msg, {
           position: "top-center",
         });
-        setPaperData(paperData.filter((paper) => paper._id !== id));
-        setTotalPaper(totalPaper - 1);
-        setPaper(null);
+        setNotesData(notesData.filter((notes) => notes._id !== id));
+        setTotalNotes(totalNotes - 1);
+        setNotes(null);
       } else {
         const data = await res.json();
         toast.error(data.msg, {
@@ -184,7 +184,7 @@ function Paper() {
   }, [filters.courseName]);
 
   useEffect(() => {
-    getPaper();
+    getNotes()
     if (
       filters.courseName ||
       filters.semesterNumber ||
@@ -199,10 +199,10 @@ function Paper() {
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const totalPages = Math.ceil(totalPaper / rowsPerPage);
+  const totalPages = Math.ceil(totalNotes / rowsPerPage);
   return (
     <div className="container mx-auto p-4 adminpanel dark:bg-gray-900">
-      <h1 className="text-3xl font-semibold mb-6 dark:text-white">Paper Panel</h1>
+      <h1 className="text-3xl font-semibold mb-6 dark:text-white">Notes Panel</h1>
 
       <div className="mb-6 flex justify-between items-center">
         <button
@@ -239,7 +239,7 @@ function Paper() {
                 <th className="py-3 px-6 text-left">Course Code</th>
               )}
               <th className="py-3 px-6 text-left">Semester</th>
-              <th className="py-3 px-6 text-left">Paper Title</th>
+              <th className="py-3 px-6 text-left">notes Title</th>
               <th className="py-3 px-6 text-left">Year</th>
               {!hideLastThreeColumns && (
                 <>
@@ -285,9 +285,9 @@ function Paper() {
               <td className="py-3 px-6">
                 <input
                   className="border rounded px-2 py-1 w-full dark:bg-gray-700 dark:text-white dark:border-gray-600"
-                  placeholder="Paper Title"
+                  placeholder="notes Title"
                   type="text"
-                  title="Paper Title"
+                  title="notes Title"
                   value={filters.title}
                   onChange={(e) =>
                     setFilters({ ...filters, title: e.target.value })
@@ -354,37 +354,37 @@ function Paper() {
                 </div>
               </td>
             </tr>
-            {paperData.map((paper, index) => (
+            {notesData.map((notes, index) => (
               <tr
-                key={paper._id}
+                key={notes._id}
                 className={`${
                   index % 2 === 0 ? "bg-gray-200 dark:bg-gray-700" : "bg-white dark:bg-gray-800"
                 } border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600`}
               >
-                <td className="py-3 px-6">{paper.courseId.courseName}</td>
+                <td className="py-3 px-6">{notes.courseId.courseName}</td>
                 {!hideLastThreeColumns && (
-                  <td className="py-3 px-6">{paper.courseId.courseCode}</td>
+                  <td className="py-3 px-6">{notes.courseId.courseCode}</td>
                 )}
-                <td className="py-3 px-6">{paper.semesterId.semesterNumber}</td>
-                <td className="py-3 px-6">{paper.paperTitle}</td>
-                <td className="py-3 px-6">{paper.year}</td>
+                <td className="py-3 px-6">{notes.semesterId.semesterNumber}</td>
+                <td className="py-3 px-6">{notes.NotesTitle}</td>
+                <td className="py-3 px-6">{notes.year}</td>
                 {!hideLastThreeColumns && (
                   <>
                     <td className="py-3 px-6">
-                      {paper.uploadedBy.firstName}&nbsp;
-                      {paper.uploadedBy.lastName}
+                      {notes.uploadedBy.firstName}&nbsp;
+                      {notes.uploadedBy.lastName}
                     </td>
                     <td className="py-3 px-6">
-                      {paper.verifiedBy.firstName}&nbsp;
-                      {paper.verifiedBy.lastName}
+                      {notes.verifiedBy.firstName}&nbsp;
+                      {notes.verifiedBy.lastName}
                     </td>
                     <td className="py-3 px-6">
-                      {new Date(paper.uploadedAt).toLocaleDateString("en-US", {
+                      {new Date(notes.uploadedAt).toLocaleDateString("en-US", {
                         year: "numeric",
                         month: "long",
                         day: "numeric",
                       })}{" "}
-                      {new Date(paper.uploadedAt).toLocaleTimeString("en-US", {
+                      {new Date(notes.uploadedAt).toLocaleTimeString("en-US", {
                         hour: "2-digit",
                         minute: "2-digit",
                       })}
@@ -397,17 +397,17 @@ function Paper() {
                       className="bg-red-500 text-white p-2 rounded-md hover:bg-red-600 transition-all duration-200 flex items-center justify-center ml-2"
                       onClick={() => {
                         setIsDelete(true);
-                        setPaper(paper);
+                        setNotes(notes);
                       }}
                     >
                       <Trash className="w-5 h-5 mr-2" />
                       Delete
                     </button>
 
-                    {paper.key ? (
+                    {notes.key ? (
                       <button
                         className="bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition-all duration-200 flex items-center justify-center ml-2 shadow-md hover:shadow-lg transform hover:scale-105"
-                        onClick={() => handleOpen(paper.key)}
+                        onClick={() => handleOpen(notes.key)}
                       >
                         <Eye className="w-5 h-5 mr-2" />
                         <span className="label">View</span>
@@ -434,7 +434,7 @@ function Paper() {
         <div>
           <span className="text-gray-600 dark:text-gray-300">
             Showing {indexOfFirstRow + 1} to{" "}
-            {Math.min(indexOfLastRow, totalPaper)} of {totalPaper} entries
+            {Math.min(indexOfLastRow, totalNotes)} of {totalNotes} entries
           </span>
         </div>
         <components.Pagination
@@ -448,52 +448,52 @@ function Paper() {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-out z-50">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl w-96 transform transition-transform duration-300 ease-out scale-105">
             <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
-              Confirm Paper Deletion
+              Confirm notes Deletion
             </h2>
 
             <div className="mb-6 text-gray-600 dark:text-gray-300">
               <p className="mb-2">
-                Are you sure you want to delete the paper{" "}
-                <span className="font-semibold">{paper?.paperTitle}?</span>
+                Are you sure you want to delete the notes{" "}
+                <span className="font-semibold">{notes?.NotesTitle}?</span>
               </p>
               <p className="text-lg mb-2">
                 <span className="font-medium">
-                  Course Name: {paper.courseId.courseName}
+                  Course Name: {notes.courseId.courseName}
                 </span>
               </p>
               <p className="text-lg mb-2">
                 <span className="font-medium">
-                  Course Code: {paper.courseId.courseCode}
+                  Course Code: {notes.courseId.courseCode}
                 </span>
               </p>
               <p className="text-lg mb-2">
                 <span className="font-medium">
-                  Semester: {paper.semesterId.semesterNumber}
+                  Semester: {notes.semesterId.semesterNumber}
                 </span>
               </p>
               <p className="text-lg mb-2">
-                <span className="font-medium">Year: {paper.year}</span>
+                <span className="font-medium">Year: {notes.year}</span>
               </p>
               <p className="text-lg mb-2">
                 <span className="font-medium">
-                  Uploaded By: {paper.uploadedBy.firstName}{" "}
-                  {paper.uploadedBy.lastName}
+                  Uploaded By: {notes.uploadedBy.firstName}{" "}
+                  {notes.uploadedBy.lastName}
                 </span>
               </p>
               <p className="text-lg mb-2">
                 <span className="font-medium">
-                  Verified By: {paper.verifiedBy.firstName}{" "}
-                  {paper.verifiedBy.lastName}
+                  Verified By: {notes.verifiedBy.firstName}{" "}
+                  {notes.verifiedBy.lastName}
                 </span>
               </p>
               <p className="text-lg mb-2">
                 <span className="font-medium">Uploaded At:</span>{" "}
-                {new Date(paper.uploadedAt).toLocaleDateString("en-US", {
+                {new Date(notes.uploadedAt).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
                 })}{" "}
-                {new Date(paper.uploadedAt).toLocaleTimeString("en-US", {
+                {new Date(notes.uploadedAt).toLocaleTimeString("en-US", {
                   hour: "2-digit",
                   minute: "2-digit",
                 })}
@@ -505,7 +505,7 @@ function Paper() {
                 className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                 onClick={() => {
                   setIsDelete(false);
-                  handleDelete(paper._id);
+                  handleDelete(notes._id);
                 }}
               >
                 Confirm
@@ -515,7 +515,7 @@ function Paper() {
                 className="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                 onClick={() => {
                   setIsDelete(false);
-                  setPaper(null);
+                  setNotes(null);
                 }}
               >
                 Cancel
@@ -530,4 +530,4 @@ function Paper() {
   );
 }
 
-export default Paper;
+export default Notes;
